@@ -1,19 +1,24 @@
 $theme-show-notifications: false;
-//$theme-grid-container-max-width: null;
-//$theme-site-max-width: null;
-//$theme-site-margins-breakpoint: null;
+$theme-grid-container-max-width: null;
+$theme-site-max-width: null;
+$theme-site-margins-breakpoint: null;
 $theme-navigation-width: null;
-$theme-image-path: null;
+$theme-footer-max-width: null;
+$theme-banner-max-width: null;
+//$theme-image-path: null;
 //$theme-font-role-heading: null;
 //$theme-h4-font-size: null;
 
 
-// $theme-grid-container-max-width: 'desktop-lg' !global;
-// $theme-site-max-width: 'desktop' !global;
-// $theme-site-margins-breakpoint: 'desktop' !global;
+$theme-grid-container-max-width: 'widescreen' !global;
+$theme-site-max-width: 'widescreen' !global;
+$theme-site-margins-breakpoint: 'widescreen' !global;
+$theme-navigation-width: 'widescreen' !global;
+$theme-footer-max-width: 'widescreen' !global;
+$theme-banner-max-width: 'widescreen' !global;
 //theme-site-margins-width: 4
 //$theme-site-margins-mobile-width: 2 
-$theme-navigation-width: 'desktop-lg' !global;
+
 // $theme-image-path: '../../img'
 //'tablet-lg'is 800 for menu switch from horizontal to mobile menu
 //'desktop' is 1024 for menu switch from horizontal to mobile menu
