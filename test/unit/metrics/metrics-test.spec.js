@@ -182,7 +182,7 @@ describe('Test - metrics : ', () => {
     isComponent = false;
     let m = new Metrics(mockDataContext, mockRouter, mockDialogFunctions, stageConf, filters);
     m.sortProjects(MockRepositoriesData).then( sortedProjects => {
-      expect(sortedProjects[0].id).toEqual('54bf10b6cd0f248e3156b946649313b3');
+      expect(sortedProjects[0].id).toEqual('aad4fab6d8f5f8339af37800baa41c25');
       done();
     });
   }, testTimeout);
@@ -193,7 +193,7 @@ describe('Test - metrics : ', () => {
     let repos = MockRepositoriesData;
     repos[0].sourceData.forks = null;
     m.sortProjects(repos).then( sortedProjects => {
-      expect(sortedProjects[0].id).toEqual('585e203c4bf7b9ff12966fd9697b87cb');
+      expect(sortedProjects[0].id).toEqual('aad4fab6d8f5f8339af37800baa41c25');
       done();
     });
   }, testTimeout);
@@ -204,7 +204,7 @@ describe('Test - metrics : ', () => {
     let repos = [...MockRepositoriesData];
     repos[1].sourceData.forks = null;
     m.sortProjects(repos).then( sortedProjects => {
-      expect(sortedProjects[0].id).toEqual('585e203c4bf7b9ff12966fd9697b87cb');
+      expect(sortedProjects[0].id).toEqual('aad4fab6d8f5f8339af37800baa41c25');
       done();
     });
   }, testTimeout);
@@ -215,7 +215,7 @@ describe('Test - metrics : ', () => {
     let repos = [...MockRepositoriesData];
     repos[1].sourceData.forks = null;
     m.sortProjects(repos).then( sortedProjects => {
-      expect(sortedProjects[0].id).toEqual('585e203c4bf7b9ff12966fd9697b87cb');
+      expect(sortedProjects[0].id).toEqual('aad4fab6d8f5f8339af37800baa41c25');
       done();
     });
   }, testTimeout);

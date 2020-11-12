@@ -34,7 +34,7 @@ export class Results {
       { value: 'sourceData.releases', name: 'Releases' },
       { value: 'sourceData.commits', name: 'Commits' },
       { value: 'sourceData.contributors', name: 'Contributors' },
-      { value: 'sourceData.forks', name: 'Forks' }
+      { value: 'sourceData.forksCount', name: 'Forks' }
     ];
     this.openReadmeLinkId = null;
     this.ariaLabel = '';

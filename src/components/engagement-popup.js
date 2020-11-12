@@ -45,7 +45,7 @@ export class EngagementPopup {
 
   getUserSelection(data) {
     let val = window.localStorage.getItem(LS_CODEHUB_ENGAGEMENT_POPUP);
-    if (!val) {
+    if (!val || !data) {
       return true;
     }
     return val != data.id;

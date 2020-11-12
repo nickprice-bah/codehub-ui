@@ -2,7 +2,7 @@ import { inject, computedFrom } from 'aurelia-framework';
 import { Router, activationStrategy } from 'aurelia-router';
 import { DataContext } from 'services/datacontext';
 import { StageConfig } from 'stageConf';
-import { NO_DESCRIPTION_MESSAGE } from 'constants/ch-constants';
+import { NO_DESCRIPTION_MESSAGE, NO_SONAR_DATA_MESSAGE } from 'constants/ch-constants';
 import { DialogFunctions } from 'resources/shared/dialog-functions';
 
 @inject(DataContext, Router, StageConfig, DialogFunctions)
@@ -22,6 +22,7 @@ export class ProjectDetails {
     this.releases = [];
     this.downloads = 0;
     this.noSonarData = false;
+    this.noSonarDataMessage = NO_SONAR_DATA_MESSAGE;
 
     this.sonarLink = '';
 
@@ -73,13 +74,9 @@ export class ProjectDetails {
             this.badge_status_image = '/img/pending_review_final_29w_35h.svg';
         }
       }
-      this.noSonarData = !this.repo.generatedData.sonarMetrics &&
-      !this.repo.generatedData.sonarMetrics.code_smells &&
-      !this.repo.generatedData.sonarMetrics.code_smells.val &&
-      !this.repo.generatedData.sonarMetrics.reliability_rating &&
-      !this.repo.generatedData.sonarMetrics.reliability_rating.val &&
-      !this.repo.generatedData.sonarMetrics.security_rating &&
-      !this.repo.generatedData.sonarMetrics.security_rating.val;
+      this.noSonarData = this.repo.generatedData.sonarMetrics &&
+      this.repo.generatedData.sonarMetrics.ncloc &&
+      !this.repo.generatedData.sonarMetrics.ncloc.key;
 
       this.health = this.repo.generatedData.sonarMetrics;
 
