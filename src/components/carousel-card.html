@@ -15,10 +15,10 @@
           <img src="/img/loading.svg" width="100px" alt="Loading...">
           <span>Loading...</span>
         </div>
-        <div class="grid-row row carousel_cards">
+        <div class="grid-row grid-gap carousel_cards">
           <template repeat.for="repo of currentRepositories">
-            <compose view-model="./card" if.bind="!repo.isFake && repo" model.bind="{data: repo, showFeatured: false}" class="usa-card usa-card--flag grid-col-12 tablet-lg:grid-col-4"></compose>
-            <compose view-model="./card-feature-fake" if.bind="repo.isFake" model.bind="repo" class="usa-card usa-card--flag grid-col-12 tablet-lg:grid-col-4"></compose>
+            <compose view-model="./card" if.bind="!repo.isFake && repo" model.bind="{data: repo, showFeatured: false}" class="usa-card usa-card--flag grid-col-4 tablet-lg:grid-col-4"></compose>
+            <compose view-model="./card-feature-fake" if.bind="repo.isFake" model.bind="repo" class="usa-card usa-card--flag grid-col-4 tablet-lg:grid-col-4"></compose>
           </template>
         </div>
         <div class="carousel_controls">

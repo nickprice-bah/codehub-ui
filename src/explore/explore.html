@@ -7,35 +7,36 @@
   <require from="../resources/value-converters/chunk"></require>
   <require from="../resources/value-converters/filter-category"></require>
 
-  <div class="container-fluid title-wrapper">
-    <div class="container-fluid">
-      <div class="grid-row row">
-        <div class="grid-col-12 col-lg-12 col-md-12 col-sm-12 explore-filter-wrapper">
-          <div show.bind="searchDone" class="grid-row row filter-result-bar">
-            <div class="grid-col-9 col-lg-9 col-md-9 col-sm-9">
-              <div>
-                <ch-dropdown id="filterCategories" collection.bind="categoriesFilter" title="Categories" onitemchanged.call="categoriesChanged($event)" />
+  
+
+  <main class="usa-layout-docs usa-section explore-page">
+    <div class="grid-container container-fluid title-wrapper">
+      <!-- <div class=""> -->
+        <div class="grid-row">
+          <div class="grid-col-12 explore-filter-wrapper">
+            <div show.bind="searchDone" class="grid-row filter-result-bar">
+              <div class="grid-col-9">
+                <div class="filter-wrapper">
+                  <ch-dropdown id="filterCategories" collection.bind="categoriesFilter" title="Categories" onitemchanged.call="categoriesChanged($event)" />
+                </div>
+                <div class="filter-wrapper">
+                  <ch-dropdown id="filterOrganizations" collection.bind="organizationsFilter" title="Organizations" onitemchanged.call="organizationsChanged($event)" />
+                </div>
+                <div class="filter-wrapper">
+                  <ch-dropdown id="filterLanguages" collection.bind="languagesFilter" title="Languages" onitemchanged.call="languagesChanged($event)" />
+                </div>
               </div>
-              <div>
-                <ch-dropdown id="filterOrganizations" collection.bind="organizationsFilter" title="Organizations" onitemchanged.call="organizationsChanged($event)" />
+              <div class="grid-col-3">
+                <compose view="../components/sorting.html"></compose>
               </div>
-              <div>
-                <ch-dropdown id="filterLanguages" collection.bind="languagesFilter" title="Languages" onitemchanged.call="languagesChanged($event)" />
-              </div>
-            </div>
-            <div class="grid-col-3 col-lg-3 col-md-3 col-sm-3">
-              <compose view="../components/sorting.html"></compose>
             </div>
           </div>
         </div>
-      </div>
+      <!-- </div> -->
     </div>
-  </div>
-
-  <main class="usa-layout-docs usa-section explore-page">
-    <div class="container-fluid loading-wrapper">
-      <div class="grid-row row">
-        <div if.bind="searchDone" class="grid-col-12 col-lg-12 col-chips">
+    <div class="grid-container container-fluid loading-wrapper">
+      <div class="grid-row">
+        <div if.bind="searchDone" class="grid-col-12 col-chips">
           <ul class='list-inline'>
             <li><span class="project-counter">Projects</span> <span id="explore-projects-count">(${resultCount})</span></li>
             <template if.bind="!filterLangEmpty || !filterOrgEmpty || !filterCategoriesEmpty ">
@@ -54,9 +55,10 @@
             </template>
           </ul>
         </div>
-        <div class="grid-col-12 col-lg-12 cards-wrapper">
-          <div class="grid-row row">
-            <div class="grid-col-6 col-lg-6 col-lg-offset-3">
+        <!-- TODO: Reference src/search/results.html for this section so they match. Make a component?-->
+        <div class="grid-col-12 cards-wrapper">
+          <div class="grid-row">
+            <div class="grid-col-6 grid-offset-3">
               <div if.bind="searchDone && resultCount < 1" class="card card-search no-results">
                 <div class="lined-header">
                   <h2 class=""><span id="explore-no-results">No Results</span></h2>
@@ -71,16 +73,16 @@
               </div>
             </div>
           </div>
-            <div class="grid-row row"
+            <div class="grid-row grid-gap"
             virtual-repeat.for="repo of projects |
             sort: { propertyName: selectedSort, direction: sortDirection} |
             filterCategory:{ filterArray: filters.selectedCategories}:filters.selectedCategories.length |
             filter: { propertyName: 'sourceData.owner.name', filterArray: filters.selectedOrganizations}:filters.selectedOrganizations.length |
             filter: { propertyName: 'sourceData.language', filterArray: filters.selectedLanguages}:filters.selectedLanguages.length |
             chunk: 3">
-                <compose view-model="../components/card" if.bind="repo[0]" model.bind="{data:repo[0],showFeatured: true}" class="usa-card usa-card--flag grid-col-12 tablet-lg:grid-col-4"></compose>
-                <compose view-model="../components/card" if.bind="repo[1]" model.bind="{data:repo[1],showFeatured: true}" class="usa-card usa-card--flag grid-col-12 tablet-lg:grid-col-4"></compose>
-                <compose view-model="../components/card" if.bind="repo[2]" model.bind="{data:repo[2],showFeatured: true}" class="usa-card usa-card--flag grid-col-12 tablet-lg:grid-col-4"></compose>
+                <compose view-model="../components/card" if.bind="repo[0]" model.bind="{data:repo[0],showFeatured: true}" class="AAA usa-card usa-card--flag desktop:grid-col-4 grid-col-12"></compose>
+                <compose view-model="../components/card" if.bind="repo[1]" model.bind="{data:repo[1],showFeatured: true}" class="BBB usa-card usa-card--flag desktop:grid-col-4 grid-col-12"></compose>
+                <compose view-model="../components/card" if.bind="repo[2]" model.bind="{data:repo[2],showFeatured: true}" class="CCC usa-card usa-card--flag desktop:grid-col-4 grid-col-12"></compose>
           </div>
         </div>
       </div>

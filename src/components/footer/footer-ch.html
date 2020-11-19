@@ -1,6 +1,6 @@
 <template>
   <div class="usa-footer__primary-section">
-    <nav class="usa-footer__nav">
+    <nav class="usa-footer__nav" aria-label="Footer navigation">
       <div class="ch-footer__social-wrapper">
         <div class="ch-footer__social share">
           <p class="social-share">Share</p>
@@ -26,8 +26,8 @@
   </div>
   <div class="usa-footer__secondary-section">
     <div class="grid-container">
-      <div class="grid-row row">
-        <div class="grid-col-6 col-md-6 left-column">
+      <div class="grid-row">
+        <div class="tablet:grid-col-6 grid-col-6 mobile:grid-col-12 left-column usa-sign-up">
           <img id="usa-footer__logo-img-dot" class="usa-footer__logo-img" src="/img/joint_dot_its_logo_footer.svg" alt dblclick.delegate="displayVersion($event)">
           <div class="contact-ch-wrapper">
             <h4 class="content">Contact ITS CodeHub</h4>
@@ -35,9 +35,9 @@
             <div if.bind="showVersion">${version.version}.${version.build}</div>
           </div>
         </div>
-        <div class="grid-col-6 col-md-6 right-column">
+        <div class="tablet:grid-offset-2 tablet:grid-col-2 grid-col-6 mobile:grid-col-12 right-column usa-sign-up">
           <div id="email-registration" class="email-registration-wrapper">
-            <div class="content">
+            <div class="content ">
               <div class="header-text">
                 <span class="title1">Join our mailing list!</span>
               </div>

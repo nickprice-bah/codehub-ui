@@ -1,93 +1,76 @@
 <template bindable="router">
   <header class="usa-header usa-header--extended">
+    
     <div class="usa-navbar">
         <div class="usa-logo" id="extended-logo">
-          <em class="usa-logo__text">
-            <!-- OLD CODE FOR REFERENCE 
-              <a class="navbar-brand" href="https://www.transportation.gov/" target="_blank" aria-label="U.S. DOT Logo - Link to dot.gov" rel="noopener noreferrer">
-              <img src="../img/logo.png" alt="ITS CodeHub Logo, United States of America, Department of Transportation" id="logo-mobile">
-            </a>
-             -->
-             <!-- TODO
-            1. Switch aria-label to aria-label="Home" -->
-            <a href="https://www.transportation.gov/" target="_blank" aria-label="U.S. DOT Logo - Link to dot.gov" rel="noopener noreferrer" title="Home">
-              <img src="/img/logo.png" alt="ITS CodeHub Logo, United States of America, Department of Transportation" id="logo-mobile">ITS CodeHub
-            </a>
-          </em>
+          <a class="navbar-brand" href="https://www.transportation.gov/" target="_blank" aria-label="U.S. DOT Logo - Link to dot.gov" rel="noopener noreferrer">
+            <img src="/img/logo.png" alt="ITS CodeHub Logo, United States of America, Department of Transportation" id="logo-mobile">
+          </a>
         </div>
         <button class="usa-menu-btn">Menu</button>
-    </div>
-    <!-- OLD CODE FOR REFERENCE
-    <nav aria-label="Primary navigation" class="navbar navbar-default usa-nav"> -->
-    <nav aria-label="Primary navigation" class="usa-nav">
-      <div class="usa-nav__inner"><button class="usa-nav__close"><img src="/img/close.svg" role="img" alt="close"></button>    
-        <ul class="usa-nav__primary usa-accordion">
-          <!-- <li class="usa-nav__primary-item"> -->
-            <!-- <a class="usa-nav__link" href="javascript:void(0)"><span>Simple link</span></a> -->
-          <!-- </li> -->
-          <template repeat.for="row of router.navigation">
-            <li  if.bind="row.settings.isTopLevelMenu_noChildren" class="${row.isActive ? 'active usa-nav__primary-item firstrow' : 'stage usa-nav__primary-item firstrow'}">
-              <a if.bind="row.settings.isTopLevelMenu_noChildren" tabindex="0" href.bind="row.href" aria-label="${row.title}" class="usa-nav__link">${row.title}</a>
-            </li>
-          </template>
-          <template repeat.for="row of router.navigation">
-            <li if.bind="row.settings.isTopLevelMenu_hasChildren" class="nav-item dropdown usa-nav__primary-item">
-              <template repeat.for="row of router.navigation">
-                <a tabindex="0" if.bind="row.settings.isTopLevelMenu_hasChildren" route-href="route:source-code-guidelines;" class="usa-nav__link nav-link ${ is_resources_subpage(router.currentInstruction.config.name) ? 'active': ''}" href="#" role="button">${row.settings.topLevelMenu_parentName}</a>
-              </template>
-            </li>
-          </template>
-        </ul>
-        <div if.bind="projects.title = 'project-details'" class="usa-nav__secondary">
-          <!-- OLD CODE FOR REFERENCE
-          <ul class="nav navbar-nav navbar-right user-nav usa-nav__secondary-links"> -->
-          <ul class="usa-nav__secondary-links">
-            <li class="utility-icons opening-magnifier"><a href="#" id="searchBtn" title="Search" aria-label="Search for project names and languages"><i class="material-icons" aria-hidden="true">search</i></a></li>
-
-            <!-- OLD CODE FOR REFERENCE
-            <li class="utility-icons utility-icons-external-links usa-nav__secondary-item"><a href="https://www.its.dot.gov/about/its_jpo.htm" target="_blank" aria-label="About ITS JPO" rel="noopener noreferrer">ABOUT ITS JPO</a></li>
-            <li class="utility-icons utility-icons-external-links usa-nav__secondary-item"><a href="https://www.transportation.gov/mission/about-us" target="_blank" aria-label="About U.S. DOT" rel="noopener noreferrer">ABOUT U.S. DOT</a></li>
-            <li class="utility-icons utility-icons-external-links usa-nav__secondary-item"><a href="https://www.transportation.gov/briefingroom" target="_blank" aria-label="U.S. DOT Briefing room" rel="noopener noreferrer">U.S. DOT BRIEFING ROOM</a></li>
-            <li class="utility-icons utility-icons-external-links usa-nav__secondary-item"><a href="https://www.transportation.gov/our-activities" target="_blank" aria-label="U.S. DOT ACTIVITIES" rel="noopener noreferrer">U.S. DOT ACTIVITIES</a></li> -->
-            <li class="usa-nav__secondary-item"><a href="https://www.its.dot.gov/about/its_jpo.htm" target="_blank" aria-label="About ITS JPO" rel="noopener noreferrer">ABOUT ITS JPO</a></li>
-            <li class="usa-nav__secondary-item"><a href="https://www.transportation.gov/mission/about-us" target="_blank" aria-label="About U.S. DOT" rel="noopener noreferrer">ABOUT U.S. DOT</a></li>
-            <li class="usa-nav__secondary-item"><a href="https://www.transportation.gov/briefingroom" target="_blank" aria-label="U.S. DOT Briefing room" rel="noopener noreferrer">U.S. DOT BRIEFING ROOM</a></li>
-            <li class="usa-nav__secondary-item"><a href="https://www.transportation.gov/our-activities" target="_blank" aria-label="U.S. DOT ACTIVITIES" rel="noopener noreferrer">U.S. DOT ACTIVITIES</a></li>
-          </ul>
-
-          <!-- TODO  OLD SEARCH BOX - REPLACE?
-            1. from <form> Remove classes .navbar-search hidden 
-            2. from <div> Remove id? Remove class name input-group?
-              a. Remove div itself?
-            3. -->
-          <form id="searchForm" submit.delegate="executeNavSearch(navSearchText)" class="navbar-search hidden usa-search usa-search--small" role="search">
-            <div id="navSearchBox" class="input-group">
-              <label for="searchBarNav" class="control-label sr-only">Search</label>
-              <span class="input-group-btn">
-                <button id="searchBtn" class="btn btn-default" type="submit" ><i class="material-icons" aria-hidden="true">search</i></button>
-              </span>
-              <input id="searchBarNav" type="text" value.bind="navSearchText" class="typeahead form-control" placeholder="Search for project names and languages...">
-              <span class="input-group-btn">
-                <button id="closeBtnSearch" class="btn btn-default" type="submit" ><em class="material-icons">close</em></button>
-              </span>
+    </div>  
+    <nav id="navbar-nav" aria-label="Primary navigation" class="navbar navbar-default usa-nav">
+      <section class="usa-banner site-banner" aria-label="Official government website">
+        <div class="usa-accordion">
+          <header class="usa-banner__header">
+            <div class="usa-banner__inner">
+              <div class="grid-col-auto">
+                <img class="usa-banner__header-flag" src="/img/us_flag_small.png" alt="U.S. flag">
+              </div>
+              <div class="grid-col-fill tablet:grid-col-auto">
+                <p class="usa-banner__header-text">An official website of the United States government</p>
+                <p class="usa-banner__header-action" aria-hidden="true">Here’s how you know</p>
+              </div>
+              <button id="gov-banner-button"
+                class="usa-accordion__button usa-banner__button"
+                aria-expanded="false"
+                aria-controls="gov-banner">
+                <span class="usa-banner__button-text">Here’s how you know</span>
+              </button>
             </div>
-          </form>
-          <!-- NEW Searchbox -->
-          <form class="usa-search usa-search--small " role="search">
-            <label class="usa-sr-only" for="extended-search-field-small">Search small</label>
-            <input class="usa-input" id="extended-search-field-small" type="search" name="search">
-            <button class="usa-button" type="submit"><span class="usa-sr-only">Search</span></button>
-        </form>
+          </header>
+          <div class="usa-banner__content usa-accordion__content display-none" id="gov-banner">
+            <div class="grid-row grid-gap-lg">
+              <div class="usa-banner__guidance tablet:grid-col-6">
+                <img
+                  class="usa-banner__icon usa-media-block__img"
+                  src="/img/icon-dot-gov.svg"
+                  alt="Dot gov">
+                <div class="usa-media-block__body">
+                  <p>
+                    <strong>The .gov means it’s official.</strong>
+                    <br>Federal government websites often end in .gov or .mil. Before sharing sensitive information,
+                    make sure you’re on a federal government site.
+                  </p>
+                </div>
+              </div>
+              <div class="usa-banner__guidance tablet:grid-col-6">
+                <img
+                  class="usa-banner__icon usa-media-block__img"
+                  src="/img/icon-https.svg"
+                  alt="Https">
+                <div class="usa-media-block__body">
+                  <p>
+                    <strong>The site is secure.</strong>
+                    <br>The
+                    <strong>https://</strong> ensures that you are connecting to the official website and
+                    that any information you provide is encrypted and transmitted securely.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <!-- TODO: remove .navbar-header -->
-        <!-- <div class="navbar-header"> 
+      </section>
+      <div class="usa-nav__inner"><button class="usa-nav__close"><img src="/img/close.svg" alt="close"></button>    
+        <div class="navbar-header">
           <a class="navbar-brand" href="https://www.transportation.gov/" target="_blank" aria-label="U.S. DOT Logo - Link to dot.gov" rel="noopener noreferrer">
               <img src="/img/logo.png" alt="ITS CodeHub Logo, United States of America, Department of Transportation" id="logo">
               <span if.bind="stageConfig.IS_BETA" class="beta-message" aria-label="Beta version">Beta</span>
             </a>
-        </div> -->
+        </div>
         <div id="navbar">
-          <!-- <ul id="titleBarNav" class="nav navbar-nav main-nav usa-nav__primary usa-accordion" >
+          <ul id="titleBarNav" class="nav navbar-nav main-nav usa-nav__primary usa-accordion" >
             <template repeat.for="row of router.navigation">
               <li  if.bind="row.settings.isTopLevelMenu_noChildren" class="${row.isActive ? 'active usa-nav__primary-item firstrow' : 'stage usa-nav__primary-item firstrow'}">
                 <a if.bind="row.settings.isTopLevelMenu_noChildren" tabindex="0" href.bind="row.href" aria-label="${row.title}" class="usa-nav__link">${row.title}</a>
@@ -100,15 +83,15 @@
                 </template>
               </li>
             </template>
-          </ul> -->
+          </ul>
           <div if.bind="projects.title = 'project-details'" class="usa-nav__secondary">
-            <!-- <ul class="nav navbar-nav navbar-right user-nav usa-nav__secondary-links">
+            <ul class="nav navbar-nav navbar-right user-nav usa-nav__secondary-links">
               <li class="utility-icons opening-magnifier"><a href="#" id="searchBtn" title="Search" aria-label="Search for project names and languages"><i class="material-icons" aria-hidden="true">search</i></a></li>
               <li class="utility-icons utility-icons-external-links usa-nav__secondary-item"><a href="https://www.its.dot.gov/about/its_jpo.htm" target="_blank" aria-label="About ITS JPO" rel="noopener noreferrer">ABOUT ITS JPO</a></li>
               <li class="utility-icons utility-icons-external-links usa-nav__secondary-item"><a href="https://www.transportation.gov/mission/about-us" target="_blank" aria-label="About U.S. DOT" rel="noopener noreferrer">ABOUT U.S. DOT</a></li>
               <li class="utility-icons utility-icons-external-links usa-nav__secondary-item"><a href="https://www.transportation.gov/briefingroom" target="_blank" aria-label="U.S. DOT Briefing room" rel="noopener noreferrer">U.S. DOT BRIEFING ROOM</a></li>
               <li class="utility-icons utility-icons-external-links usa-nav__secondary-item"><a href="https://www.transportation.gov/our-activities" target="_blank" aria-label="U.S. DOT ACTIVITIES" rel="noopener noreferrer">U.S. DOT ACTIVITIES</a></li>
-            </ul> -->
+            </ul>
   
             <form id="searchForm" submit.delegate="executeNavSearch(navSearchText)" class="navbar-search hidden" role="search">
               <div id="navSearchBox" class="input-group">
@@ -116,7 +99,7 @@
                 <span class="input-group-btn">
                   <button id="searchBtn" class="btn btn-default" type="submit" ><i class="material-icons" aria-hidden="true">search</i></button>
                 </span>
-                <input id="searchBarNav" type="text" value.bind="navSearchText" class="form-control" placeholder="Search for project names and languages...">
+                <input id="searchBarNav" type="text" value.bind="navSearchText" class="typeahead form-control" placeholder="Search for project names and languages...">
                 <span class="input-group-btn">
                   <button id="closeBtnSearch" class="btn btn-default" type="submit" ><em class="material-icons">close</em></button>
                 </span>

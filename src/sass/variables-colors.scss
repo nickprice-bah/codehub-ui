@@ -1,10 +1,11 @@
 /* --- Colors --- */
-$black: rgb(0, 0, 0); //#000000
-$teal: rgb(0, 124, 133); //#007c85
 $white: rgb(255,255,255); //#ffffff
 $lightgray: rgb(211,211,211); //#d3d3d3
 $gray: gray; ///(128,128,128) #808080
 $darkgray: rgb(27,27,27); //#1b1b1b
+$black: rgb(0, 0, 0); //#000000
+
+$teal: rgb(0, 124, 133); //#007c85
 $red: rgb(242, 107, 100); //#F26B64
 $green: #39b54a;
 
@@ -12,6 +13,20 @@ $body-bk: rgb(225,225,225); //#E1E1E1
 $banner-bk: rgb(0, 74, 113); //#f05154
 $banner-end: rgb(21, 55, 80); //#153750
 $banner-start: rgb(0, 74, 113); //#f04f54
+
+/* --- faded colors --- */
+$black-fade40: rgba($black, 0.40);
+$black-fade29: rgba($black, 0.29);
+$black-fade20: rgba($black, 0.20);
+$black-fade10: rgba($black, 0.1);
+$black-fade9-5: rgba($black, 0.095);
+
+
+
+//fade($white, 85%)
+$white-fade85: rgba($white, 0.85);
+$white-fade60: rgba($white, 0.6);
+$white-fade10: rgba($white, 0.1);
 
 /* --- font sizes --- */
 $font-size-base:          14px;

@@ -5,9 +5,10 @@ footer {
           font-size: units(2);
         }
 
-        .usa-footer__nav {
-            max-width: unset;
-        }
+        // unicorn testing widths
+        // .usa-footer__nav {
+        //     max-width: unset;
+        // }
 
         .addthis_inline_share_toolbox_yi93,
         #follow_wrapper {
@@ -114,9 +115,10 @@ footer {
             }
         }
         
-        .grid-container {
-            max-width: unset;
-        }
+        // unicorn testing site widths
+        // .grid-container {
+        //     max-width: unset;
+        // }
 
         .left-column {
             p {
@@ -159,5 +161,18 @@ footer {
             align-content: center;
             justify-content: space-between;
         } 
+
+        .email-registration-wrapper .content .message-alert {
+            font-weight: normal;
+            color: #920000;
+        }
+        
+        .email-registration-wrapper .content .message {
+            //font-family: 'Roboto', sans-serif;
+            font-size: 15px;
+            font-weight: 100;
+            color: #000000;
+            width: 385px;
+        }
     }
 }

@@ -75,10 +75,20 @@ export class NavBar {
       $('body').animate({scrollTop: 0}, duration);
     });
     /*eslint-enable */
+    $('#gov-banner-button').on('click', event =>{
+      $('#gov-banner').toggleClass("display-none");
+    });
+    // let element = this.document.getElementById("gov-banner-button");
+    // console.log("here");
+    // if(element){
+    //   element.addEventListener("click", toggleClass(element));
+    //   console.log("here 1");
+    // }
   }
 
   is_resources_subpage(name) {
     let sub_pages = ['source-code-guidelines', 'repopublishing','faqs','additional-information','badges-about','metrics'];
     return sub_pages.includes(name);
   }
+
 }

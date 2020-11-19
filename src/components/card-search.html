@@ -3,10 +3,10 @@
   <require from="../resources/value-converters/ago"></require>
   <require from="../resources/custom-attributes/bootstrap-tooltip"></require>
 
-  <div if.bind="repo" class="grid-col-12 col-lg-12 col-md-12 col-sm-12">
+  <div if.bind="repo" class="">
     <div class="card card-search hover-card">
-      <div class="grid-row row">
-        <div class="grid-col-7 col-lg-7">
+      <div class="grid-row">
+        <div class="grid-col-7">
           <div class="card-header">
             <div tabindex="0" class="lang-logo" role="img" aria-label="Language icon ${repo.sourceData.language}">
               <img alt="Language icon ${repo.sourceData.language}" if.bind="repo.sourceData.owner.type != 'foundation'" src.bind="language_image">
@@ -52,8 +52,8 @@
             </span>
             <h4 tabindex="0" class=""><span>Project Stats</span></h4>
           </div>
-          <div class="row github-stats">
-            <div class="col-md-6 col-sm-6">
+          <div class="grid-row github-stats">
+            <div class="grid-col-6">
               <span class="stat" tabindex="0" aria-label="${repo.sourceData.stars} stars">
                 <span class="octicon octicon-star" aria-hidden="true"></span>
                 <span id="card-search-project-stars-${repo.id}" class="num text-muted text-emphasized" aria-hidden="true">${repo.sourceData.stars | num}</span>
@@ -75,7 +75,7 @@
                 <span class="stat-label" aria-hidden="true">downloads</span>
               </span>
           </div>
-          <div class="col-md-6 col-sm-6">
+          <div class="grid-col-6">
             <span class="stat" tabindex="0" aria-label="${repo.sourceData.commits} commits">
               <span class="octicon octicon-git-commit" aria-hidden="true"></span>
               <span id="card-search-project-commits-${repo.id}" class="num text-muted text-emphasized" aria-hidden="true">${repo.sourceData.commits | num:1}</span>
@@ -101,8 +101,7 @@
       </div>
     </div>
 
-    <!-- OUTDATED. TODO: Replace with newer code when merging -->
-    <div class="row card-links">
+    <div class="grid-row card-links">
       <ul class="list-inline pull-left">
         <li><a id="card-search-project-open-readme-${repo.id}" href="#" click.trigger="dialogFunctions.openReadmeModal(repo,$event.target)"><i class="material-icons" aria-hidden="true">library_books</i> Show README</a></li>
       </ul>

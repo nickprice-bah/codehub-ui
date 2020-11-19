@@ -3,12 +3,12 @@
   <require from="../resources/value-converters/skip"></require>
   <require from="../resources/value-converters/num"></require>
   <require from="../resources/value-converters/ago"></require>
-  <main class="usa-layout-docs usa-section project-details-page">
-  <div class="container-fluid cards-wrapper proj-details-wrapper">
-    <div class="grid-row row flex-row">
-      <div class="grid-col-9 col-lg-9 col-md-9 col-content">
-        <div class="row proj-content">
-          <div class="grid-col-12 col-lg-12">
+  <main class="usa-layout-docs project-details-page">
+  <div class="grid-container cards-wrapper proj-details-wrapper">
+    <div class="grid-row grid-gap">
+      <div class="grid-col-9">
+        <div class="proj-content">
+          <div class="grid-col-12">
             <div class="btn-group">
               <a id="btn-go-back" class="btn btn-secondary btn-sm btn-project-details" href="#" click.delegate="goBack()" aria-label="Go back to project summary."><i class="material-icons" aria-hidden="true">chevron_left</i>Back</a>
               <ul class="list-inline pull-left" aria-hidden="true">
@@ -18,8 +18,8 @@
               <a if.bind="repo.generatedData.vscan.infected_files > 0" class="btn btn-secondary btn-sm btn-project-details" id="project-details-header-github-${repo.id}" href="#" click.trigger="dialogFunctions.displayVScanDialog(repo,$event.target)" target="_blank" aria-label="View project source code on GitHub.">View on Github<i class="material-icons" aria-hidden="true">chevron_right</i></a>
             </div>
             <div class="card full-width">
-              <div class="grid-row row">
-                <div class="grid-col-7 col-lg-7">
+              <div class="grid-row grid-gap">
+                <div class="grid-col-7">
                   <div class="lined-header">
                     <h2 tabindex="0" class="" aria-label="Project overview."><span>Overview</span></h2>
                     <span id="repo-sourceData-repositoryUrl" style="visibility: hidden;">${repo.sourceData.repositoryUrl}</span>
@@ -27,7 +27,7 @@
                   <div id="project-description" tabindex="0" class="proj-desc ${hasdescription ? '' : 'no-desc'} " aria-label="Project description: ${description}">${description}</div>
                     <div class="text-muted last-updated">By <a id="project-organization-link-${repo.id}" href="#" click.trigger="dialogFunctions.openLeavingSiteConfirmation(repo.sourceData.owner.name,repo.sourceData.owner.url,$event.target)" target="_blanks" aria-label="Project organization: ${repo.sourceData.owner.name}, view on GitHub.">${repo.sourceData.owner.name}</a> &nbsp; | &nbsp;<span id="project-update-at" tabindex="0" aria-label="Updated ${repo.sourceData.lastPush | ago}">Updated ${repo.sourceData.lastPush | ago}</span></div>
 
-                  <div class="grid-row row card-links-project-details">
+                  <div class="grid-row card-links-project-details">
                     <ul class="list-inline pull-right" aria-hidden="true">
                       <li if.bind="badge_status_image">
                           <a href="#" route-href="route:badges-about" title="Status ${repo.codehubData.badges.status}">
@@ -38,7 +38,7 @@
                       </ul>
                   </div>
                 </div>
-                <div class="grid-col-5 col-lg-5 col-github-stats">
+                <div class="grid-col-5 col-github-stats">
                   <div class="lined-header">
                     <span class="pull-right" aria-hidden="true">
                       <em class="text-muted" aria-hidden="true">Source:
@@ -47,8 +47,8 @@
                     </span>
                     <h4 tabindex="0" class=""><span>Project Stats</span></h4>
                   </div>
-                  <div class="grid-row row github-stats">
-                    <div class="grid-col-6 col-md-6 col-sm-6">
+                  <div class="grid-row github-stats">
+                    <div class="grid-col-6">
                         <span class="stat" tabindex="0" aria-label="${repo.sourceData.stars} stars">
                         <span class="octicon octicon-star"></span>
                           <span id="project-stats-stars" class="num text-muted text-emphasized">${repo.sourceData.stars | num}</span>
@@ -70,7 +70,7 @@
                         <span class="stat-label">downloads</span>
                       </span>
                     </div>
-                    <div class="grid-col-6 col-md-6 col-sm-6">
+                    <div class="grid-col-6">
                         <span class="stat" tabindex="0" aria-label="${repo.sourceData.commits} commits">
                         <span class="octicon octicon-git-commit"></span>
                           <span id="project-stats-commits" class="num text-muted text-emphasized">${repo.sourceData.commits | num:1}</span>
@@ -99,18 +99,18 @@
           </div>
         </div>
 
-        <div class="grid-row row proj-content">
-          <div class="grid-col-12 col-lg-12">
+        <div class="grid-row proj-content">
+          <div class="grid-col-12">
             <div class="card full-width">
               <div class="lined-header">
                 <h2 class="" tabindex="0" aria-label="Project Health Statistics"><span>Health Statistics</span></h2>
               </div>
-              <div class="grid-row row proj-overview-row proj-health">
-                <div class="grid-col-6 col-lg-6 col-qual">
-                  <h3 tabindex="0" arial-label="Code Quality Analysis">Code Quality Analysis</h3>
+              <div class="grid-row grid-gap proj-overview-row proj-health">
+                <div class="grid-col-6 col-qual">
+                  <h3 class="text-transform-uppercase" tabindex="0" arial-label="Code Quality Analysis">Code Quality Analysis</h3>
                   <p id="sonarqube-description" tabindex="0" aria-label="The following results are produced by SonarQube, a static code analysis application.">The following results are produced by SonarQube, a static code analysis application.</p>
-                  <div class="grid-row row">
-                    <div class="grid-col-6 col-lg-6 col-md-6 grade-wrapper">
+                  <div class="grid-row grid-gap">
+                    <div class="grid-col-6 grade-wrapper">
                       <h5 tabindex="0" aria-label="Releasability">Releasability</h5>
                       <div class="grade-circle empty-circle">
                         <em class="material-icons">access_time</em>
@@ -119,7 +119,7 @@
                         <li aria-hidden="true" tabindex="0" aria-label="not available, comming soon.">Coming Soon</li>
                       </ul>
                     </div>
-                    <div class="grid-col-6 col-lg-6 col-md-6 grade-wrapper">
+                    <div class="grid-col-6 grade-wrapper">
                       <h5 tabindex="0" aria-label="Maintainability">Maintainability</h5>
                       <div tabindex="0" id="project-maintainability-rating" class="grade-circle rating-${health.sqale_rating.frmt_val}" aria-label="Rating: '${health.sqale_rating.frmt_val}'">
                         ${health.sqale_rating.frmt_val}
@@ -130,8 +130,8 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="grid-row row">
-                    <div class="grid-col-6 col-lg-6 col-md-6 grade-wrapper">
+                  <div class="grid-row grid-gap">
+                    <div class="grid-col-6 grade-wrapper">
                       <h5 tabindex="0" aria-label="Reliability">Reliability</h5>
                       <div tabindex="0" id="project-reliability-rating" class="grade-circle rating-${health.reliability_rating.frmt_val}" aria-label="Rating: '${health.reliability_rating.frmt_val}'">
                         ${health.reliability_rating.frmt_val}
@@ -141,7 +141,7 @@
                         <li id="project-reliability-violations" tabindex="0" aria-label="${health.violations.val} violations">${health.violations.val} violations</li>
                       </ul>
                     </div>
-                    <div class="grid-col-6 col-lg-6 col-md-6 grade-wrapper">
+                    <div class="grid-col-6 grade-wrapper">
                       <h5 tabindex="0" aria-label="Security">Security</h5>
                       <div tabindex="0" id="project-security-rating" class="grade-circle rating-${health.security_rating.frmt_val}" aria-label="Rating: '${health.security_rating.frmt_val}'">
                         ${health.security_rating.frmt_val}
@@ -153,37 +153,37 @@
                     <div if.bind="noSonarData" class="coming-soon-watermark" aria-label="Sonarqube not availabel, comming soon.">Coming Soon</div>
                   </div>
                 </div>
-                <div class="grid-col-6 col-lg-6 col-qual">
-                    <h3 tabindex="0" arial-label="Virus scan">Virus Scan</h3>
+                <div class="grid-col-6 col-qual">
+                    <h3 class="text-transform-uppercase" tabindex="0" arial-label="Virus scan">Virus Scan</h3>
                     <p id="virus-scan-description" tabindex="0" aria-label="The following results are produced by ClamAv, an open-source, anti-virus engine.">The following results are produced by ClamAv, an open-source, anti-virus engine.</p>
                     <div class="vscan-wrapper">
-                      <div class="grid-row row vscan-metrics">
-                        <div class="grid-row row vscan-metric">
-                          <div class="grid-col-12 col-md-12">
+                      <div class="grid-row vscan-metrics">
+                        <div class="grid-col-12 vscan-metric">
+                          <!-- <div class="grid-col-12"> -->
                             <span class="stat" tabindex="0" aria-label="${repo.generatedData.vscan.lastScan | ago}">
                               <span class="octicon octicon-clock"></span>
                               <span id="project-stats-stars" class="num text-muted text-emphasized">${repo.generatedData.vscan.lastScan | ago}</span>
                               <span class="stat-label"></span>
                             </span>
-                          </div>
+                          <!-- </div> -->
                         </div>
-                        <div class="row vscan-metric">
-                          <div class="grid-col-12 col-md-12">
+                        <div class="grid-col-12 vscan-metric">
+                          <!-- <div class="grid-col-12"> -->
                             <span class="stat" tabindex="0" aria-label="${repo.generatedData.vscan.scanned_files} files">
                               <span class="octicon octicon-file-code"></span>
                               <span id="project-stats-stars" class="num text-muted text-emphasized">${repo.generatedData.vscan.scanned_files}</span>
                               <span class="stat-label">files</span>
                             </span>
-                          </div>
+                          <!-- </div> -->
                         </div>
-                        <div class="grid-row row vscan-metric">
-                          <div class="grid-col-12 col-md-12">
+                        <div class="grid-col-12 vscan-metric">
+                          <!-- <div class="grid-col-12"> -->
                             <span class="stat" tabindex="0" aria-label="${repo.vscan.infected_files} infected">
                               <span class="octicon ${repo.generatedData.vscan.infected_files>0?'octicon-alert vscan-alert':'octicon-check'}"></span>
                               <span id="project-stats-stars" class="num text-muted text-emphasized">${repo.generatedData.vscan.infected_files}</span>
                               <span class="stat-label">infected</span>
                             </span>
-                          </div>
+                          <!-- </div> -->
                         </div>
                       </div>
                       <hr>
@@ -203,16 +203,16 @@
           </div>
         </div>
 
-        <div class="grid-row row proj-content">
-          <div class="grid-col-12 col-lg-12">
+        <div class="grid-row proj-content">
+          <div class="grid-col-12">
             <div class="card full-width">
               <div class="lined-header">
                 <h2 tabindex="0" class="" aria-label="Project dependencies"><span aria-hidden="true">Dependencies</span></h2>
               </div>
-              <div class="grid-row row proj-overview-row">
-                <div class="grid-col-6 col-lg-6">
-                  <h3 tabindex="0" aria-label="Projects Reused by us, ${componentDependencies? componentDependencies.length+' detected': 'no projects detected'}">Projects Reused by us</h3>
-                  <div class="grid-row row">
+              <div class="grid-row proj-overview-row">
+                <div class="grid-col-6">
+                  <h3 class="text-transform-uppercase" tabindex="0" aria-label="Projects Reused by us, ${componentDependencies? componentDependencies.length+' detected': 'no projects detected'}">Projects Reused by us</h3>
+                  <div class="grid-row">
                     <div class="multi-column">
                       <ul id="project-list-reused-by-us-visible" class="list-unstyled" aria-hidden="true">
                         <li repeat.for="depend of componentDependencies | pick:numDepends" aria-hidden="true"><strong tabindex="0" aria-label="Artifact id: ${depend.artifactId}, version: ${depend.version}">${depend.artifactId}</strong><small class="text-muted">${depend.version}</small></li>
@@ -238,9 +238,9 @@
                     <em tabindex="0" class="text-muted" aria-label="None found.">None Found</em>
                   </div>
                 </div>
-                <div class="grid-col-6 col-lg-6">
-                  <h3 tabindex="0" aria-label="Projects reusing us, ${projectsThatUseUs ? projectsThatUseUs.length + 'projects detected': '0 projects detected'}">Projects reusing us</h3>
-                  <div class="row">
+                <div class="grid-col-6">
+                  <h3 class="text-transform-uppercase" tabindex="0" aria-label="Projects reusing us, ${projectsThatUseUs ? projectsThatUseUs.length + 'projects detected': '0 projects detected'}">Projects reusing us</h3>
+                  <div class="grid-row">
                     <div class="multi-column">
                       <ul id="project-list-reusing-us-visible" class="list-unstyled">
                         <li tabindex="0" repeat.for="uses of projectsThatUseUs | pick:numDepends" aria-label="Project name: ${uses.name}, organization: ${uses.owner}">
@@ -284,19 +284,19 @@
         
       </div>
 
-      <div class="grid-col-3 col-lg-3 col-md-3 col-sidebar">
-        <div class="grid-row row card-btns">
-          <div class="grid-col-6 col-md-6">
+      <div class="grid-col-3 col-sidebar">
+        <div class="grid-row card-btns">
+          <div class="grid-col-6">
             <a href="#" class="disabled hide"><em class="material-icons">bookmark_border</em> Bookmark</a>
           </div>
-          <div class="grid-col-6 col-md-6">
+          <div class="grid-col-6">
             <a href="#" class="disabled hide"><em class="material-icons">share</em> Share</a>
           </div>
         </div>
 
-        <div class="grid-row row">
-          <div class="grid-col-12 col-lg-12">
-            <h3 tabindex="0" aria-label="Related dataset in ITS DataHub">RELATED DATASETS ON ITS DATAHUB</h3>
+        <div class="grid-row">
+          <div class="grid-col-12">
+            <h3 class="text-transform-uppercase" tabindex="0" aria-label="Related dataset in ITS DataHub">RELATED DATASETS ON ITS DATAHUB</h3>
             <div id="id-related-dataset-datahub" class="media-list media-list-users list-group">
               <template repeat.for="related of repo.related">
                 <a href.bind="related.url" class="list-group-item" target="_blank">
@@ -313,7 +313,7 @@
               None
             </div>
             <br>
-            <h3 tabindex="0" aria-label="Contributors, the project has ${repo.contributors_list.length} contributors.">Contributors</h3>
+            <h3 class="text-transform-uppercase" tabindex="0" aria-label="Contributors, the project has ${repo.contributors_list.length} contributors.">Contributors</h3>
             <div class="media-list media-list-users list-group">
               <template repeat.for="contrib of repo.sourceData.contributors | pick:5">
                 <a id="contributor-${contrib.username}" href="#" click.trigger="dialogFunctions.openLeavingSiteConfirmation('Contributor url', contrib.profileUrl, $event.target)" target="_blank" class="list-group-item">

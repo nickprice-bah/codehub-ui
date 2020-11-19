@@ -1,8 +1,9 @@
 <template>
-  <require from="../resources/value-converters/num"></require>
-  <require from="../resources/value-converters/ago"></require>
-  <require from="../resources/custom-attributes/bootstrap-tooltip"></require>
-  <div if.bind="repo" class="col-lg-4 col-md-12 col-sm-12">
+  <require from="resources/value-converters/num"></require>
+  <require from="resources/value-converters/ago"></require>
+  <require from="resources/custom-attributes/bootstrap-tooltip"></require>
+  
+  <div if.bind="repo" class="" style="">
     <div class="card card-default hover-card" id="fake-card">
       <div class="ribbon-wrapper">
         <div tabindex="0" class="ribbon join-us" role="img" aria-label="Featured ribbon image.">JOIN US!</div>
@@ -20,93 +21,107 @@
       </div>
       <div tabindex="0" class="proj-desc multiline">${repo.project_description}</div>
       <div class="text-muted last-updated">
-        <span aria-hidden="true">By&nbsp;</span>
+        <em class="text-muted">Source: Github™
+          <!-- <a if.bind="infected_files == 0" id="card-popular-project-status-link-${repo.id}" href="#" click.trigger="dialogFunctions.openLeavingSiteConfirmation(repo.sourceData.name,repo.sourceData.repositoryUrl,$event.target)"  target="_blank" aria-label="View source code on Github."></a>
+          <a if.bind="infected_files > 0" id="card-popular-project-status-link-${repo.id}" href="#" click.trigger="dialogFunctions.displayVScanDialog(repo,$event.target)"  target="_blank" aria-label="View source code on Github.">Github™</a> -->
+        </em>
+        &nbsp; | &nbsp;
+        <span tabindex="0" id="card-feature-organization-updated-text-card-fake">${repo.updatedAt}</span>
+        <span class="pull-right repo-status">
+          <a id="card-popular-metrics-${repo.id}" href="#" click.trigger="showHideMetrics()" bootstrap-tooltip data-toggle="tooltip" data-placement="top" aria-label="Show or Hide Metrics">${metricsText}</a>
+        </span>
+        
+        <!-- <span aria-hidden="true">By&nbsp;</span>
         <span id="card-feature-organization-link-card-fake" >${repo.organization}</span>
         &nbsp; | &nbsp; <span tabindex="0" id="card-feature-organization-updated-text-card-fake">${repo.updatedAt}</span>
         <span class="pull-right repo-status">
           <a id="card-popular-metrics-${repo.id}" href="#" click.trigger="showHideMetrics()" bootstrap-tooltip data-toggle="tooltip" data-placement="top" aria-label="Show or Hide Metrics">${metricsText}</a>
-        </span>
+        </span> -->
       </div>
 
-      <div if.bind="showMetrics" class="card-stats lined-header">
-        <span class="pull-right"><em class="text-muted">Source: <span id="card-feature-project-status-link-card-fake"
+      <!-- <div if.bind="showMetrics" class="card-stats lined-header project-stats-header card-footer">
+        <span class="pull-right">
+          <em class="text-muted">Source: <span id="card-feature-project-status-link-card-fake"
               >Github™</span></em></span>
         <h4 tabindex="0" class="" aria-label="Project Stats">Project Stats</h4>
+      </div> -->
+
+      <div if.bind="showMetrics" class="card-stats lined-header project-stats-header card-footer">
+        <span class="pull-right">
+          <span aria-hidden="true">By&nbsp;</span>
+          <!-- <a id="card-popular-organization-link-${repo.id}" href="#" click.trigger="dialogFunctions.openLeavingSiteConfirmation(repo.sourceData.owner.name,repo.sourceData.owner.url,$event.target)" bootstrap-tooltip data-toggle="tooltip" data-placement="top" aria-label="Project organization: ${repo.sourceData.owner.name}, view on GitHub." target="_blank">${repo.sourceData.owner.name}</a> -->
+          <span tabindex="0" id="card-feature-organization-link-card-fake" >${repo.organization}</span>
+        </span>
+        <span tabindex="0" class="text-muted"  aria-label="Project Stats">Project Stats</span>
       </div>
 
-      <div if.bind="showMetrics" class="row github-stats row-1">
-        <div class="col-md-3 col-sm-3">
+
+      <div if.bind="showMetrics" class="grid-row github-stats">
+        <div class="grid-col-3 grid-custom_left">
           <span class="stat" tabindex="0" aria-label="${repo.stars} stars">
             <span class="octicon octicon-star" aria-hidden="true"></span>
-            <span id="card-feature-project-stars-card-fake" class="num text-muted text-emphasized"
-              aria-hidden="true">${repo.stars}</span>
+            <span id="card-popular-project-stars-card-fake" class="num text-muted text-emphasized" aria-hidden="true">${repo.stars}</span>
             <span class="stat-label" aria-hidden="true">stars</span>
           </span>
         </div>
-        <div class="col-md-3 col-sm-3">
+        <div class="grid-col-3 grid-custom_middle-left">
           <span class="stat" tabindex="0" aria-label="${repo.watchers} watchers">
             <span class="octicon octicon-eye" aria-hidden="true"></span>
-            <span id="card-feature-project-watchers-card-fake" class="num text-muted text-emphasized"
-              aria-hidden="true">${repo.watchers}</span>
+            <span id="card-popular-project-watchers-card-fake" class="num text-muted text-emphasized" aria-hidden="true">${repo.watchers}</span>
             <span class="stat-label" aria-hidden="true">watchers</span>
           </span>
         </div>
-        <div class="col-md-3 col-sm-3">
-          <span class="stat" tabindex="0" aria-label="${releases.length} releases">
-            <span class="octicon octicon-tag" aria-hidden="true"></span>
-            <span id="card-feature-project-releases-card-fake" class="num text-muted text-emphasized"
-              aria-hidden="true">?</span>
-            <span class="stat-label" aria-hidden="true">releases</span>
+        <div class="grid-col-3 grid-custom_middle-right">
+          <span class="stat" tabindex="0" aria-label="${repo.contributors} contributors">
+            <span class="octicon octicon-organization" aria-hidden="true"></span>
+            <span id="card-popular-project-contributors-card-fake" class="num text-muted text-emphasized" aria-hidden="true">${repo.contributors}</span>
+            <span class="stat-label" aria-hidden="true">contributors</span>
           </span>
         </div>
-        <div class="col-md-3 col-sm-3">
-          <span class="stat" tabindex="0" aria-label="${repo.forks} forks">
-            <span class="octicon octicon-repo-forked" aria-hidden="true"></span>
-            <span id="card-feature-project-forks-card-fake" class="num text-muted text-emphasized"
-              aria-hidden="true">?</span>
-            <span class="stat-label" aria-hidden="true">forks</span>
+        <div class="grid-col-3 grid-custom_right">
+          <span class="stat" tabindex="0" aria-label="${releases.length} releases">
+            <span class="octicon octicon-tag" aria-hidden="true"></span>
+            <span id="card-popular-project-releases-card-fake" class="num text-muted text-emphasized" aria-hidden="true">?</span>
+            <span class="stat-label" aria-hidden="true">releases</span>
           </span>
         </div>
       </div>
 
-      <div if.bind="showMetrics" class="row github-stats row-2">
-        <div class="col-md-3 col-sm-3">
-          <span class="stat" tabindex="0" aria-label="${repo.contributors} contributors">
-            <span class="octicon octicon-organization" aria-hidden="true"></span>
-            <span id="card-feature-project-contributors-card-fake" class="num text-muted text-emphasized"
-              aria-hidden="true">${repo.contributors}</span>
-            <span class="stat-label" aria-hidden="true">contributors</span>
+      <div if.bind="showMetrics" class="grid-row github-stats">
+        <div class="grid-col-3 grid-custom_left">
+          <span class="stat" tabindex="0" aria-label="${repo.forks} forks">
+            <span class="octicon octicon-repo-forked" aria-hidden="true"></span>
+            <span id="card-popular-project-forks-card-fake" class="num text-muted text-emphasized" aria-hidden="true">${repo.forks}</span>
+            <span class="stat-label" aria-hidden="true">forks</span>
           </span>
         </div>
-        <div class="col-md-3 col-sm-3">
+        <div class="grid-col-3 grid-custom_middle-left">
           <span class="stat" tabindex="0" aria-label="${repo.commits} commits">
             <span class="octicon octicon-git-commit" aria-hidden="true"></span>
-            <span id="card-feature-project-commits-card-fake" class="num text-muted text-emphasized"
-              aria-hidden="true">${repo.commits}</span>
+            <span id="card-popular-project-commits-card-fake" class="num text-muted text-emphasized" aria-hidden="true">${repo.commits}</span>
             <span class="stat-label" aria-hidden="true">commits</span>
           </span>
         </div>
-        <div class="col-md-3 col-sm-3">
+        <div class="grid-col-3 grid-custom_middle-right">
           <span class="stat" tabindex="0" aria-label="${downloads} downloads">
             <span class="octicon octicon-cloud-download" aria-hidden="true"></span>
-            <span id="card-feature-project-downloads-card-fake" class="num text-muted text-emphasized"
-              aria-hidden="true">?</span>
+            <span id="card-popular-project-downloads-card-fake" class="num text-muted text-emphasized" aria-hidden="true">?</span>
             <span class="stat-label" aria-hidden="true">downloads</span>
           </span>
         </div>
-        <div class="col-md-3 col-sm-3">
-          <span class="${infected_files>0?'stat-vscan':'stat'}" tabindex="0" aria-label="${infected_files} infected files">
+        <div class="grid-col-3 grid-custom_right">
+          <span class="stat" tabindex="0" aria-label="${infected_files} infected files">
             <span class="octicon ${infected_files>0?'octicon-bug':'octicon-check'}" aria-hidden="true"></span>
-            <span id="card-popular-project-infected-files-${repo.id}" class="num ${(infected_files>0)?'':' text-muted text-emphasized'}" aria-hidden="true">?</span>
+            <span id="card-popular-project-infected-files-card-fake" class="num ${(infected_files>0)?'':' text-muted text-emphasized'}" aria-hidden="true">?</span>
             <span class="stat-label" aria-hidden="true">viruses</span>
           </span>
         </div>
       </div>
 
-      <div class="row card-links clearfix">
+      <div class="grid-row card-links">
         <div class="card-fake-bottom">
-          <span class="button-lead button-lead-card">JOIN OUR COMMUNITY!</span>
-          <button class="btn btn-yellow" click.delegate="router.navigateToRoute('repopublishing')">Connect Your
+          <span class="button-lead button-lead-card" style="font-size: smaller;">JOIN OUR COMMUNITY!</span>
+          <button type="button" class="btn btn-default btn-accent au-target" click.delegate="router.navigateToRoute('repopublishing')" style="font-size: smaller;">Connect Your
             Repo</button>
         </div>
       </div>

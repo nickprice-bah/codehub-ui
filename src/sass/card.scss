@@ -170,8 +170,6 @@
 			overflow-wrap: break-word;
 			display: block; /* Fallback for non-webkit */
 			display: -webkit-box;
-            //****TODO: ASK GIO IF WE CAN REMOVE LINE BELOW
-            //max-height: 70px; /* Fallback for non-webkit */
 			min-height: 70px;
 			margin: 0 auto;
 			line-height: $line-height-base;

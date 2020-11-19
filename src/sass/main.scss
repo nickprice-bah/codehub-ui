@@ -1,8 +1,9 @@
+@import './override_uswds.scss';
 @import './uswds-theme-utilities.scss';
 @import './settings/_settings-utilities.scss';
-//@import './theme/uswds-theme-components';
+@import './theme/styles.scss';
 @import './override_uswds.scss';
-@import 'uswds';
+//@import 'uswds';
 @import 'variables-colors.scss';
 @import 'codehub_mixins.scss';
 @import 'navbar.scss';

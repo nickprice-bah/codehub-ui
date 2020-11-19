@@ -2,6 +2,16 @@
     font-size: 14px;
 }
 .proj-details-wrapper {
+  .col-sidebar h3 {
+    margin-top: 20px;
+  }
+
+  .proj-content{
+    margin-top: 25px;
+  }
+  .proj-content:last-of-type{
+    margin-bottom: 1rem;
+  }
   .hr-related-separator{
     border: 1px solid $lightgray;
   }
@@ -13,9 +23,87 @@
   .collapse.show{
       visibility: visible;
   }
-}
-.proj-details-wrapper .list-inline{
+
+  .lined-header h2, .lined-header h4 {
+    //text-transform: uppercase;
+    //font-size: 21px;
+    margin-top: 0;
+    font-weight: bolder;
+    line-height: 0 !important;
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 15px 0;
+  }
+
+  .proj-overview-row {
+  
+    .grade-wrapper {
+      text-align: center;
+      
+      .empty-circle {
+        background-color: #ffffff;
+        line-height: 14px;
+        font-size: 14px;
+          .material-icons{
+            font-size: 75px;
+            color: #dddddd;
+          }
+      }
+
+      .grade-circle {
+        height: 85px;
+        width: 85px;
+        margin: 0 auto;
+        margin-top: 25px;
+        border-radius: 100px;
+        text-align: center;
+        line-height: 75px;
+        //background-color: #d1d3d4;
+        color: #ffffff;
+        font-size: 30px;
+        margin-bottom: 10px;
+      }
+
+      
+
+      .rating-A {
+        background-color: #0a0;
+        color: #ffffff;
+      }
+      .rating-B {
+        background-color: #80cc00;
+        color: #ffffff;
+      }
+      .rating-C {
+        background-color: #ffcf47;
+        color: #333333;
+      }
+      .rating-D {
+        background-color: #f77700;
+        color: #ffffff;
+      }
+      .rating-E {
+        background-color: #e00;
+        color: #ffffff;
+      }
+    }
+
+    .grid-col-6:not(:first-child) {
+      border-left: 1px solid #d0d0d0;
+    }
+  }
+
+  .list-inline{
     margin-left: 0px;
+  }
+ 
+  .col-sidebar {
+    background-color: #ffffff;
+    margin-bottom: 0;
+  }
+  
+
 }
 #btn-show-readme button{
     margin-left: 15px;
