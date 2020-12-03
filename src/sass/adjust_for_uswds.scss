@@ -1,42 +1,6 @@
 body{
     background-color: #e1e1e1;
-    .repopublishing-page, .faqs-page, .about-page, .home-page, 
-    .explore-page, .metrics-page, .project-details-page{
-        // padding-top: 0px;
-        // padding-bottom: 12rem;
-
-		//unicorn site width
-        // .grid-container{
-        //     max-width: unset;
-        // }
-
-        // @include at-media-max('desktop-lg'){
-        //     padding-bottom: 12rem;
-        // }
-        // @include at-media-max('desktop'){
-        //     padding-bottom: 18rem;
-        // }
-        // @include at-media-max('tablet'){
-        //     padding-bottom: 18rem;
-        // }
-        // @include at-media-max('mobile-lg'){
-        //     padding-bottom: 24rem;
-        // }
-        // @include at-media-max('mobile'){
-        //     padding-bottom: 25rem;
-        // }
-    }
-    // .home-page, 
-    // .explore-page, 
-    // .metrics-page {
-    //     margin-bottom: 57px;
-    // }
-    // .project-details-page{
-    //     margin-bottom: 20px;
-    // }
-    h1, h2, h3, h4, h5, p, li, span{
-        //font-family: Roboto, sans-serif !important;
-    }
+    
     .usa-layout-docs h2{
         margin-top: 20px;
     }
@@ -79,37 +43,27 @@ body{
     .external-link-icon-in-paragraph{
         height: 11px;
 	}
-	// unicorn site width
-    // main > .grid-container{
-    //     margin: units(4);
-    //     padding: 0px;
-    // }
+	
     .text-heavy-page{
-        padding: units(4);
-        background-color: #ffffff;
-		
-		//unicorn site width
-		// margin-left: 0px;
-        // margin-right: 0px;
-        // margin-bottom: 25px;
-        border-radius: 0.3rem;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-        h1, h2, h3{
-            color: $primary-color;
-            //font-family: Roberto, sans-serif !important;
-        }
-        h2{
-            font-weight: bold;
-        }
-        h3{
-            margin-top: 20px;
-            font-size: 22px;
-            text-transform: none;
-            letter-spacing: unset;
-        }
-        .p_full-width{
-            max-width: unset;
-        }
+      padding: units(4);
+      background-color: #ffffff;
+      border-radius: 0.3rem;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      h1, h2, h3{
+          color: $primary-color;
+      }
+      h2{
+          font-weight: bold;
+      }
+      h3{
+          margin-top: 20px;
+          font-size: 22px;
+          text-transform: none;
+          letter-spacing: unset;
+      }
+      .p_full-width{
+          max-width: unset;
+      }
     }
     .usa-banner__lock-image {
         height: 1.5ex;
@@ -192,19 +146,6 @@ button{
   clear: both;
 }
 
-// .cards-wrapper .card {
-//     padding: 15px 15px 0;
-//     background: #ffffff;
-//     border-radius: 0.3rem;
-//     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-//     position: relative;
-//     margin-bottom: 20px;
-// }
-
-// .cards-wrapper .hover-card {
-//     transition: all 0.2s linear;
-// }
-
 /*   ______________________________________________       CARDS           */
 .cards-wrapper {
 	//**margin-bottom: 0;
@@ -221,96 +162,20 @@ button{
 
 	>.row {
 		padding: 0 20px 0;
-	}
-
-	//moved to card.scss
-//   .hover-card {
-//     transition: all 0.2s linear;
-
-
-//     &:hover {
-//       transform: translateY(-5px);
-//       box-shadow: 0 10px 10px fade($black,10%);
-
-//       .card-header {
-
-//         .card-title {
-//           a {
-//             color: $teal;
-//           }
-//         }
-//       }
-//     }
-//   }
-
-	
+  }
+  
 	.card {
 
-		//moved to card.scss
-		// padding:15px 15px 0;
-		// background: $white;
-		// border-radius: $stage-border-radius;
-		// box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
-		// position: relative;
-		//no longer needed: margin-bottom: 20px;
-
 		.repo-status {
-			//font-family: Roboto-Condensed, sans-serif;
 			font-weight: 500;
 		}
 
 		.last-updated {
-			//moved to card.scss
-			// line-height: $font-size-larger;
-			// font-size: $font-size-smaller;
-			// margin-top: 10px;
-			// padding-bottom: 10px;
-
 			.material-icons {
 				vertical-align: -6px;
 				font-size:$font-size-larger;
 			}
-		}
-
-		//moved to card.scss
-		// .last-updated,
-		// .card-btns,
-		// .card-stats {
-		// 	a {
-		// 		position: relative;
-		// 		z-index: 2;
-		// 	}
-		// }
-
-		.card-links {
-			//already in card.scss
-			//padding-top: 10px;
-			
-			//TODO determine if needed
-			.actions-icons {
-				margin-right: 10px;
-			}//end TODO determine if needed
-
-			//moved to card.scss
-			// .pull-right {
-			// 	margin-right: 0px;
-
-			// 	> li {
-			// 		padding-left: 0px;
-			// 		padding-right: 15px;
-
-			// 		a {
-			// 			padding-left: 0;
-            // 			padding-right: 0;
-            
-			// 			img {
-			// 			width: auto;
-			// 			height: 23px;
-			// 			}
-			// 		}
-			// 	}
-			// }
-		}
+    }
 
 		//TODO: When doing project-details.html, move to card.scss
 		.card-links-project-details {
@@ -340,124 +205,6 @@ button{
 				}
 			}
 		}
-
-		// .ribbon-wrapper {
-		// 	width: 77px;
-		// 	height: 77px;
-		// 	overflow: hidden;
-		// 	position: absolute;
-		// 	top: -5px;
-		// 	right: -5px;
-		// 	z-index: 0;
-		// 	pointer-events: none;
-
-		// 	.ribbon {
-		// 		font-size: $font-size-smaller;
-		// 		font-family: Roboto-Condensed, sans-serif;
-		// 		font-weight: bold;
-		// 		letter-spacing: -0.25px;
-		// 		text-transform: uppercase;
-		// 		color: $black;
-		// 		text-align: center;
-		// 		-webkit-transform: rotate(45deg);
-		// 		-moz-transform:    rotate(45deg);
-		// 		-ms-transform:     rotate(45deg);
-		// 		-o-transform:      rotate(45deg);
-		// 		position: relative;
-		// 		height: 28px;
-		// 		line-height: floor(($line-height-computed * 1.4)); // ~29px
-		// 		right: 6px;
-		// 		top: 14px;
-		// 		width: 110px;
-		// 		background-color: $yellow;
-		// 		box-shadow: 0px 4px 0 rgba(0,0,0,0.05);
-
-		// 		&:before,
-		// 		&:after {
-		// 			content: "";
-		// 			border-top:   4px solid darken($yellow, 20%);
-		// 			border-left:  4px solid transparent;
-		// 			border-right: 4px solid transparent;
-		// 			position:absolute;
-		// 			bottom: -4px;
-		// 		}
-
-		// 		&:before {
-		// 			left: 0;
-		// 		}
-
-		// 		&:after {
-		// 			right: 0;
-		// 		}
-		// 	}
-		// }
-
-		//moved to card.scss
-		// .card-header {
-		// 	margin-bottom: 10px;
-
-		// 	.lang-logo {
-		// 		position: absolute;
-		// 		height: 60px;
-		// 		width: 60px;
-		// 		border-radius: 100%;
-		// 		overflow: hidden;
-		// 		text-align: center;
-
-		// 		img {
-		// 			width: 60px;
-		// 			height: 60px;
-		// 		}
-		// 	}
-
-		// 	.card-title {
-		// 		padding: 15px 34px 0 80px;
-		// 		font-size: $font-size-large;
-		// 		font-weight: bold;
-		// 		line-height: $line-height-computed; // ~20px
-		// 		overflow-wrap: break-word;
-		// 		white-space: nowrap;
-		// 		overflow: hidden;
-		// 		text-overflow: ellipsis;
-
-        // a {
-        //   color: $stage-body;
-        // }
-		// 	}
-
-		// 	.org-name {
-		// 		font-size: $font-size-small;
-		// 		font-weight: bold;
-		// 		margin-top:8px;
-		// 		padding-left: 80px;
-		// 		color: $text-muted;
-		// 	}
-		// }
-
-		//moved to card.scss
-		// .proj-desc {
-		// 	padding-top: 10px;
-		// 	overflow-wrap: break-word;
-		// 	display: block; /* Fallback for non-webkit */
-		// 	display: -webkit-box;
-		// 	max-height: 70px; /* Fallback for non-webkit */
-		// 	min-height: 70px;
-		// 	margin: 0 auto;
-		// 	line-height: $line-height-base;
-		// 	-webkit-line-clamp: $lines-to-show;
-		// 	-webkit-box-orient: vertical;
-		// 	overflow: hidden;
-		// 	text-overflow: ellipsis;
-    	// }
-
-		//moved to card.scss
-		// .no-desc {
-		// 	font-size: $font-size-medium;
-		// 	color: $light-gray;
-		// 	font-weight: bold;
-		// 	font-style: italic;
-		// }
-
 	}//~~~~~~~~~~~~~_______end .card
 
 	.proj-card {
@@ -1108,8 +855,6 @@ a.disabled {
 		position: relative;
 		cursor: pointer;
 		transition: 0.3s;
-	// &a{color: #007c85;
-	// text-decoration: none;}
 		.material-icons {
 			font-size: 18px;
 			line-height: 25px;
@@ -1172,7 +917,7 @@ div.dropdown-menu{
 }
 
 div.dropdown-menu.show{
-  background-color: #D1F0F3;
+  background-color: $body-bk;
   //background-color: crimson;
   width: 300px;
   display: flex;
@@ -1238,13 +983,12 @@ aside.sidenav{
 
 .usa-nav__inner
 {
-  //max-width: $theme-banner-max-width !important;
-  max-width:87.5rem !important;
-  display: flex !important;
+    max-width:87.5rem !important; //TODO: replace with $theme-banner-max-width when possible
+    display: flex !important;
     margin-left: auto !important;
     margin-right: auto !important;
 }
-//$theme-banner-max-width
+
 #navbar{
   width: 100% !important;
 }
