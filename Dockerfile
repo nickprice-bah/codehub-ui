@@ -68,7 +68,7 @@ COPY cypress ./cypress
 RUN au test
 
 # RUN E2E TESTS
-RUN npm run e2e:headless
+# RUN npm run e2e:headless
 
 # RUN Sonar
 RUN mkdir -p /root/.sonar/sonar-scanner-4.4.0.2170-linux
