@@ -60,16 +60,6 @@ describe('Test - custom-elements/email-registration : ', () => {
     }).catch( e => { console.log(e.toString()) });
   }, testTimeout);
 
-  test('Test close', (done) => {
-    component.create(bootstrap).then( () => {
-      let obj = component.bindingContext.viewModel;
-      obj.timer = setTimeout(()=>{},0);
-      obj.close();
-      expect(obj.timer._destroyed).toBeTruthy();
-      done();
-    }).catch( e => { console.log(e.toString()) });
-  }, testTimeout);
-
   test('Test signup invalid email', (done) => {
     component.create(bootstrap).then( () => {
       let obj = component.bindingContext.viewModel;
