@@ -94,13 +94,13 @@ export class Metrics {
     return new Promise((resolve, reject) => {
       try {
         projects.sort((a, b) => {
-          if (b.sourceData.forks && a.sourceData.forks) {
-            return Number(b.sourceData.forks.length) - Number(a.sourceData.forks.length);
+          if (b.sourceData.forksCount && a.sourceData.forksCount) {
+            return Number(b.sourceData.forksCount) - Number(a.sourceData.forksCount);
           }
-          if (b.sourceData.forks) {
+          if (b.sourceData.forksCount) {
             return 1;
           }
-          if (a.sourceData.forks) {
+          if (a.sourceData.forksCount) {
             return -1;
           }
           return null;
@@ -155,77 +155,84 @@ export class Metrics {
       if (!this.chartMostUsedLanguages) {
         this.chartMostUsedLanguages = echarts.init(document.getElementById('chartMostUsedLanguajes'));
       }
-      this.chartMostUsedLanguages.setOption({
-        tooltip: {
-          trigger: 'axis',
-        },
-        grid: {
-          left: '3%',
-          right: '4%',
-          bottom: '3%',
-          containLabel: true,
-        },
-        toolbox: {
-          show: true,
-          feature: {
-            dataZoom: {
-              show: false,
-              title: {
-                zoom: 'Zoom',
-                back: 'Back',
-              },
-            },
-            dataView: {
-              show: true,
-              title: 'Data',
-              readOnly: true,
-              lang: ['Data View', 'Close', 'Refresh'],
-            },
-            restore: {
-              show: true,
-              title: 'Reset',
-            },
-            saveAsImage: {
-              show: true,
-              title: 'Save',
-              type: 'png',
-              name: 'codehub_most_used_languages',
+      let chartOption = this.getChartOptionMostUsedLanguages(dat);
+      if (chartOption) {
+        this.chartMostUsedLanguages.setOption(chartOption);
+      }
+    });
+  }
+
+  getChartOptionMostUsedLanguages(dat) {
+    return {
+      tooltip: {
+        trigger: 'axis',
+      },
+      grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true,
+      },
+      toolbox: {
+        show: true,
+        feature: {
+          dataZoom: {
+            show: false,
+            title: {
+              zoom: 'Zoom',
+              back: 'Back',
             },
           },
+          dataView: {
+            show: true,
+            title: 'Data',
+            readOnly: true,
+            lang: ['Data View', 'Close', 'Refresh'],
+          },
+          restore: {
+            show: true,
+            title: 'Reset',
+          },
+          saveAsImage: {
+            show: true,
+            title: 'Save',
+            type: 'png',
+            name: 'codehub_most_used_languages',
+          },
         },
-        calculable: true,
-        
-        series: [
-          {
-              name:'Most Used Languages',
-              type:'pie',
-              radius : '70%',
-              center: ['50%', '50%'],
-              data: dat,
-              label: {
-                normal: {
-                    position: 'outside',
-                    formatter: '{b}\r\n{d}%',
-                    color: 'rgba(0,0,0,1)'
-                }
-              },
-              itemStyle: {
-                emphasis: {
-                    shadowBlur: 10,
-                    shadowOffsetX: 0,
-                    shadowColor: 'rgba(0, 0, 0, 0.5)'
-                }
-              },
-  
-              animationType: 'scale',
-              animationEasing: 'elasticOut',
-              animationDelay: function (idx) {
-                  return Math.random() * 200;
+      },
+      calculable: true,
+      
+      series: [
+        {
+            name:'Most Used Languages',
+            type:'pie',
+            radius : '70%',
+            center: ['50%', '50%'],
+            data: dat,
+            label: {
+              normal: {
+                  position: 'outside',
+                  formatter: '{b}\r\n{d}%',
+                  color: 'rgba(0,0,0,1)'
               }
-          }
-        ],
-      });
-    });
+            },
+            itemStyle: {
+              emphasis: {
+                  shadowBlur: 10,
+                  shadowOffsetX: 0,
+                  shadowColor: 'rgba(0, 0, 0, 0.5)'
+              }
+            },
+
+            animationType: 'scale',
+            animationEasing: 'elasticOut',
+            animationDelay: function (idx) {
+                return Math.random() * 200;
+            }
+        }
+      ],
+    }
   }
 
   injectColorStyle(data) {
@@ -272,93 +279,101 @@ export class Metrics {
       if(!this.mulChart) {
         this.mulChart = echarts.init(document.getElementById('main'));
       }
-      this.mulChart.setOption({
-        tooltip: {
-          trigger: 'axis',
-        },
-        grid: {
-          left: '3%',
-          right: '4%',
-          bottom: '3%',
-          containLabel: true,
-        },
-        toolbox: {
-          show: true,
-          feature: {
-            mark: {
-              show: true,
-              title: {
-                mark: 'mark',
-                markUndo: 'undo',
-                markClear: 'clear',
-              },
-              lineStyle: {
-                width: 2,
-                color: '#1e90ff',
-                type: 'dashed',
-              },
-            },
-            dataZoom: {
-              show: true,
-              title: {
-                zoom: 'Zoom',
-                back: 'Back',
-              },
-            },
-            dataView: {
-              show: true,
-              title: 'Data',
-              readOnly: true,
-              lang: ['Data View', 'Close', 'Refresh'],
-            },
-            magicType: {
-              show: true,
-              title: {
-                line: 'Line',
-                bar: 'Bar',
-              },
-              type: ['line', 'bar'],
-            },
-            restore: {
-              show: true,
-              title: 'Reset',
-            },
-            saveAsImage: {
-              show: true,
-              title: 'Save',
-              type: 'png',
-              name: 'stage_projects_by_language',
-            },
-          },
-        },
-        calculable: true,
-        xAxis: [
-          {
-            type: 'value',
-            boundaryGap: [0, 0.01],
-          },
-        ],
-        yAxis: [
-          {
-            type: 'category',
-            data: data.arrayNames,
-          },
-        ],
-        series: [
-          {
-            name: 'Projects',
-            type: 'bar',
-            data: data.arrayValues,
-          },
-        ],
-      });
+
+      let chartOption = this.getChartOptionLanguages(data);
+      if (chartOption) {
+        this.mulChart.setOption(chartOption);
+      }
     });
+  }
+
+  getChartOptionLanguages(data) {
+    return {
+      tooltip: {
+        trigger: 'axis',
+      },
+      grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true,
+      },
+      toolbox: {
+        show: true,
+        feature: {
+          mark: {
+            show: true,
+            title: {
+              mark: 'mark',
+              markUndo: 'undo',
+              markClear: 'clear',
+            },
+            lineStyle: {
+              width: 2,
+              color: '#1e90ff',
+              type: 'dashed',
+            },
+          },
+          dataZoom: {
+            show: true,
+            title: {
+              zoom: 'Zoom',
+              back: 'Back',
+            },
+          },
+          dataView: {
+            show: true,
+            title: 'Data',
+            readOnly: true,
+            lang: ['Data View', 'Close', 'Refresh'],
+          },
+          magicType: {
+            show: true,
+            title: {
+              line: 'Line',
+              bar: 'Bar',
+            },
+            type: ['line', 'bar'],
+          },
+          restore: {
+            show: true,
+            title: 'Reset',
+          },
+          saveAsImage: {
+            show: true,
+            title: 'Save',
+            type: 'png',
+            name: 'stage_projects_by_language',
+          },
+        },
+      },
+      calculable: true,
+      xAxis: [
+        {
+          type: 'value',
+          boundaryGap: [0, 0.01],
+        },
+      ],
+      yAxis: [
+        {
+          type: 'category',
+          data: data.arrayNames,
+        },
+      ],
+      series: [
+        {
+          name: 'Projects',
+          type: 'bar',
+          data: data.arrayValues,
+        },
+      ],
+    }
   }
 
   buildChartForks(projects) {
     const calc = new Promise((resolve, reject) => {
       const forkProjectNames = projects.map(obj => obj.sourceData.name);
-      const forkAmount = projects.map(obj => obj.sourceData.forks.length);
+      const forkAmount = projects.map(obj => obj.sourceData.forksCount ? obj.sourceData.forksCount: 0);
       const result = { forkProjectNames, forkAmount };
       resolve(result);
     });
@@ -367,88 +382,96 @@ export class Metrics {
       if(!this.mfChart) {
         this.mfChart = echarts.init(document.getElementById('mfChart'));
       }
-      this.mfChart.setOption({
-        color: ['#334aff'],
-        tooltip: {
-          trigger: 'axis',
-        },
-        grid: {
-          left: '3%',
-          right: '4%',
-          bottom: '3%',
-          containLabel: true,
-        },
-        toolbox: {
-          show: true,
-          feature: {
-            mark: {
-              show: true,
-              title: {
-                mark: 'mark',
-                markUndo: 'undo',
-                markClear: 'clear',
-              },
-              lineStyle: {
-                width: 2,
-                color: '#ff0a00',
-                type: 'dashed',
-              },
-            },
-            dataZoom: {
-              show: true,
-              title: {
-                zoom: 'Zoom',
-                back: 'Back',
-              },
-            },
-            dataView: {
-              show: true,
-              title: 'Data',
-              readOnly: true,
-              lang: ['Data View', 'Close', 'Refresh'],
-            },
-            magicType: {
-              show: true,
-              title: {
-                line: 'Line',
-                bar: 'Bar',
-              },
-              type: ['line', 'bar'],
-            },
-            restore: {
-              show: true,
-              title: 'Reset',
-            },
-            saveAsImage: {
-              show: true,
-              title: 'Save',
-              type: 'png',
-              name: 'stage_most_forked_projects',
-            },
-          },
-        },
-        calculable: true,
-        xAxis: [
-          {
-            type: 'value',
-            boundaryGap: [0, 0.01],
-          },
-        ],
-        yAxis: [
-          {
-            type: 'category',
-            data: data.forkProjectNames,
-          },
-        ],
-        series: [
-          {
-            name: 'Forks',
-            type: 'bar',
-            data: data.forkAmount,
-          },
-        ],
-      });
+
+      let chartOption = this.getChartOptionForks(data);
+      if (chartOption) {
+        this.mfChart.setOption(chartOption);
+      }
     });
+  }
+
+  getChartOptionForks(data) {
+    return {
+      color: ['#334aff'],
+      tooltip: {
+        trigger: 'axis',
+      },
+      grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true,
+      },
+      toolbox: {
+        show: true,
+        feature: {
+          mark: {
+            show: true,
+            title: {
+              mark: 'mark',
+              markUndo: 'undo',
+              markClear: 'clear',
+            },
+            lineStyle: {
+              width: 2,
+              color: '#ff0a00',
+              type: 'dashed',
+            },
+          },
+          dataZoom: {
+            show: true,
+            title: {
+              zoom: 'Zoom',
+              back: 'Back',
+            },
+          },
+          dataView: {
+            show: true,
+            title: 'Data',
+            readOnly: true,
+            lang: ['Data View', 'Close', 'Refresh'],
+          },
+          magicType: {
+            show: true,
+            title: {
+              line: 'Line',
+              bar: 'Bar',
+            },
+            type: ['line', 'bar'],
+          },
+          restore: {
+            show: true,
+            title: 'Reset',
+          },
+          saveAsImage: {
+            show: true,
+            title: 'Save',
+            type: 'png',
+            name: 'stage_most_forked_projects',
+          },
+        },
+      },
+      calculable: true,
+      xAxis: [
+        {
+          type: 'value',
+          boundaryGap: [0, 0.01],
+        },
+      ],
+      yAxis: [
+        {
+          type: 'category',
+          data: data.forkProjectNames,
+        },
+      ],
+      series: [
+        {
+          name: 'Forks',
+          type: 'bar',
+          data: data.forkAmount,
+        },
+      ],
+    };
   }
 
   buildChartHealth(projects) {
@@ -475,106 +498,114 @@ export class Metrics {
       if(!this.myChart2) {
         this.myChart2 = echarts.init(document.getElementById('main2'));
       }
-      this.myChart2.setOption({
-        title: [{
-          text: 'Reliability',
-          subtext: 'All Projects By Reliability Grade',
-          x: '25%',
-          textAlign: 'center',
-        }, {
-          text: 'Security',
-          subtext: 'All Projects By Security Grade',
-          x: '50%',
-          textAlign: 'center',
-        }, {
-          text: 'Maintainability',
-          subtext: 'All Projects By Maintainability Grade',
-          x: '75%',
-          textAlign: 'center',
-        }],
-        tooltip: {
-          trigger: 'axis',
-        },
-        radar: [
-          {
-            indicator: [
-              { text: 'A', max: data.maxReliability },
-              { text: 'B', max: data.maxReliability },
-              { text: 'C', max: data.maxReliability },
-              { text: 'D', max: data.maxReliability },
-              { text: 'E', max: data.maxReliability },
-            ],
-            center: ['25%', '55%'],
-            radius: 100,
-          },
-          {
-            indicator: [
-              { text: 'A', max: data.maxSecurity },
-              { text: 'B', max: data.maxSecurity },
-              { text: 'C', max: data.maxSecurity },
-              { text: 'D', max: data.maxSecurity },
-              { text: 'E', max: data.maxSecurity },
-            ],
-            radius: 80,
-            center: ['50%', '55%'],
-          },
-          {
-            indicator: [
-              { text: 'A', max: data.maxMaintainability },
-              { text: 'B', max: data.maxMaintainability },
-              { text: 'C', max: data.maxMaintainability },
-              { text: 'D', max: data.maxMaintainability },
-              { text: 'E', max: data.maxMaintainability },
-            ],
-            center: ['75%', '55%'],
-            radius: 80,
-          },
-        ],
-        series: [
-          {
-            type: 'radar',
-            tooltip: {
-              trigger: 'item',
-            },
-            itemStyle: { normal: { areaStyle: { type: 'default' } } },
-            data: [
-              {
-                value: data.reliabilityData,
-                name: 'Projects',
-              },
-            ],
-          },
-          {
-            type: 'radar',
-            tooltip: {
-              trigger: 'item',
-            },
-            itemStyle: { normal: { areaStyle: { type: 'default' } } },
-            radarIndex: 1,
-            data: [
-              {
-                value: data.securityData,
-                name: 'Projects',
-              },
-            ],
-          },
-          {
-            type: 'radar',
-            tooltip: {
-              trigger: 'item',
-            },
-            radarIndex: 2,
-            itemStyle: { normal: { areaStyle: { type: 'default' } } },
-            data: [
-              {
-                value: data.maintainabilityData,
-                name: 'Projects',
-              },
-            ],
-          },
-        ],
-      });
+
+      let chartOption = this.getChartOptionHealth(data);
+      if (chartOption) {
+        this.myChart2.setOption(chartOption);
+      }
     });
+  }
+
+  getChartOptionHealth(data) {
+    return {
+      title: [{
+        text: 'Reliability',
+        subtext: 'All Projects By Reliability Grade',
+        x: '25%',
+        textAlign: 'center',
+      }, {
+        text: 'Security',
+        subtext: 'All Projects By Security Grade',
+        x: '50%',
+        textAlign: 'center',
+      }, {
+        text: 'Maintainability',
+        subtext: 'All Projects By Maintainability Grade',
+        x: '75%',
+        textAlign: 'center',
+      }],
+      tooltip: {
+        trigger: 'axis',
+      },
+      radar: [
+        {
+          indicator: [
+            { text: 'A', max: data.maxReliability },
+            { text: 'B', max: data.maxReliability },
+            { text: 'C', max: data.maxReliability },
+            { text: 'D', max: data.maxReliability },
+            { text: 'E', max: data.maxReliability },
+          ],
+          center: ['25%', '55%'],
+          radius: 100,
+        },
+        {
+          indicator: [
+            { text: 'A', max: data.maxSecurity },
+            { text: 'B', max: data.maxSecurity },
+            { text: 'C', max: data.maxSecurity },
+            { text: 'D', max: data.maxSecurity },
+            { text: 'E', max: data.maxSecurity },
+          ],
+          radius: 80,
+          center: ['50%', '55%'],
+        },
+        {
+          indicator: [
+            { text: 'A', max: data.maxMaintainability },
+            { text: 'B', max: data.maxMaintainability },
+            { text: 'C', max: data.maxMaintainability },
+            { text: 'D', max: data.maxMaintainability },
+            { text: 'E', max: data.maxMaintainability },
+          ],
+          center: ['75%', '55%'],
+          radius: 80,
+        },
+      ],
+      series: [
+        {
+          type: 'radar',
+          tooltip: {
+            trigger: 'item',
+          },
+          itemStyle: { normal: { areaStyle: { type: 'default' } } },
+          data: [
+            {
+              value: data.reliabilityData,
+              name: 'Projects',
+            },
+          ],
+        },
+        {
+          type: 'radar',
+          tooltip: {
+            trigger: 'item',
+          },
+          itemStyle: { normal: { areaStyle: { type: 'default' } } },
+          radarIndex: 1,
+          data: [
+            {
+              value: data.securityData,
+              name: 'Projects',
+            },
+          ],
+        },
+        {
+          type: 'radar',
+          tooltip: {
+            trigger: 'item',
+          },
+          radarIndex: 2,
+          itemStyle: { normal: { areaStyle: { type: 'default' } } },
+          data: [
+            {
+              value: data.maintainabilityData,
+              name: 'Projects',
+            },
+          ],
+        },
+      ],
+    };
   }
 
   getDataForRadarChart(obj) {

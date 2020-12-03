@@ -20,7 +20,7 @@ export class Footer {
     this.message_invalid_email = 'Invalid email format, please try again.';
     this.message_confirmation = 'Thanks for signing up to stay in touch with ITS CodeHub!';
     this.is_error = false;
-    this.version = this.prepareVersion(APP_VERSION);
+    this.version = this.prepareVersion(process.env.APP_VERSION);
     this.showVersion = false;
   }
 

@@ -1,7 +1,7 @@
 ![Build Status](https://codebuild.us-east-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoieE1PRzV1dmZyOTB5MVBIYzlGYUFKcitLUVpPVEtNd2Z3WDdraEUxYXMwQkV5SytJbk1MSitxenlqTFN1N3hqOVJ3bXRZVkFrS2paTXNnQVNkQWFVRmQwPSIsIml2UGFyYW1ldGVyU3BlYyI6Ik0ySy85bzR3OVU2eEMwUnUiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=usdot-jpo-codehub_codehub-ui&metric=alert_status)](https://sonarcloud.io/dashboard?id=usdot-jpo-codehub_codehub-ui)
 
 # codehub-ui
-> version: 3.2
+> version: 3.4
 
 # Project Description
 This repository holds the frontend user-interface (UI) code for the United States Department of Transportation (U.S. DOT) Joint Program Office (JPO) Intelligent Transit Systems (ITS) CodeHub website located at [https://its.dot.gov/code](https://its.dot.gov/code).
@@ -36,38 +36,24 @@ Unit tests are run via the aurelia-cli and use [karma](https://karma-runner.gith
 #### To execute the unit tests, execute the following command:
 
 ```shell
-au test
-```
-
-#### To execute the unit in a Test Driven Development (TDD) mode:
-
-```shell
-au test --watch
+npm run test
 ```
 
 ### Running Integration Tests
 
-Integration tests are performed with [Protractor](http://angular.github.io/protractor/#/).
+Integration tests are performed with [Cypress](https://www.cypress.io/).
 
-1. Place your E2E-Tests into the folder ```test/e2e/src```
-2. Install the necessary webdriver.
+1. Place your E2E-Tests into the folder ```cypress/integration```
+2. Make sure your app runs and is accessible
 
   ```shell
-  gulp webdriver-update
+  npm start
   ```
 
-3. Configure the path to the webdriver by opening the file ```protractor.conf.js``` and adjusting the ```seleniumServerJar``` property. Typically its only needed to adjust the version number.
-
-4. Make sure your app runs and is accessible
+3. In another console run the E2E-Tests
 
   ```shell
-  au run
-  ```
-
-5. In another console run the E2E-Tests
-
-  ```shell
-  au protractor
+  npm run e2e
   ```
 
 ## Execution

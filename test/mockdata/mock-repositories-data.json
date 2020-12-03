@@ -11,6 +11,7 @@
       "repositoryUrl": "https://github.com/Trihydro/cvrm",
       "createdAt": "2018-05-02T20:57:25.000+0000",
       "lastPush": null,
+      "forksCount": 1,
       "owner": {
         "avatarUrl": "https://avatars1.githubusercontent.com/u/2973053?v=4",
         "name": "Trihydro",
@@ -94,6 +95,11 @@
           "frmt_val": "1,986",
           "key": "complexity",
           "val": 1986.0
+        },
+        "ncloc": {
+            "frmt_val": "9,940",
+            "key": "ncloc",
+            "val": 9940.0
         }
       },
       "vscan": {
@@ -150,6 +156,7 @@
       "repositoryUrl": "https://github.com/usdot-jpo-ode/jpo-ode",
       "createdAt": "2016-10-26T21:10:46.000+0000",
       "lastPush": "2019-11-08T14:49:22.000+0000",
+      "forksCount": 26,
       "owner": {
         "avatarUrl": "https://avatars2.githubusercontent.com/u/23056647?v=4",
         "name": "usdot-jpo-ode",
@@ -433,6 +440,11 @@
           "frmt_val": "5,290",
           "key": "complexity",
           "val": 5290.0
+        },
+        "ncloc": {
+            "frmt_val": "20,977",
+            "key": "ncloc",
+            "val": 20977.0
         }
       },
       "vscan": {
@@ -472,6 +484,7 @@
       "repositoryUrl": "https://github.com/usdot-fhwa-stol/CARMAWebUi",
       "createdAt": "2018-12-21T20:22:09.000+0000",
       "lastPush": "2019-12-11T22:52:17.000+0000",
+      "forksCount": 1,
       "owner": {
         "avatarUrl": "https://avatars1.githubusercontent.com/u/43184500?v=4",
         "name": "usdot-fhwa-stol",
@@ -482,7 +495,13 @@
         "content": "# CARMAWebUi\nCARMAWebUi is the web-based user interface component of the CARMAPlatform.\n\nTo install copy the contents of the `website` directory into the root of your web server's folder structure.\n\n# CARMAPlatform\nThe primary CARMAPlatform repository can be found [here](https://github.com/usdot-fhwa-stol/CARMAPlatform) and is part of the [USDOT FHWA STOL](https://github.com/usdot-fhwa-stol/)\ngithub organization. Documentation on how the CARMAPlatform functions, how it will evolve over time, and how you can contribute can be found at the above links as well\n\n## Contribution\nWelcome to the CARMA contributing guide. Please read this guide to learn about our development process, how to propose pull requests and improvements, and how to build and test your changes to this project. [CARMA Contributing Guide](https://github.com/usdot-fhwa-stol/CARMAPlatform/blob/develop/Contributing.md) \n\n## Code of Conduct \nPlease read our [CARMA Code of Conduct](https://github.com/usdot-fhwa-stol/CARMAPlatform/blob/develop/Code_of_Conduct.md) which outlines our expectations for participants within the CARMA community, as well as steps to reporting unacceptable behavior. We are committed to providing a welcoming and inspiring community for all and expect our code of conduct to be honored. Anyone who violates this code of conduct may be banned from the community.\n\n## Attribution\nThe development team would like to acknowledge the people who have made direct contributions to the design and code in this repository. [CARMA Attribution](https://github.com/usdot-fhwa-stol/CARMAPlatform/blob/develop/ATTRIBUTION.txt) \n\n## License\nBy contributing to the Federal Highway Administration (FHWA) Connected Automated Research Mobility Applications (CARMA), you agree that your contributions will be licensed under its Apache License 2.0 license. [CARMA License](https://github.com/usdot-fhwa-stol/CARMAPlatform/blob/develop/docs/License.md) \n\n## Contact\nPlease click on the CARMA logo below to visit the Federal Highway Adminstration(FHWA) CARMA website.\n\n[![CARMA Image](https://raw.githubusercontent.com/usdot-fhwa-stol/CARMAPlatform/develop/docs/image/CARMA_icon.png)](https://highways.dot.gov/research/research-programs/operations/CARMA)\n",
         "url": "https://api.github.com/repos/usdot-fhwa-stol/CARMAWebUi/contents/README.md?ref=develop"
       },
-      "forks": [],
+      "forks": [
+        {
+          "id": "1743717-236734173",
+          "name": "CARMAWebUi",
+          "owner": "jspring"
+        }
+      ],
       "contributors": [
         {
           "avatarUrl": "https://avatars1.githubusercontent.com/u/10292079?v=4",
@@ -614,6 +633,11 @@
           "frmt_val": "14,575",
           "key": "complexity",
           "val": 14575.0
+        },
+        "ncloc": {
+            "frmt_val": null,
+            "key": null,
+            "val": 0.0
         }
       },
       "vscan": {
@@ -873,6 +897,7 @@
       "repositoryUrl": "https://github.com/Trihydro/smdm",
       "createdAt": "2018-08-09T19:37:51.000+0000",
       "lastPush": "2018-08-14T22:03:11.000+0000",
+      "forksCount": 3,
       "owner": {
         "avatarUrl": "https://avatars1.githubusercontent.com/u/2973053?v=4",
         "name": "Trihydro",
@@ -966,6 +991,11 @@
           "frmt_val": null,
           "key": null,
           "val": 0.0
+        },
+        "ncloc": {
+            "frmt_val": null,
+            "key": null,
+            "val": 0.0
         }
       },
       "vscan": {
@@ -1005,6 +1035,7 @@
       "repositoryUrl": "https://github.com/usdot-fhwa-stol/CARMAPlatform",
       "createdAt": "2019-12-20T21:49:36.000+0000",
       "lastPush": "2019-12-20T21:49:36.000+0000",
+      "forksCount": 55,
       "owner": {
         "avatarUrl": "https://avatars1.githubusercontent.com/u/43184500?v=4",
         "name": "usdot-fhwa-stol",
@@ -1016,156 +1047,271 @@
         "url": "https://api.github.com/repos/usdot-fhwa-stol/CARMAPlatform/contents/README.md?ref=develop"
       },
       "forks": [
-        {
-          "id": "5959703-222189380",
-          "name": "CARMAPlatform",
-          "owner": "heshanfu"
-        },
-        {
-          "id": "18047163-222070668",
-          "name": "CARMAPlatform",
-          "owner": "labimage"
-        },
-        {
-          "id": "26907972-205598952",
-          "name": "CARMAPlatform",
-          "owner": "Shashankreddysunkara"
-        },
-        {
-          "id": "44192250-203552943",
-          "name": "CARMAPlatform",
-          "owner": "V2X-DC"
-        },
-        {
-          "id": "25051699-203197276",
-          "name": "CARMAPlatform",
-          "owner": "itabr"
-        },
-        {
-          "id": "53441473-199481387",
-          "name": "CARMAPlatform",
-          "owner": "ksadabadi"
-        },
-        {
-          "id": "26729043-198175371",
-          "name": "CARMAPlatform",
-          "owner": "turen009"
-        },
-        {
-          "id": "41028712-196930182",
-          "name": "CARMAPlatform",
-          "owner": "ub-mri"
-        },
-        {
-          "id": "22946040-196617242",
-          "name": "CARMAPlatform",
-          "owner": "kfarokhi"
-        },
-        {
-          "id": "52831227-196614599",
-          "name": "CARMAPlatform",
-          "owner": "JackHallCCTA"
-        },
-        {
-          "id": "10778749-196585394",
-          "name": "CARMAPlatform",
-          "owner": "majiaqi"
-        },
-        {
-          "id": "47857268-196577543",
-          "name": "CARMAPlatform",
-          "owner": "vsn3876"
-        },
-        {
-          "id": "4781383-194982797",
-          "name": "CARMAPlatform",
-          "owner": "michaleb"
-        },
-        {
-          "id": "8967368-194109899",
-          "name": "CARMAPlatform",
-          "owner": "SiChiTong"
-        },
-        {
-          "id": "51248593-192540853",
-          "name": "CARMAPlatform",
-          "owner": "usdot-fhwa-nrc"
-        },
-        {
-          "id": "49401497-191597708",
-          "name": "CARMAPlatform",
-          "owner": "mgoli-cav"
-        },
-        {
-          "id": "38030772-189413598",
-          "name": "CARMAPlatform",
-          "owner": "kfunaoka"
-        },
-        {
-          "id": "24319837-188413964",
-          "name": "Usdot-fhwa-stol-CARMAPlatform",
-          "owner": "Diffblue-benchmarks"
-        },
-        {
-          "id": "168620-185102051",
-          "name": "CARMAPlatform",
-          "owner": "zhangaigh"
-        },
-        {
-          "id": "1435044-174177344",
-          "name": "CARMAPlatform",
-          "owner": "atgreenwood"
-        },
-        {
-          "id": "18428479-170591266",
-          "name": "CARMAPlatform",
-          "owner": "Apoorb"
-        },
-        {
-          "id": "45389748-166662793",
-          "name": "CARMAPlatform",
-          "owner": "nadellian"
-        },
-        {
-          "id": "27449748-162315429",
-          "name": "CARMAPlatform",
-          "owner": "snehagn"
-        },
-        {
-          "id": "14936902-160944655",
-          "name": "CARMAPlatform",
-          "owner": "DamonMIN"
-        },
-        {
-          "id": "45392190-159339354",
-          "name": "CARMAPlatform",
-          "owner": "qwert1234zx"
-        },
-        {
-          "id": "34893801-158920895",
-          "name": "CARMAPlatform",
-          "owner": "armando170A"
-        },
-        {
-          "id": "12128496-158777907",
-          "name": "CARMAPlatform",
-          "owner": "lakeroland"
-        },
-        {
-          "id": "45153569-158560607",
-          "name": "CARMAPlatform",
-          "owner": "perryyo"
-        },
-        {
-          "id": "44305051-155874708",
-          "name": "CARMAPlatform",
-          "owner": "VetteDriver"
-        },
-        {
-          "id": "26827842-155394870",
-          "name": "CARMAPlatform",
-          "owner": "rvalienter90"
-        }
+          {
+              "id": "38692901-309718239",
+              "name": "carma-platform",
+              "owner": "bujanovic"
+          },
+          {
+              "id": "20123779-307953699",
+              "name": "carma-platform",
+              "owner": "lucianzhong"
+          },
+          {
+              "id": "18737773-302668180",
+              "name": "carma-platform",
+              "owner": "lonfr"
+          },
+          {
+              "id": "45165132-293442737",
+              "name": "carma-platform",
+              "owner": "RonZH"
+          },
+          {
+              "id": "94525-289552363",
+              "name": "carma-platform",
+              "owner": "keshava"
+          },
+          {
+              "id": "59704440-279346960",
+              "name": "carma-platform",
+              "owner": "abey-yoseph"
+          },
+          {
+              "id": "32717035-274672403",
+              "name": "carma-platform",
+              "owner": "Rafaila98"
+          },
+          {
+              "id": "62394637-271552081",
+              "name": "carma-platform",
+              "owner": "darrell-dorman"
+          },
+          {
+              "id": "29029373-270922682",
+              "name": "carma-platform",
+              "owner": "acetousk"
+          },
+          {
+              "id": "53674931-270332704",
+              "name": "carma-platform",
+              "owner": "fyj97"
+          },
+          {
+              "id": "36720634-269427744",
+              "name": "carma-platform",
+              "owner": "OAosman"
+          },
+          {
+              "id": "65055320-264611358",
+              "name": "carma-platform",
+              "owner": "brucealmighty-debug"
+          },
+          {
+              "id": "27039602-262114092",
+              "name": "carma-platform",
+              "owner": "typekid"
+          },
+          {
+              "id": "13761597-262092835",
+              "name": "carma-platform",
+              "owner": "Dzhan85"
+          },
+          {
+              "id": "1743717-253141121",
+              "name": "CARMAPlatform",
+              "owner": "jspring"
+          },
+          {
+              "id": "38889444-249914612",
+              "name": "CARMAPlatform",
+              "owner": "yomo11"
+          },
+          {
+              "id": "26496854-242678372",
+              "name": "CARMAPlatform",
+              "owner": "helomair"
+          },
+          {
+              "id": "25851236-242219139",
+              "name": "CARMAPlatform",
+              "owner": "asiekman"
+          },
+          {
+              "id": "50595154-242160837",
+              "name": "CARMAPlatform",
+              "owner": "Dexter575"
+          },
+          {
+              "id": "2255012-237817916",
+              "name": "CARMAPlatform",
+              "owner": "mdomox"
+          },
+          {
+              "id": "56937663-237058257",
+              "name": "CARMAPlatform",
+              "owner": "Adam-Mcc"
+          },
+          {
+              "id": "6865725-226919535",
+              "name": "CARMAPlatform",
+              "owner": "jilinzhou"
+          },
+          {
+              "id": "5959703-222189380",
+              "name": "CARMAPlatform",
+              "owner": "TrendingTechnology"
+          },
+          {
+              "id": "18047163-222070668",
+              "name": "CARMAPlatform",
+              "owner": "labimage"
+          },
+          {
+              "id": "26907972-205598952",
+              "name": "CARMAPlatform",
+              "owner": "Shashankreddysunkara"
+          },
+          {
+              "id": "44192250-203552943",
+              "name": "CARMAPlatform",
+              "owner": "V2X-DC"
+          },
+          {
+              "id": "25051699-203197276",
+              "name": "CARMAPlatform",
+              "owner": "itabr"
+          },
+          {
+              "id": "53441473-199481387",
+              "name": "CARMAPlatform",
+              "owner": "ksadabadi"
+          },
+          {
+              "id": "26729043-198175371",
+              "name": "CARMAPlatform",
+              "owner": "turen009"
+          },
+          {
+              "id": "41028712-196930182",
+              "name": "CARMAPlatform",
+              "owner": "ub-mri"
+          },
+          {
+              "id": "22946040-196617242",
+              "name": "CARMAPlatform",
+              "owner": "kfarokhi"
+          },
+          {
+              "id": "52831227-196614599",
+              "name": "CARMAPlatform",
+              "owner": "JackHallCCTA"
+          },
+          {
+              "id": "10778749-196585394",
+              "name": "CARMAPlatform",
+              "owner": "majiaqi"
+          },
+          {
+              "id": "47857268-196577543",
+              "name": "CARMAPlatform",
+              "owner": "vsn3876"
+          },
+          {
+              "id": "4781383-194982797",
+              "name": "CARMAPlatform",
+              "owner": "michaleb"
+          },
+          {
+              "id": "8967368-194109899",
+              "name": "CARMAPlatform",
+              "owner": "SiChiTong"
+          },
+          {
+              "id": "51248593-192540853",
+              "name": "CARMAPlatform",
+              "owner": "usdot-fhwa-nrc"
+          },
+          {
+              "id": "49401497-191597708",
+              "name": "CARMAPlatform",
+              "owner": "mgoli-cav"
+          },
+          {
+              "id": "38030772-189413598",
+              "name": "CARMAPlatform",
+              "owner": "kfunaoka"
+          },
+          {
+              "id": "24319837-188413964",
+              "name": "Usdot-fhwa-stol-CARMAPlatform",
+              "owner": "Diffblue-benchmarks"
+          },
+          {
+              "id": "168620-185102051",
+              "name": "CARMAPlatform",
+              "owner": "zhangaigh"
+          },
+          {
+              "id": "1435044-174177344",
+              "name": "CARMAPlatform",
+              "owner": "atgreenwood"
+          },
+          {
+              "id": "18428479-170591266",
+              "name": "CARMAPlatform",
+              "owner": "Apoorb"
+          },
+          {
+              "id": "45389748-166662793",
+              "name": "CARMAPlatform",
+              "owner": "nadellian"
+          },
+          {
+              "id": "27449748-162315429",
+              "name": "CARMAPlatform",
+              "owner": "snehagn"
+          },
+          {
+              "id": "14936902-160944655",
+              "name": "CARMAPlatform",
+              "owner": "DamonMIN"
+          },
+          {
+              "id": "45392190-159339354",
+              "name": "CARMAPlatform",
+              "owner": "qwert1234zx"
+          },
+          {
+              "id": "34893801-158920895",
+              "name": "CARMAPlatform",
+              "owner": "armando170A"
+          },
+          {
+              "id": "12128496-158777907",
+              "name": "CARMAPlatform",
+              "owner": "lakeroland"
+          },
+          {
+              "id": "45153569-158560607",
+              "name": "CARMAPlatform",
+              "owner": "perryyo"
+          },
+          {
+              "id": "44305051-155874708",
+              "name": "CARMAPlatform",
+              "owner": "VetteDriver"
+          },
+          {
+              "id": "26827842-155394870",
+              "name": "CARMAPlatform",
+              "owner": "rvalienter90"
+          },
+          {
+              "id": "18197505-154317556",
+              "name": "CARMAPlatform",
+              "owner": "tlochrane"
+          }
       ],
       "contributors": [
         {
@@ -1336,6 +1482,11 @@
           "frmt_val": "958",
           "key": "complexity",
           "val": 958.0
+        },
+        "ncloc": {
+            "frmt_val": "910",
+            "key": "ncloc",
+            "val": 910.0
         }
       },
       "vscan": {

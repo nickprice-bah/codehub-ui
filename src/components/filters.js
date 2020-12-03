@@ -170,17 +170,17 @@ export class Filters {
     this.selectedOrganizations.splice(0, this.selectedOrganizations.length);
     this.selectedLanguages.splice(0, this.selectedLanguages.length);
 
-    let fc = document.querySelector('#filterCategories').au.controller.viewModel;
+    let fc = document.querySelector('#filterCategories') ? document.querySelector('#filterCategories').au.controller.viewModel : null;
     if(fc) {
       fc.picker.methods.deselectAll();
     }
 
-    let fo = document.querySelector('#filterOrganizations').au.controller.viewModel;
+    let fo = document.querySelector('#filterOrganizations') ? document.querySelector('#filterOrganizations').au.controller.viewModel : null;
     if(fo) {
       fo.picker.methods.deselectAll();
     }
 
-    let fl = document.querySelector('#filterLanguages').au.controller.viewModel;
+    let fl = document.querySelector('#filterLanguages') ? document.querySelector('#filterLanguages').au.controller.viewModel : null;
     if(fl) {
       fl.picker.methods.deselectAll();
     }

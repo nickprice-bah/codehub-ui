@@ -74,7 +74,7 @@
             </div>
           </div>
             <div class="grid-row grid-gap"
-            virtual-repeat.for="repo of projects |
+            repeat.for="repo of projects |
             sort: { propertyName: selectedSort, direction: sortDirection} |
             filterCategory:{ filterArray: filters.selectedCategories}:filters.selectedCategories.length |
             filter: { propertyName: 'sourceData.owner.name', filterArray: filters.selectedOrganizations}:filters.selectedOrganizations.length |

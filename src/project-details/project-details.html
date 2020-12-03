@@ -81,9 +81,9 @@
                         <span id="project-stats-releases" class="num text-muted text-emphasized">${releases.length | num}</span>
                         <span class="stat-label">releases</span>
                       </span>
-                        <span class="stat" tabindex="0" aria-label="${repo.sourceData.forks.length | num} forks">
+                        <span class="stat" tabindex="0" aria-label="${repo.sourceData.forksCount | num} forks">
                         <span class="octicon octicon-repo-forked"></span>
-                          <span id="project-stats-forks" class="num text-muted text-emphasized">${repo.sourceData.forks.length | num}</span>
+                          <span id="project-stats-forks" class="num text-muted text-emphasized">${repo.sourceData.forksCount | num}</span>
                         <span class="stat-label">forks</span>
                       </span>
                       <span class="stat ${repo.generatedData.vscan.infected_files>0?' stat-vscan':''}" tabindex="0" aria-label="${repo.generatedData.vscan.infected_files} viruses">
@@ -107,50 +107,58 @@
               </div>
               <div class="grid-row grid-gap proj-overview-row proj-health">
                 <div class="grid-col-6 col-qual">
+                  <div if.bind="!noSonarData"> <!-- UNICORN CHECK TO SEE IF THIS LINE AND CORRESPONDING CLOSING DIV ARE NEEDED-->
                   <h3 class="text-transform-uppercase" tabindex="0" arial-label="Code Quality Analysis">Code Quality Analysis</h3>
-                  <p id="sonarqube-description" tabindex="0" aria-label="The following results are produced by SonarQube, a static code analysis application.">The following results are produced by SonarQube, a static code analysis application.</p>
+                    <p id="sonarqube-description" tabindex="0" aria-label="The following results are produced by SonarQube, a static code analysis application.">The following results are produced by SonarQube, a static code analysis application.</p>
                   <div class="grid-row grid-gap">
                     <div class="grid-col-6 grade-wrapper">
-                      <h5 tabindex="0" aria-label="Releasability">Releasability</h5>
-                      <div class="grade-circle empty-circle">
-                        <em class="material-icons">access_time</em>
+                        <h5 tabindex="0" aria-label="Releasability">Releasability</h5>
+                        <div class="grade-circle empty-circle">
+                          <em class="material-icons">access_time</em>
+                        </div>
+                        <ul class="list-unstyled" aria-hidden="true">
+                          <li aria-hidden="true" tabindex="0" aria-label="not available, comming soon.">Coming Soon</li>
+                        </ul>
                       </div>
-                      <ul class="list-unstyled" aria-hidden="true">
-                        <li aria-hidden="true" tabindex="0" aria-label="not available, comming soon.">Coming Soon</li>
-                      </ul>
-                    </div>
                     <div class="grid-col-6 grade-wrapper">
-                      <h5 tabindex="0" aria-label="Maintainability">Maintainability</h5>
-                      <div tabindex="0" id="project-maintainability-rating" class="grade-circle rating-${health.sqale_rating.frmt_val}" aria-label="Rating: '${health.sqale_rating.frmt_val}'">
-                        ${health.sqale_rating.frmt_val}
+                        <h5 tabindex="0" aria-label="Maintainability">Maintainability</h5>
+                        <div tabindex="0" id="project-maintainability-rating" class="grade-circle rating-${health.sqale_rating.frmt_val}" aria-label="Rating: '${health.sqale_rating.frmt_val}'">
+                          ${health.sqale_rating.frmt_val}
+                        </div>
+                        <ul class="list-unstyled">
+                          <li id="project-maintainability-code-smells" tabindex="0" aria-label="${health.code_smells.val} code smells">${health.code_smells.val} code smells</li>
+                          <li id="project-maintainability-complexity" tabindex="0" aria-label="${health.complexity.val} complexity">${health.complexity.val} complexity</li>
+                        </ul>
                       </div>
-                      <ul class="list-unstyled">
-                        <li id="project-maintainability-code-smells" tabindex="0" aria-label="${health.code_smells.val} code smells">${health.code_smells.val} code smells</li>
-                        <li id="project-maintainability-complexity" tabindex="0" aria-label="${health.complexity.val} complexity">${health.complexity.val} complexity</li>
-                      </ul>
+                    </div>
+                  <div class="grid-row grid-gap">
+                    <div class="grid-col-6 grade-wrapper">
+                        <h5 tabindex="0" aria-label="Reliability">Reliability</h5>
+                        <div tabindex="0" id="project-reliability-rating" class="grade-circle rating-${health.reliability_rating.frmt_val}" aria-label="Rating: '${health.reliability_rating.frmt_val}'">
+                          ${health.reliability_rating.frmt_val}
+                        </div>
+                        <ul class="list-unstyled">
+                          <li id="project-reliability-bugs" tabindex="0" aria-label="${health.bugs.val} bugs">${health.bugs.val} bugs</li>
+                          <li id="project-reliability-violations" tabindex="0" aria-label="${health.violations.val} violations">${health.violations.val} violations</li>
+                        </ul>
+                      </div>
+                    <div class="grid-col-6 grade-wrapper">
+                        <h5 tabindex="0" aria-label="Security">Security</h5>
+                        <div tabindex="0" id="project-security-rating" class="grade-circle rating-${health.security_rating.frmt_val}" aria-label="Rating: '${health.security_rating.frmt_val}'">
+                          ${health.security_rating.frmt_val}
+                        </div>
+                        <ul class="list-unstyled">
+                          <li id="project-security-vulnerabilities" tabindex="0" aria-label="${health.vulnerabilities.val} vulnerabilities">${health.vulnerabilities.val} vulnerabilities</li>
+                        </ul>
+                      </div>
+                      <div if.bind="noSonarData" class="coming-soon-watermark" aria-label="Sonarqube not availabel, comming soon.">Coming Soon</div>
                     </div>
                   </div>
-                  <div class="grid-row grid-gap">
-                    <div class="grid-col-6 grade-wrapper">
-                      <h5 tabindex="0" aria-label="Reliability">Reliability</h5>
-                      <div tabindex="0" id="project-reliability-rating" class="grade-circle rating-${health.reliability_rating.frmt_val}" aria-label="Rating: '${health.reliability_rating.frmt_val}'">
-                        ${health.reliability_rating.frmt_val}
-                      </div>
-                      <ul class="list-unstyled">
-                        <li id="project-reliability-bugs" tabindex="0" aria-label="${health.bugs.val} bugs">${health.bugs.val} bugs</li>
-                        <li id="project-reliability-violations" tabindex="0" aria-label="${health.violations.val} violations">${health.violations.val} violations</li>
-                      </ul>
+                  <div if.bind="noSonarData" class="empty-state">
+                    <div class="text-center">
+                      <i class="material-icons large-icon" aria-hidden="true">block</i>
                     </div>
-                    <div class="grid-col-6 grade-wrapper">
-                      <h5 tabindex="0" aria-label="Security">Security</h5>
-                      <div tabindex="0" id="project-security-rating" class="grade-circle rating-${health.security_rating.frmt_val}" aria-label="Rating: '${health.security_rating.frmt_val}'">
-                        ${health.security_rating.frmt_val}
-                      </div>
-                      <ul class="list-unstyled">
-                        <li id="project-security-vulnerabilities" tabindex="0" aria-label="${health.vulnerabilities.val} vulnerabilities">${health.vulnerabilities.val} vulnerabilities</li>
-                      </ul>
-                    </div>
-                    <div if.bind="noSonarData" class="coming-soon-watermark" aria-label="Sonarqube not availabel, comming soon.">Coming Soon</div>
+                    <em tabindex="0" class="text-muted" aria-label="${noSonarDataMessage}" innerhtml="${noSonarDataMessage}"></em>
                   </div>
                 </div>
                 <div class="grid-col-6 col-qual">

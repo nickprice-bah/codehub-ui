@@ -71,7 +71,7 @@
         </div>
         <span if.bind="searchDone && resultCount > 0" id="results-main-panel" tabindex="0" aria-label="Results panel, ${ariaLabel}"></span>
         <div if.bind="searchDone && resultCount > 0" class="grid-row row"
-            virtual-repeat.for="repo of projects |
+            repeat.for="repo of projects |
             sort: { propertyName: selectedSort, direction: sortDirection} |
             filterCategory:{ filterArray: filters.selectedCategories}:filters.selectedCategories.length |
             filter: { propertyName: 'sourceData.owner.name', filterArray: filters.selectedOrganizations}:filters.selectedOrganizations.length |

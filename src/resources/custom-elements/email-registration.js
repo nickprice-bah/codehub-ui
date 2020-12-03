@@ -1,5 +1,6 @@
 import { inject, bindable } from 'aurelia-framework';
 import { DataContext } from '../../services/datacontext';
+import $ from 'jquery';
 
 @inject(Element, DataContext)
 export class EmailRegistration {

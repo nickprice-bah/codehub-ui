@@ -69,30 +69,6 @@ export class DataContext {
       });
   }
 
-  getProjectsByOrganization(organization) {
-    return this.http.fetch(`${baseUrl}/getProjectsByOrganization`, {
-      method: 'POST',
-      body: json(organization),
-    }).then(response => {
-      if (response && response.ok) {
-        return response.json();
-      }
-      return null;
-    });
-  }
-
-  getLastProcessedDateTime() {
-    return this.http.fetch(`/api/codes/getLastProcessedDateTime`, {
-      method: 'GET',
-    })
-      .then(response => {
-        if (response && response.ok) {
-          return response.json();
-        }
-        return null;
-      });
-  }
-
   search(searchText) {
     let searchObj = {
       term: searchText,
@@ -111,18 +87,6 @@ export class DataContext {
       .then(data => {
         if (data.code == 200) {
           return data.result;
-        }
-      });
-  }
-
-  findSuggestions(searchText) {
-    return this.http.fetch(`${baseUrl}/findSuggestions`, {
-      method: 'POST',
-      body: json(searchText),
-    })
-      .then(response => {
-        if (response && response.ok) {
-          return response.json();
         }
         return null;
       });
@@ -151,69 +115,18 @@ export class DataContext {
       });
   }
 
-  findSimilarProjects(id) {
-    const adjustedURL = `${baseUrl}/findSimilarProjects/${id}`;
-    return this.http.fetch(adjustedURL, {
-      method: 'GET',
-    })
-      .then(response => {
-        if (response && response.ok) {
-          return response.json();
-        }
-        return null;
-      });
-  }
-
-  getHealthById(id) {
-    const adjustedURL = `${baseUrl}/findSonarHealthMetrics/${id}`;
-    return this.http.fetch(adjustedURL, {
-      method: 'GET',
-    })
-      .then(response => {
-        if(response && response.ok) {
-          return response.json();
-        }
-        return null;
-      });
-  }
-
-  getComponentDependencies(id) {
-    const adjustedURL = `${baseUrl}/findComponentDependencies/${id}`;
-    return this.http.fetch(adjustedURL, {
-      method: 'GET',
-    })
-      .then(response => {
-        if (response && response.ok) {
-          response.json();
-        }
-        return null;
-      });
-  }
-
   postUsedProject(postObject, id) {
     return this.http.fetch(`${baseUrl}/addForkedProjects/${id}`, {
       method: 'POST',
       body: json(postObject),
     })
-      .then(response => {
-        if (response && response.ok){
-          return response.json();
-        }
-        return null;
-      });
-  }
-
-  findHealthiest() {
-    return this.http.fetch(`${baseUrl}/repositories?limit=6&rank=healthiest&order=asc`, {
-      method: 'GET',
-    })
-      .then(response => response.json())
-      .then(data => {
-        if (data.code == 200) {
-          return data.result;
-        }
-        return null;
-      });
+    .then(response => response.json())
+    .then(data => {
+      if (data.code == 200) {
+        return data.result;
+      }
+      return null;
+    });
   }
 
   registerUserEmail(email) {
@@ -221,7 +134,7 @@ export class DataContext {
       'email': email,
       'listId': this.stageConfig.EMAIL_LISTID
     }
-    return this.http.fetch(`${this.env.apiCCUrl}/apicc/v1/contacts`, {
+    return this.http.fetch(`/apicc/v1/contacts`, {
       method: 'POST',
       body: json(payload),
       headers: {

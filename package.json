@@ -1,7 +1,7 @@
 {
   "name": "codehub-ui",
   "description": "ITS CodeHub",
-  "version": "3.3.0",
+  "version": "3.4.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/usdot-jpo-codehub/codehub-ui.git"
@@ -15,6 +15,7 @@
     "aurelia-fetch-client": "^1.8.2",
     "aurelia-ui-virtualization": "^1.0.0-rc2",
     "bootstrap": "^4.5.2",
+    "detect-browser": "^5.2.0",
     "echarts": "^4.9.0",
     "humanize-duration": "^3.23.1",
     "jquery": "^3.5.1",

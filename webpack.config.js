@@ -286,7 +286,9 @@ module.exports = ({ production } = {}, {extractCss, analyze, tests, hmr, port, h
   },
   plugins: [
     new DefinePlugin({
-      APP_VERSION: resolveVersion(JSON.stringify(require('./package.json').version))
+      'process.env' : {
+        APP_VERSION: resolveVersion(JSON.stringify(require('./package.json').version))
+      }
     }),
     new CopyWebpackPlugin({
       patterns: [

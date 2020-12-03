@@ -59,6 +59,7 @@ export class AddProjectsModal {
     $('.multiselect').click(e => {
       e.stopPropagation();
     });
+    return options;
   }
 
   setupProjectSelect() {

@@ -34,7 +34,7 @@ export class Results {
       { value: 'sourceData.releases', name: 'Releases' },
       { value: 'sourceData.commits', name: 'Commits' },
       { value: 'sourceData.contributors', name: 'Contributors' },
-      { value: 'sourceData.forks', name: 'Forks' }
+      { value: 'sourceData.forksCount', name: 'Forks' }
     ];
     this.openReadmeLinkId = null;
     this.ariaLabel = '';
@@ -112,10 +112,10 @@ export class Results {
     }
     if (val && val.length > 0) {
       this.filters.selectedLanguages =  val.map(x => x.option);
-      this.filterOrgEmpty = false;
+      this.filterLanguageEmpty = false;
     } else {
       this.filters.selectedLanguages.splice(0, this.filters.selectedLanguages.length);
-      this.filterOrgEmpty = true;
+      this.filterLanguageEmpty = true;
     }
     this.applyFilters();
   }

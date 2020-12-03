@@ -10,7 +10,7 @@ export class ReadmeModal {
     this.controller = controller;
     // this.controller.settings.centerHorizontalOnly = true;
     this.controller.settings.lock = false;
-
+    this.repo = null;
     this.router = router;
     this.taskQueue = taskQueue;
     this.dialogService = dialogService;
@@ -57,11 +57,11 @@ export class ReadmeModal {
 
   @computedFrom('repo.content')
   get content() {
-    let c = this.repo.sourceData.readme.content ? this.repo.sourceData.readme.content : NO_README_MESSAGE;
+    let c = this.repo && this.repo.sourceData && this.repo.sourceData.readme && this.repo.sourceData.readme.content ? this.repo.sourceData.readme.content : NO_README_MESSAGE;
     return c;
   }
   get hascontent() {
-    return this.repo.sourceData.readme.content ? true : false;
+    return this.repo && this.repo.sourceData && this.repo.sourceData.readme && this.repo.sourceData.readme.content ? true : false;
   }
 
 navigateAndClose() {
