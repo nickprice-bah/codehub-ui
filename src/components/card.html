@@ -3,7 +3,7 @@
   <require from="resources/value-converters/ago"></require>
   <require from="resources/custom-attributes/bootstrap-tooltip"></require>
 
-  <div if.bind="repo" class="" style="">
+  <div if.bind="repo">
     <div class="card card-default hover-card">
       <div if.bind="repo.codehubData.badges.isFeatured && showFeatured" class="ribbon-wrapper">
         <div id="card-popular-featured-ribbon-${repo.id}" tabindex="0" class="ribbon" role="img" aria-label="Featured ribbon image.">Featured</div>
@@ -74,9 +74,9 @@
 
       <div if.bind="showMetrics" class="grid-row github-stats">
         <div class="grid-col-3 grid-custom_left">
-          <span class="stat" tabindex="0" aria-label="${repo.sourceData.forks.length | num} forks">
+          <span class="stat" tabindex="0" aria-label="${repo.sourceData.forksCount | num} forks">
             <span class="octicon octicon-repo-forked" aria-hidden="true"></span>
-            <span id="card-popular-project-forks-${repo.id}" class="num text-muted text-emphasized" aria-hidden="true">${repo.sourceData.forks.length | num}</span>
+            <span id="card-popular-project-forks-${repo.id}" class="num text-muted text-emphasized" aria-hidden="true">${repo.sourceData.forksCount | num}</span>
             <span class="stat-label" aria-hidden="true">forks</span>
           </span>
         </div>
