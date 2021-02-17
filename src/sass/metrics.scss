@@ -1,30 +1,74 @@
-.metrics-wrapper {
+.cards-wrapper.metrics-wrapper {
   margin-top: 25px;
-  .row {
-    padding: 0;
+
+  // h3{
+  //   color: black; //unicorn replace
+  // }
+
+  
+
+  // .grid-row{
+  //   margin-left: -(calc-gap-offset($gap-desktop));
+  // }
+
+  // .grid-col-lg{
+  //   padding-left: 15px;
+  //   padding-right: 15px;
+  // }
+  .grid-row {
+    
+    //margin-right: 0px;
+    margin-bottom: 1.5rem;
+    margin-bottom: units(3);
+    //margin-left: 0px;
+    &:last-of-type{
+      margin-bottom: 0px;
+    }
   }
+
+  .row-1 {
+    padding: 0px;
+    h3 {
+      text-align: center;
+    }
+  }
+  .grid-row:not(.row-1) h3 {
+    padding-left: units(1);
+    margin-bottom: -(units(4));
+  }
+  .grid-row:last-of-type h3{
+    margin-bottom: units(2.5);
+  }
+
   .card-metrics {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    padding-bottom: 15px;
-    min-height: 140px;
-    border: solid 1px lighten($gray, 10%);
-    h2 {
+    justify-content: center;
+    padding: units(1);
+    min-height: 80px;
+    border: solid 1px $black-fade29;
+    border: solid 1px $black-fade20;
+    border: solid 1px $black-fade10;
+    border-radius: 0px;
+
+
+
+    h3 {
       text-transform: uppercase;
-      font-size: $font-size-large;
-      margin-top: 0;
-      font-weight: 900;
+      //font-size: $font-size-large;
+      margin-top: 18px;
+      margin-bottom: 0px;
       max-width: 100%;
       overflow: hidden;
-      white-space: wrap;
+      white-space: normal;
     }
 
     .health-num {
-      font-size: $font-size-largest;
+      font-size: 26px;
       font-weight: 400;
       margin-bottom: 0;
       line-height: 60px;
+      text-align: center;
     }
 
     .material-icons {
@@ -74,17 +118,20 @@
       margin-bottom: 0;
     }
   }
+
+  
+
   .card-metrics-organization {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: baseline;
-    margin-bottom: 15px;
-    h2 {
-      color: black;
-      text-transform: uppercase;
-      font-size: $font-size-larger;
-      font-weight: 500;
+    //margin-bottom: 15px;
+    h3 {
+      
+      // text-transform: uppercase;
+      // font-size: $font-size-larger;
+      // font-weight: 500;
       max-width: 100%;
       overflow: hidden;
       white-space: wrap;
@@ -94,19 +141,24 @@
 
     .card-metrics-organization-controls {
       select {
-        border: none;
+        //border: none;
         //font-family: Roberto, sans-serif;
-        font-size: $font-size-larger*1.5;
-        font-weight: 500;
+        //font-size: $font-size-larger*1.5;
+        // font-weight: 700;
         text-align: left;
         text-align-last: left;
         width: 100%;
         overflow: hidden;
         white-space: nowrap;
         text-overflow:ellipsis;
-        background: white;
-        color: black;
+        //background: white;
+        //color: black;
         text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        margin-left: 5px; 
+        border-color: $black-fade40;
+        border-color: $black-fade29;
+        border-color: $black-fade10;
+        
       }
       option {
         text-align: left;

@@ -53,3 +53,32 @@
         font-size: smaller;
     }
 }
+
+.example.example_citation{
+    padding-left: .75rem!important;
+    margin-top: 1rem!important;
+    border-left: .25rem solid!important;
+    border-color: #f2938c!important;
+    display: block;
+    padding-left: .75rem!important;
+
+    & .code{
+        padding: 2px 0px;
+        background-color: rgba(9, 30, 66, 0.08);
+        background-color: rgb(249 242 244);
+        -webkit-box-decoration-break: clone;
+        border-radius: 3px;
+        border-style: none;
+        margin: 0px 4px;
+        
+        box-shadow: rgb(249 242 244 / 8%) -4px 0px 0px 0px, rgb(249 242 244 / 8%) 4px 0px 0px 0px;
+        line-height: 1.33333333333333;
+        letter-spacing: -0.005em;
+        overflow-wrap: break-word;
+        & code{
+            background-color: rgb(249 242 244);
+            color: #1b1b1b;
+        }
+    }
+
+}

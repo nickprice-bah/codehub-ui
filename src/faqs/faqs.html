@@ -1,13 +1,13 @@
 <template bindable="router">
-    <main class="usa-layout-docs usa-section faqs-page" id="main-content">
+    <main class="usa-layout-docs usa-section repopublishing-page faqs-page" id="main-content">
         <div class="grid-container container-fluid">
-            <div class="grid-row row text-heavy-page">
-                <aside id="side-nav" class="grid-col-3 col-lg-2 col-md-3 sidenav">
+            <div class="grid-row grid-gap text-heavy-page">
+                <aside id="side-nav" class="grid-col-3 sidenav">
                     <compose view-model="side-nav" router.bind="router"></compose>
                 </aside>
-                <div class="grid-col-9 col-lg-10 col-md-9 col-sm-12 col-xs-12 usa-layout-docs__main desktop:grid-col-10 usa-prose">
+                <div class="grid-col-9 usa-layout-docs__main usa-prose">
                     <h2 class="">Frequently Asked Questions</h2>
-                    <div class="accordion col-lg-9 col-md-10 col-sm-12 col-xs-12 column-no-side-padding usa-layout-docs__main desktop:grid-col-9 usa-prose" id="accordionExample">
+                    <div class="accordion column-no-side-padding usa-layout-docs__main usa-prose" id="accordionExample">
                         <p class="text-section-color-blue">
                             You’ve got questions; we’ve got answers...
                         </p>
@@ -16,7 +16,131 @@
                             Browse below to read some of our answers to the most common questions about the ITS CodeHub.
                           </strong>
                         </p>
-                        <div class="card">
+                        <div class="usa-accordion" aria-multiselectable="true">
+                            <h2 class="usa-accordion__heading">
+                              <button class="usa-accordion__button"
+                                aria-expanded="false"
+                                aria-controls="m-a1">
+                                What is ITS CodeHub?
+                              </button>
+                            </h2>
+                            <div id="m-a1" class="usa-accordion__content usa-prose" hidden>
+                              <p>ITS CodeHub provides a single point of entry to discover the U.S. Department of Transportation’s (DOT) publicly available open-source code software funded by the Intelligent Transportation System (ITS) Joint Program Office (JPO). By providing access to open repositories, the U.S. DOT aims to enable collaborative development of open-source software between U.S. DOT, and third parties, such as state and local agencies, and researchers. Open-source code made accessible through the ITS CodeHub is quality-checked and freely available to the public.</p>
+                            </div>
+                        </div>
+                        <div class="usa-accordion" aria-multiselectable="true">
+                            <h2 class="usa-accordion__heading">
+                              <button class="usa-accordion__button"
+                                aria-expanded="false"
+                                aria-controls="m-a2">
+                                Where can I find open source applications for download?
+                              </button>
+                            </h2>
+                            <div id="m-a2" class="usa-accordion__content usa-prose" hidden>
+                              <p>You can check out releases of open source code by clicking on the
+                                <a href="#" route-href="route:explore;" aria-label="Explore">Explore</a>
+                                tab on the top menu. From here, you can search for different repositories and view their README files for detailed information.  You can also see and access the Health Stats of each repository, i.e. Virus, SonarQube.</p>
+                            </div>
+                        </div>
+                        <div class="usa-accordion" aria-multiselectable="true">
+                            <h2 class="usa-accordion__heading">
+                              <button class="usa-accordion__button"
+                                aria-expanded="false"
+                                aria-controls="m-a3">
+                                How can I register my repositories on ITS CodeHub?
+                              </button>
+                            </h2>
+                            <div id="m-a3" class="usa-accordion__content usa-prose" hidden>
+                                <p>Please check out the detailed registry process on the
+                                    <a href="#" route-href="route:repopublishing;" aria-label="Link to Repository Registration">Repository Registration</a> page.
+                                    You will be asked to fill out and submit the following linked form. Once complete, the ITS CodeHub team will review your application and get back to you within 5 business days.</p>
+                            </div>
+                        </div>
+                        <div class="usa-accordion" aria-multiselectable="true">
+                            <h2 class="usa-accordion__heading">
+                              <button class="usa-accordion__button"
+                                aria-expanded="false"
+                                aria-controls="m-a4">
+                                I am a developer, how can ITS CodeHub help me?
+                              </button>
+                            </h2>
+                            <div id="m-a4" class="usa-accordion__content usa-prose" hidden>
+                                <p>ITS CodeHub provides a means for developers to easily and seamlessly discover, upload and download U.S. DOT open source applications. ITS CodeHub is intended to be a forum to allow developers:
+                                    <ul>
+                                        <li>Implement their ideas in new open source projects.</li>
+                                        <li>Reuse or augment others’ code.</li>
+                                        <li>Collaborate on projects of interest.</li>
+                                    </ul> 
+                                </p>  
+                            </div>
+                        </div>
+                        <div class="usa-accordion" aria-multiselectable="true">
+                            <h2 class="usa-accordion__heading">
+                              <button class="usa-accordion__button"
+                                aria-expanded="false"
+                                aria-controls="m-a5">
+                                May I freely use and distribute the open source applications I discovered on ITS CodeHub?
+                              </button>
+                            </h2>
+                            <div id="m-a5" class="usa-accordion__content usa-prose" hidden>
+                                <p>Please check out the detailed registry process on the
+                                    <a href="#" route-href="route:repopublishing;" aria-label="Link to Repository Registration">Repository Registration</a> page.
+                                    You will be asked to fill out and submit the following linked form. Once complete, the ITS CodeHub team will review your application and get back to you within 5 business days.</p>
+                            </div>
+                        </div>
+                        <div class="usa-accordion" aria-multiselectable="true">
+                            <h2 class="usa-accordion__heading">
+                              <button class="usa-accordion__button"
+                                aria-expanded="false"
+                                aria-controls="m-a6">
+                                Is there a good location that I can get transportation data to support the development and use of the OSADP applications?
+                              </button>
+                            </h2>
+                            <div id="m-a6" class="usa-accordion__content usa-prose" hidden>
+                                <p>
+                                    Yes, the <a href="https://its.dot.gov/data/" target="_blank" rel="noopener noreferrer">ITS Datahub</a> provides a single point of entry to discover U.S. DOT’s publicly available ITS research data, including connected vehicle data. This is an excellent location to look for highly documented transportation data to support applications found within ITS CodeHub.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="usa-accordion" aria-multiselectable="true">
+                            <h2 class="usa-accordion__heading">
+                              <button class="usa-accordion__button"
+                                aria-expanded="false"
+                                aria-controls="m-a7">
+                                How do I cite source code that I reuse or adapt?
+                              </button>
+                            </h2>
+                            <div id="m-a7" class="usa-accordion__content usa-prose" hidden>
+                                <p>
+                                    If you decide to build additional software using code discovered through ITS CodeHub, please acknowledge the code repository's Digital Object Identifier (DOI) in your software's README/documentation. The DOI of a code repository can often be found in the code repository's README, as well as any additional paper/publication that the code creator would like you to cite.
+                                </p>
+                                <p>
+                                    Consistent with <a target="_blank" rel="noopener noreferrer" href="https://its-datafiles.s3.amazonaws.com/codehub-registration-form.docx">Repository Registration Form</a> <img src="/img/external-link-alt-hover_darkGray.svg" class="external-link-icon-in-paragraph" alt="External link icon">APA 7 Style guide, our recommended format for citing source code in a publication or report are as follows:
+                                    <span class="example example_citation">
+                                        Format:<br />
+                                        <span class="code font-mono-xs"><code>author_surname_or_organization</code></span>​, <span class="code font-mono-xs">first_initial​</span>. <span class="code font-mono-xs"><code>(year)</span>. <span class="code font-mono-xs"><code>program_or_source_code_title​ (code_version)</span> [Source code]. Provided by ITS CodeHub through <a target="_blank" rel="noopener noreferrer" href="https://its-datafiles.s3.amazonaws.com/codehub-registration-form.docx">Repository Registration Form</a> <img src="/img/external-link-alt-hover_darkGray.svg" class="external-link-icon-in-paragraph" alt="External link icon">GitHub.com. Accessed YYYY-MM-DD from <span class="code font-mono-xs"><code>doi_url​</code>.
+                                    </span>
+                                </p>
+                                <p>
+                                    To cite this code when you copy or adapt from this code, please include the original URL you copied the source code from and the date of retrieval as a comment in your code. For example:
+                                    <span>
+                                        // Code adapted from CARMA example:
+
+//<a target="_blank" rel="noopener noreferrer" href="https://its-datafiles.s3.amazonaws.com/codehub-registration-form.docx">Repository Registration Form</a> <img src="/img/external-link-alt-hover_darkGray.svg" class="external-link-icon-in-paragraph" alt="External link icon">  <a target="_blank" rel="noopener noreferrer" href="https://its-datafiles.s3.amazonaws.com/codehub-registration-form.docx">Repository Registration Form</a> <img src="/img/external-link-alt-hover_darkGray.svg" class="external-link-icon-in-paragraph" alt="External link icon">https://github.com/usdot-fhwa-stol/carma-ssc-interface-wrapper/blob/develop/.sonarqube/sonar-scanner.properties
+
+// (Source: Discovered from ITS CodeHub <a target="_blank" rel="noopener noreferrer" href="https://its-datafiles.s3.amazonaws.com/codehub-registration-form.docx">Repository Registration Form</a> <img src="/img/external-link-alt-hover_darkGray.svg" class="external-link-icon-in-paragraph" alt="External link icon">https://its.dot.gov/code  through GitHub.com  retrieved in January 2021.)
+                                    </span>
+                                </p>
+                                <p>
+                                    Additional guidelines on source code attribution can be found at https://integrity.mit.edu/handbook/writing-code.
+                                </p>
+                            </div>
+                        </div>
+
+
+
+
+                        <!-- <div class="card">
                             <div class="card-header" id="headingOne">
                                 <h2 class="mb-0">
                                     <button class="btn btn-link collapsed row usa-prose" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
@@ -51,8 +175,8 @@
                                     </p>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card">
+                        </div> -->
+                        <!-- <div class="card">
                             <div class="card-header" id="headingThree">
                                 <h2 class="mb-0">
                                     <button class="btn btn-link collapsed row usa-prose" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
@@ -70,8 +194,8 @@
                                     </p>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card">
+                        </div> -->
+                        <!-- <div class="card">
                             <div class="card-header" id="headingFour">
                                 <h2 class="mb-0">
                                     <button class="btn btn-link collapsed row usa-prose" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
@@ -125,7 +249,7 @@
                                     </p> 
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

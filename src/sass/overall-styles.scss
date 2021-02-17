@@ -15,3 +15,82 @@
 .larger-font{
     font-size: larger;
 }
+
+body {
+    
+    
+    h3 {
+        font-family: "Roboto Mono Web", "Roboto Mono Web", "Bitstream Vera Sans Mono", "Consolas", "Courier", monospace;
+        letter-spacing: 0.7px !important;
+        letter-spacing: 1px;
+        font-weight: bold;
+        color: $black-fade70;
+        color: $black-fade60;
+        color: $primary-color;
+        color: $black-fade55; //#666666
+
+        font-size: 19px;
+        text-transform: uppercase;
+    }
+    h4 {
+        font-size: 18px;
+    }
+
+    h5 {
+        font-size: medium;
+    }
+
+    h1, h2 {
+        font-weight: bold;
+    }
+    h1, h2, p, h4, h5, h6 {
+        font-family: "Public Sans Web", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
+    }
+    
+    h1, h2 {
+        color: $primary-color;
+    }
+
+    .text-heavy-page{
+        padding: units(4);
+        background-color: #ffffff;
+        border-radius: 0.3rem;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        
+        h2{
+            font-weight: bold;
+        }
+        
+        .p_full-width{
+            max-width: unset;
+        }
+      }
+
+    // h3, h4{
+    //     font-family: "Merriweather Web", "Georgia", "Cambria", "Times New Roman", "Times", serif;
+    // }
+
+    code {
+        padding: 2px 4px;
+        background-color: #f9f2f4;
+        border-radius: 4px;
+    }
+
+    a {
+        color: #005ea2;
+        text-decoration: underline;
+        background-color: transparent;
+        &:hover {
+            color: #1a4480;
+        }
+        &.card-link{
+            text-decoration: none;
+        }
+    }
+    .open-source-community a,
+    #dh-footer_contact-us-email,
+    .ul-guidelines-toc_bottom {
+        text-decoration: none;
+    }
+
+}

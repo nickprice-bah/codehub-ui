@@ -1,35 +1,89 @@
 /* --- Colors --- */
 $white: rgb(255,255,255); //#ffffff
+$gray-extra-light: #e1e1e1;
 $lightgray: rgb(211,211,211); //#d3d3d3
+//$light-gray: rgb(201,201,201); //#C9C9C9;
 $gray: gray; ///(128,128,128) #808080
+$mediumgray: #717171;
 $darkgray: rgb(27,27,27); //#1b1b1b
 $black: rgb(0, 0, 0); //#000000
 
-$teal: rgb(0, 124, 133); //#007c85
-$red: rgb(242, 107, 100); //#F26B64
-$green: #39b54a;
-
-//$body-bk: rgb(225,225,225); //#E1E1E1
-$body-bk: rgb(240, 240, 240); //#F0F0F0
-$banner-bk: rgb(0, 74, 113); //#f05154
-$banner-end: rgb(21, 55, 80); //#153750
-$banner-start: rgb(0, 74, 113); //#f04f54
-
-/* --- faded colors --- */
-$black-fade40: rgba($black, 0.40);
+/* --- faded colors | ex: $black-fade40 is 40% of the base color, so it is 60% lighter--- */
+$black-fade80: rgba($black, 0.8);
+$black-fade70: rgba($black, 0.7);
+$black-fade60: rgba($black, 0.6);
+$black-fade50: rgba($black, 0.5);
+$black-fade55: rgba($black, 0.55); //#919191
+$black-fade40: rgba($black, 0.40); //#999999
 $black-fade29: rgba($black, 0.29);
 $black-fade20: rgba($black, 0.20);
 $black-fade10: rgba($black, 0.1);
 $black-fade9-5: rgba($black, 0.095);
 
-
-
-//fade($white, 85%)
 $white-fade85: rgba($white, 0.85);
 $white-fade60: rgba($white, 0.6);
 $white-fade10: rgba($white, 0.1);
 
+
+$red: rgb(242, 107, 100); //#F26B64
+//$orange: rgb(255,87,34); //#ff5722
+//$amber: rgb(255,193,7); //#FFC107
+$yellow: rgb(255, 225, 91); //#ffe15b
+//$lime: rgb(207,221,80); //#cddc39
+$green: #39b54a;
+$teal: rgb(0, 124, 133); //#007c85
+//$cyan: rgb(0,172,193); //#00acc1
+//$light-blue: rgb(3,169,244); //#03a9f4
+//$blue: rgb(147,173,213); //#93ADD5
+//$med-blue: rgb(52,114,206); //#1976D2
+$dark-blue: rgb(0, 61, 96); //#003D60
+//$indigo: rgb(63,81,181); //#3f51b5
+//$purple: rgb(156,39,176); //#9c27b0
+$light-blue: #d9e8f6;
+
+
+
+// Stage Variables
+$stage-red: rgb(242, 107, 100); //#F26B64
+$stage-gray: rgb(209, 211, 212); //#D1D3D4
+$stage-body: lighten($black,20%);
+
+
+/* --- Theme Colors --- */
+$primary-color: $teal;
+$primary-color_darken-10p: darken($primary-color, 10%);
+$primary-color_darken-20p: darken($primary-color, 20%);
+
+$primary-color-inverse: $white;
+$font-color: $darkgray; //TODO: look into why this isn't used on all pages. Currently it is only used on source code guidelines page
+
+/* -- Buttons -- */
+$btn-accent_background-color_default: $primary-color;
+$btn-accent_background-color_focus-hover: $primary-color_darken-10p;
+$btn-accent_background-color_active: $primary-color_darken-20p;
+$btn-accent_font-color: $primary-color-inverse;
+
+
+$body-bk: rgb(240, 240, 240); //#F0F0F0
+$body-bk: $gray-extra-light;
+$banner-bk: rgb(0, 74, 113); //#f05154
+$banner-end: rgb(21, 55, 80); //#153750
+$banner-start: rgb(0, 74, 113); //#f04f54
+
+$sidenav-li-lines: rgb(220, 222, 224); //#dcdee0 light gray
+$sidenav-top-line: rgb(158, 155, 155); //#9E9B9B dark gray
+$sidenav-top-item-text-color: rgb(51, 51, 51); //#333333 
+
+$sonarqube-rating-a: rgb(0,170,0); //#0a0;
+$sonarqube-rating-b: rgb(128,204,0);//#80cc00;
+$sonarqube-rating-c: rgb(255,207,71); //#ffcf47
+$sonarqube-rating-d: rgb(247,119,0);//#f77700;
+$sonarqube-rating-e: rgb(238,0,0);//#e00;
+///------keep above ~~~~~~~~~~~~~~~~~_________________________________
+
 /* --- font sizes --- */
+//** Stage font size
+//TODO: Refactor these out
 $font-size-base:          14px;
 $font-size-largest:       ceil(($font-size-base * 3.90)); // ~55px
 $font-size-larger:        ceil(($font-size-base * 1.50)); // ~21px
@@ -47,279 +101,6 @@ $font-size-h3:            ceil(($font-size-base * 1.15)); // ~17px
 $font-size-h4:            ceil(($font-size-base * 1.25)); // ~19px
 $font-size-h5:            $font-size-base;
 $font-size-h6:            ceil(($font-size-base * 0.85)); // ~13px
-
-/* --- Theme Colors --- */
-$primary-color: $teal;
-$primary-color_darken-10p: darken($primary-color, 10%);
-$primary-color_darken-20p: darken($primary-color, 20%);
-
-$primary-color-inverse: $white;
-
-$font-color: $darkgray;
-
-/* -- Buttons -- */
-$btn-accent_background-color_default: $primary-color;
-$btn-accent_background-color_focus-hover: $primary-color_darken-10p;
-$btn-accent_background-color_active: $primary-color_darken-20p;
-$btn-accent_font-color: $primary-color-inverse;
-
-/* -- HR -- */
-$hr-group-separator: $lightgray;
-
-/* ~~~~ TEMPORARY ~~~ */
-// @gray-base:              #000;
-// @gray-darker:            lighten(@gray-base, 13.5%); // #222
-// @gray-dark:              lighten(@gray-base, 20%);   // #333
-// @gray:                   lighten(@gray-base, 33.5%); // #555
-// @gray-light:             lighten(@gray-base, 46.7%); // #777
-// @gray-lighter:           lighten(@gray-base, 93.5%); // #eee
-
-// @brand-primary:         darken(#428bca, 6.5%); // #337ab7
-// @brand-success:         #5cb85c;
-// @brand-info:            #5bc0de;
-// @brand-warning:         #f0ad4e;
-// @brand-danger:          #d9534f;
-$gray-base:              #000;
-$gray-darker:            lighten($gray-base, 13.5%); // #222
-$gray-dark:              lighten($gray-base, 20%);   // #333
-$gray-from-less:         lighten($gray-base, 33.5%); // #555
-$gray-light:             lighten($gray-base, 46.7%); // #777
-$gray-lighter:           lighten($gray-base, 93.5%); // #eee
-
-$brand-primary:         darken(#428bca, 6.5%); // #337ab7
-$brand-success:         #5cb85c;
-$brand-info:            #5bc0de;
-$brand-warning:         #f0ad4e;
-$brand-danger:          #d9534f;
-
-
-// Stage Variables
-/*
-//== Colors
-@white: rgb(255,255,255); //#ffffff
-@gray: rgb(170,170,170); //#aaaaaa
-@light-gray: rgb(201,201,201); //#C9C9C9;
-@black: rgb(0,0,0); //#000
-@blue: rgb(147,173,213); //#93ADD5
-@teal: rgb(0, 124, 133); //#007c85
-@yellow: rgb(255, 225, 91); //#ffe15b
-
-@amber: rgb(255,193,7); //#FFC107
-@orange: rgb(255,87,34); //#ff5722
-@indigo: rgb(63,81,181); //#3f51b5
-@light-blue: rgb(3,169,244); //#03a9f4
-@purple: rgb(156,39,176); //#9c27b0
-@med-blue: rgb(52,114,206); //#1976D2
-@lime: rgb(207,221,80); //#cddc39
-@cyan: rgb(0,172,193); //#00acc1
-@dark-blue: rgb(0, 61, 96); //#003D60
-
-@sidenav-li-lines: rgb(220, 222, 224); //#dcdee0 light gray
-@sidenav-top-line: rgb(158, 155, 155); //#9E9B9B dark gray
-@sidenav-top-item-text-color: rgb(51, 51, 51); //#333333 
-
-@green: #39b54a;
-
-//== Stage Colors
-@stage-body-bk: rgb(225,225,225); //#E1E1E1
-@stage-blue: rgb(21,85,105); //#155569
-
-@stage-body: lighten(@black,20%);
-
-//== Stage Nav Banner background color
-@stage-banner-bk: rgb(0, 74, 113); //rgb(240,81,84); //#f05154
-@stage-banner-end: rgb(10, 18, 23); //#0a1217
-@stage-banner-start: rgb(0, 74, 113); //rgb(240, 79, 84); //#f04f54
-
-@stage-red: rgb(242, 107, 100); //#F26B64
-@stage-orange: #F67A4B;
-@stage-gray: rgb(209, 211, 212); //#D1D3D4
-
-//== Stage brand colors
-@brand-primary:         @stage-orange;
-@brand-info:            @stage-blue;
-
-//== Stage
-@stage-transition: 0.2s;
-@stage-border-radius: 0.3rem;
-@stage-gray-precentage: 15%;
-
-@sonarqube-rating-a: #0a0;
-@sonarqube-rating-b: #80cc00;
-@sonarqube-rating-c: rgb(255,207,71); //#ffcf47
-@sonarqube-rating-d: #f77700;
-@sonarqube-rating-e: #e00;
-
-//== Buttons
-//
-//## For each of Bootstrap's buttons, define text, background and border color.
-
-@btn-primary-color:              #fff;
-@btn-primary-bg:                 @brand-primary;
-@btn-primary-border:             @brand-primary;
-
-@btn-info-color:                 #fff;
-@btn-info-bg:                    @brand-info;
-@btn-info-border:                darken(@btn-info-bg, 5%);
-
-//** Global textual link color.
-@link-color:            @teal;
-//** Link hover color for navbar
-@link-hover-color:      darken(@teal, 10%);
-//** Standard Link hover color
-@link-alt-hover-color: darken(@teal, 15%);
-//** Link hover decoration.
-@link-hover-decoration: underline;
-//** Info label background color
-@label-info-bg:               @brand-info;
-//** Text muted color
-@text-muted:                  darken(@light-gray,50%);
-
-//** Modal backdrop background color
-@modal-backdrop-bg:           #000;
-//** Modal backdrop opacity
-@modal-backdrop-opacity:      .5;
-
-//== Typography
-//
-//## Font, line-height, and color for body text, headings, and more.
-
-@font-family-sans-serif:  'Roboto', sans-serif;
-@font-family-serif:       @font-family-sans-serif;
-//** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
-@font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
-@font-family-base:        @font-family-sans-serif;
-
-//** Stage font size
-@font-size-base:          14px;
-@font-size-largest:       ceil((@font-size-base * 3.90)); // ~55px
-@font-size-larger:        ceil((@font-size-base * 1.50)); // ~21px
-@font-size-large:         ceil((@font-size-base * 1.25)); // ~19px
-@font-size-medium:        ceil((@font-size-base * 1.05)); // ~15px
-@font-size-small:         ceil((@font-size-base * 0.85)); // ~13px
-@font-size-smaller: 	  ceil((@font-size-base * 0.80)); // ~12px
-@font-size-smallest: 	  ceil((@font-size-base * 0.70)); // ~10px
-
-@font-size-material:      ceil((@font-size-base * 1.95)); // ~28px
-
-@font-size-h1:            floor((@font-size-base * 2.6)); // ~39px
-@font-size-h2:            floor((@font-size-base * 2.15)); // ~32px
-@font-size-h3:            ceil((@font-size-base * 1.15)); // ~17px
-@font-size-h4:            ceil((@font-size-base * 1.25)); // ~19px
-@font-size-h5:            @font-size-base;
-@font-size-h6:            ceil((@font-size-base * 0.85)); // ~13px
-
-//** Unit-less `line-height` for use in components like buttons.
-@line-height-base:        1.428571429; // 20/14
-//** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
-@line-height-computed:    floor((@font-size-base * @line-height-base)); // ~20px
-
-//== Components
-@line-height-large:         1.3333333; // extra decimals for Win 8.1 Chrome
-@line-height-small:         1.5;
-
-//** Line to show for multiline LESS
-@lines-to-show: 3;
-
-//Enables Beta messages
-@beta-display-message: show; //show, none
-@beta-opacity: 0.8;
-@beta-text-color: #FFE05C; */
-
-
-// Stage Variables
-$black: rgb(0, 0, 0); //#000000
-$teal: rgb(0, 124, 133); //#007c85
-$white: rgb(255,255,255); //#ffffff
-$lightgray: rgb(211,211,211); //#d3d3d3
-$gray: gray; ///(128,128,128) #808080
-$darkgray: rgb(27,27,27); //#1b1b1b
-$red: rgb(242, 107, 100); //#F26B64
-$green: #39b54a;
-
-//== Colors
-
-$gray-stage: rgb(170,170,170); //#aaaaaa
-$light-gray: rgb(201,201,201); //#C9C9C9;
-
-$blue: rgb(147,173,213); //#93ADD5
-$yellow: rgb(255, 225, 91); //#ffe15b
-
-$amber: rgb(255,193,7); //#FFC107
-$orange: rgb(255,87,34); //#ff5722
-$indigo: rgb(63,81,181); //#3f51b5
-$light-blue: rgb(3,169,244); //#03a9f4
-$purple: rgb(156,39,176); //#9c27b0
-$med-blue: rgb(52,114,206); //#1976D2
-$lime: rgb(207,221,80); //#cddc39
-$cyan: rgb(0,172,193); //#00acc1
-$dark-blue: rgb(0, 61, 96); //#003D60
-
-$sidenav-li-lines: rgb(220, 222, 224); //#dcdee0 light gray
-$sidenav-top-line: rgb(158, 155, 155); //#9E9B9B dark gray
-$sidenav-top-item-text-color: rgb(51, 51, 51); //#333333 
-
-
-
-//== Stage Colors
-$stage-body-bk: rgb(225,225,225); //#E1E1E1
-$stage-blue: rgb(21,85,105); //#155569
-
-$stage-body: lighten($black,20%);
-
-//== Stage Nav Banner background color
-$stage-banner-bk: rgb(0, 74, 113); //rgb(240,81,84); //#f05154
-$stage-banner-end: rgb(10, 18, 23); //#0a1217
-$stage-banner-start: rgb(0, 74, 113); //rgb(240, 79, 84); //#f04f54
-
-$stage-red: rgb(242, 107, 100); //#F26B64
-$stage-orange: #F67A4B;
-$stage-gray: rgb(209, 211, 212); //#D1D3D4
-
-//== Stage brand colors
-$brand-primary:         $stage-orange;
-$brand-info:            $stage-blue;
-
-//== Stage
-$stage-transition: 0.2s;
-$stage-border-radius: 0.3rem;
-$stage-gray-precentage: 15%;
-
-$sonarqube-rating-a: #0a0;
-$sonarqube-rating-b: #80cc00;
-$sonarqube-rating-c: rgb(255,207,71); //#ffcf47
-$sonarqube-rating-d: #f77700;
-$sonarqube-rating-e: #e00;
-
-//== Buttons
-//
-//## For each of Bootstrap's buttons, define text, background and border color.
-
-$btn-primary-color:              #fff;
-$btn-primary-bg:                 $brand-primary;
-$btn-primary-border:             $brand-primary;
-
-$btn-info-color:                 #fff;
-$btn-info-bg:                    $brand-info;
-$btn-info-border:                darken($btn-info-bg, 5%);
-
-//** Global textual link color.
-$link-color:            $teal;
-//** Link hover color for navbar
-$link-hover-color:      darken($teal, 10%);
-//** Standard Link hover color
-$link-alt-hover-color: darken($teal, 15%);
-//** Link hover decoration.
-$link-hover-decoration: underline;
-//** Info label background color
-$label-info-bg:               $brand-info;
-//** Text muted color
-$text-muted:                  darken($light-gray,50%);
-
-//** Modal backdrop background color
-$modal-backdrop-bg:           #000;
-//** Modal backdrop opacity
-$modal-backdrop-opacity:      .5;
 
 //== Typography
 //
@@ -331,25 +112,6 @@ $font-family-serif:       $font-family-sans-serif;
 $font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
 $font-family-base:        $font-family-sans-serif;
 
-//** Stage font size
-$font-size-base:          14px;
-$font-size-largest:       ceil(($font-size-base * 3.90)); // ~55px
-$font-size-larger:        ceil(($font-size-base * 1.50)); // ~21px
-$font-size-large:         ceil(($font-size-base * 1.25)); // ~19px
-$font-size-medium:        ceil(($font-size-base * 1.05)); // ~15px
-$font-size-small:         ceil(($font-size-base * 0.85)); // ~13px
-$font-size-smaller: 	  ceil(($font-size-base * 0.80)); // ~12px
-$font-size-smallest: 	  ceil(($font-size-base * 0.70)); // ~10px
-
-$font-size-material:      ceil(($font-size-base * 1.95)); // ~28px
-
-$font-size-h1:            floor(($font-size-base * 2.6)); // ~39px
-$font-size-h2:            floor(($font-size-base * 2.15)); // ~32px
-$font-size-h3:            ceil(($font-size-base * 1.15)); // ~17px
-$font-size-h4:            ceil(($font-size-base * 1.25)); // ~19px
-$font-size-h5:            $font-size-base;
-$font-size-h6:            ceil(($font-size-base * 0.85)); // ~13px
-
 //** Unit-less `line-height` for use in components like buttons.
 $line-height-base:        1.428571429; // 20/14
 //** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
@@ -358,11 +120,60 @@ $line-height-computed:    floor(($font-size-base * $line-height-base)); // ~20px
 //== Components
 $line-height-large:         1.3333333; // extra decimals for Win 8.1 Chrome
 $line-height-small:         1.5;
+//END TODO Refactor
 
+
+/*BEING USED ______________________________*/
 //** Line to show for multiline LESS
 $lines-to-show: 3;
+$border-button-radius: 4px;
+$modal-header-footer-color: #f2f2f2;
 
+//== Buttons
+//
+//## For each of Bootstrap's buttons, define text, background and border color.
+
+
+//== Stage Nav Banner background color
+$stage-banner-bk: rgb(0, 74, 113); //rgb(240,81,84); //#f05154
+$stage-banner-end: rgb(10, 18, 23); //#0a1217
+$stage-banner-start: rgb(0, 74, 113); //rgb(240, 79, 84); //#f04f54
+
+//== Stage
+//$stage-transition: 0.2s;
+$stage-border-radius: 0.3rem;
+$stage-gray-precentage: 15%;
+//** Text muted color
+$text-muted: darken($lightgray,50%); //previous referenced $light-gray: rgb(201,201,201); //#C9C9C9;
 //Enables Beta messages
 $beta-display-message: show; //show, none
 $beta-opacity: 0.8;
 $beta-text-color: #FFE05C;
+
+
+//*NOT BEING USED____________________________*/
+
+// //== Stage brand colors
+// //$brand-primary:         $stage-orange;
+// $brand-info:            $stage-blue;
+// $brand-info:            #5bc0de;
+// //** Global textual link color.
+// $link-color:            $teal;
+// //** Link hover color for navbar
+// $link-hover-color:      darken($teal, 10%);
+// //** Standard Link hover color
+// $link-alt-hover-color: darken($teal, 15%);
+// //** Link hover decoration.
+// $link-hover-decoration: underline;
+// //** Info label background color
+// $label-info-bg:               $brand-info;
+
+// //** Modal backdrop background color
+// $modal-backdrop-bg:           #000;
+// //** Modal backdrop opacity
+// $modal-backdrop-opacity:      .5;
+
+
+
+// /* -- HR -- */
+// $hr-group-separator: $lightgray;

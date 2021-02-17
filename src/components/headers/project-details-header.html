@@ -1,14 +1,15 @@
 <template>
-  <div class="jumbotron hero-jumbotron secondary details">
-    <div class="container-fluid">
-      <div class="proj-title clearfix">
-        <div class="lang-logo">
-          <img aria-hidden="true" if.bind="repo.sourceData.owner.name == 'foundation'" src="/img/language-icons/foundation.svg" onError="this.onerror=null;this.src='/img/language-icons/default.svg';" alt="Foundation">
-          <img role="img" aria-label="Language icon ${repo.sourceData.language}" if.bind="repo.sourceData.owner.name != 'foundation' && repo.sourceData.language != null" src="/img/language-icons/${repo.sourceData.language.toLowerCase()}.svg" onError="this.onerror=null;this.src='/img/language-icons/default.svg';" alt="Language">
-          <img aria-hidden="true" if.bind="repo.sourceData.language == null && repo.sourceData.owner.name != 'foundation'" src="/img/language-icons/default.svg" alt="Language">
-        </div>
-        <h1 tabindex="0" id="project-details-project-name" aria-label="Project details for: ${repo.sourceData.name}">${repo.sourceData.name}</h1>
-        <p aria-label="Project language: ${repo.sourceData.language ? repo.sourceData.language : stageConfig.NO_LANG}"><span aria-hidden="true">${repo.sourceData.language ? repo.sourceData.language : stageConfig.NO_LANG}</span></p>
+  <div class="jumbotron hero-jumbotron secondary project-details-page-header">
+    <div class="grid-container">
+      <div class="proj-title grid-row">
+        <div class="grid-col-12">
+          <div class="lang-logo">
+            <img aria-hidden="true" if.bind="repo.sourceData.owner.name == 'foundation'" src="/img/language-icons/foundation.svg" onError="this.onerror=null;this.src='/img/language-icons/default.svg';" alt="Foundation">
+            <img role="img" aria-label="Language icon ${repo.sourceData.language}" if.bind="repo.sourceData.owner.name != 'foundation' && repo.sourceData.language != null" src="/img/language-icons/${repo.sourceData.language.toLowerCase()}.svg" onError="this.onerror=null;this.src='/img/language-icons/default.svg';" alt="Language">
+            <img aria-hidden="true" if.bind="repo.sourceData.language == null && repo.sourceData.owner.name != 'foundation'" src="/img/language-icons/default.svg" alt="Language">
+          </div>
+          <h1 tabindex="0" id="project-details-project-name" aria-label="Project details for: ${repo.sourceData.name}">${repo.sourceData.name}</h1>
+          <p aria-label="Project language: ${repo.sourceData.language ? repo.sourceData.language : stageConfig.NO_LANG}"><span aria-hidden="true">${repo.sourceData.language ? repo.sourceData.language : stageConfig.NO_LANG}</span></p>
       </div>
     </div>
   </div>

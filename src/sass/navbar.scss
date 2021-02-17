@@ -6,7 +6,7 @@
 //Desktop and larger. desktop = 1024px
 @include at-media('desktop'){
     .usa-header.usa-header--extended{
-        .usa-navbar{
+		.usa-navbar{
             #extended-logo{
                 display: none;   
             }
@@ -75,8 +75,17 @@
     }  
 }
 
+@include at-media-max('desktop') {
+	#navbar .usa-nav__secondary {
+		position: static !important;
+	}
+	
+}
+#extended-logo {
+	display: none !important;
+}
 //Smaller than desktop. desktop = 1024px
-@include at-media-max('desktop'){
+/* @include at-media-max('desktop'){
     .hero-banner .inner{
         padding-top: 0px;
         background-image: url(/img/network-pattern.svg);
@@ -117,8 +126,8 @@
                 border-bottom: 1px solid #c9c9c9;
             }
         }//end .usa-navbar
-        .navbar.usa-nav{
-            width: 20rem;
+        .navbar.usa-nav{/* 
+            //width: 20rem;
     
             li{
                 float: unset;
@@ -213,9 +222,9 @@
 
                 }
             }//end .usa-nav__secondary
-        }//end .navbar.usa-nav
-    }//end .hero-banner .inner 
-}
+        }//end .navbar.usa-nav */
+    //end .hero-banner .inner }
+//} */
 
 //Smaller than mobile-lg. mobile-lg = 480px
 @include at-media-max('mobile-lg'){
@@ -760,7 +769,7 @@
 			text-align: left;
 		}
 
-		.container-fluid,
+		.grid-container,
 		.container {
 
 			h1, p {
@@ -831,10 +840,17 @@
 		}
 	}
 
-  .details {
+  .hero-jumbotron.project-details-page-header { /// UNICORN move to project-details
 		padding-bottom: 40px;
 
-		.proj-title {
+		
+			.grid-container h1,
+			p {
+				padding-left: 70px;
+			}
+		
+
+		.proj-title { /// UNICORN move to project-details
 			position: relative;
 
 	    .lang-logo {

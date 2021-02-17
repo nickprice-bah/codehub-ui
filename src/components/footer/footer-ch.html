@@ -55,7 +55,7 @@
               </div>
               <div class="controls">
                 <input type="email" class="form-control ${valid ? 'valid' : 'invalid'} ${confirmed ? 'confirmed' : ''}" id="input-email-address" aria-describedby="emailHelp" placeholder="Email address" value.two-way="email" keypress.trigger="handleKeypress($event)">
-                <button type="button" class="btn btn-default btn-accent" click.delegate="signup()">
+                <button type="button" class="btn btn-default btn-accent" click.delegate="signup()" id="email-address-submit">
                   Sign Up
                 </button>
               </div>

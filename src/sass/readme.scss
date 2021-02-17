@@ -1,0 +1,20 @@
+#readme-title div.modal-footer.btn-group > button.btn.btn-accent.btn-icon-right,
+#readme-title div.modal-footer.btn-group > button.btn.btn-secondary {
+    border-radius: $border-button-radius;
+}
+#readme-title div.modal-footer.btn-group > button.btn.btn-secondary{
+    margin-left: 10px; 
+}
+
+ux-dialog-container.active > div > div {
+    box-shadow: 0px 0px 42px #000000;
+}
+
+#readme-title {
+    box-shadow: 0px 0px 19px 500px #aaaaaa8c;
+}
+
+body ux-dialog-overlay.active {
+    background-color: #000;
+    opacity: 0.5;
+}

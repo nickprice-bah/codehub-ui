@@ -3,46 +3,120 @@
   <require from="../resources/value-converters/ago"></require>
   <require from="../resources/custom-attributes/bootstrap-tooltip"></require>
 
-  <div if.bind="repo" class="">
+  <div if.bind="repo" class="cards-wrapper">
     <div class="card card-search hover-card">
-      <div class="grid-row">
-        <div class="grid-col-7">
-          <div class="card-header">
+      <div class="" style="display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;">
+        <div class="card-header" style="flex: 0 1 67%;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: flex-start;">
+
+          <div class="" style="flex: 0 0 75px;">
             <div tabindex="0" class="lang-logo" role="img" aria-label="Language icon ${repo.sourceData.language}">
-              <img alt="Language icon ${repo.sourceData.language}" if.bind="repo.sourceData.owner.type != 'foundation'" src.bind="language_image">
-              <img if.bind="repo.sourceData.owner.type == 'foundation'" src="/img/language-icons/foundation.svg" onError="this.onerror=null;this.src='/img/language-icons/default.svg';" alt="Foundation">
-            </div>
-            <div class="card-title multiline">
-              <a id="card-search-title-link-${repo.id}" href="#" route-href="route:project-details; params.bind: {id:repo.id}" aria-label="Project name: ${repo.sourceData.name}" innerhtml.bind="repo.highlights['sourceData.name'] ? repo.highlights['sourceData.name'] : repo.sourceData.name"></a>
-            </div>
-            <div tabindex="0" class="org-name">${language}</div>
-          </div>
-          <div tabindex="0" class="proj-desc ${hasdescription ? '' : 'no-desc'} multiline" innerhtml.bind="description"></div>
-          <div class=" card-search-details">
-            <div class="text-muted last-updated clearfix">
-              <span aria-hidden="true">By&nbsp;</span>
-              <a id="card-search-organization-link-${repo.id}" href="#" click.trigger="dialogFunctions.openLeavingSiteConfirmation(repo.sourceData.owner.name,repo.sourceData.owner.url,$event.target)" bootstrap-tooltip data-toggle="tooltip" data-placement="top" aria-label="Project organization: ${repo.sourceData.owner.name}, view on GitHub." target="_blanks">
-                <span id="card-search-organization-link-text-${repo.id}">${repo.sourceData.owner.name}</span>
-              </a>
-              &nbsp; | &nbsp;
-              <span tabindex="0" id="card-search-organization-updated-text-${repo.id}">Updated ${repo.sourceData.lastPush | ago}</span>
-            </div>
-            <div class="card-search-badges text-muted last-updated">
-              <div>
-                <a href="#" route-href="route:badges-about" title="Status ${repo.codehubData.badges.status}">
-                  <img alt="Badge status image" src.bind="badge_status_image">
-                  <span>${repo.codehubData.badges.status.toUpperCase()}</span>
-                </a>
+                <img alt="Language icon ${repo.sourceData.language}" if.bind="repo.sourceData.owner.type != 'foundation'" src.bind="language_image">
+                <img if.bind="repo.sourceData.owner.type == 'foundation'" src="/img/language-icons/foundation.svg" onError="this.onerror=null;this.src='/img/language-icons/default.svg';" alt="Foundation">
               </div>
-              <div>
-                <i class="material-icons" aria-hidden="true">public</i>
-                <span tabindex="0" id="card-search-organization-origin-text-${repo.id}">PUBLIC</span>
+          </div>
+          <div class="" style="flex: 3 0 50%;">
+            <div class="card-header">
+              
+              <div class="multiline">
+                <h2 id="card-search-title-link-${repo.id}" href="#" route-href="route:project-details; params.bind: {id:repo.id}" aria-label="Project name: ${repo.sourceData.name}" innerhtml.bind="repo.highlights['sourceData.name'] ? repo.highlights['sourceData.name'] : repo.sourceData.name"></h2>
+              </div>
+              <div tabindex="0" class="org-language">${language}</div>
+            </div>
+            <div tabindex="0" class="proj-desc ${hasdescription ? '' : 'no-desc'} multiline" innerhtml.bind="description"></div>
+            <div class=" card-search-details">
+              <div class="text-muted last-updated clearfix">
+                <span aria-hidden="true">By:&nbsp;</span>
+                <!-- <a id="card-search-organization-link-${repo.id}" href="#" click.trigger="dialogFunctions.openLeavingSiteConfirmation(repo.sourceData.owner.name,repo.sourceData.owner.url,$event.target)" bootstrap-tooltip data-toggle="tooltip" data-placement="top" aria-label="Project organization: ${repo.sourceData.owner.name}, view on GitHub." target="_blanks">
+                  <span id="card-search-organization-link-text-${repo.id}">${repo.sourceData.owner.name}</span>
+                </a> -->
+                <span id="card-search-organization-link-${repo.id}">${repo.sourceData.owner.name}</span>
+                &nbsp; | &nbsp;
+                <span tabindex="0" id="card-search-organization-updated-text-${repo.id}">Updated ${repo.sourceData.lastPush | ago}</span>
+              </div>
+              <div class="card-search-badges text-muted last-updated">
+                
+                <div>
+                  <i class="material-icons" aria-hidden="true">public</i>
+                  <span tabindex="0" id="card-search-organization-origin-text-${repo.id}">PUBLIC</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="grid-col-5 col-lg-5 col-github-stats">
+        
+
+        <div class="right_column col-github-stats grid-col-auto">
+          <div class="header">
+            <h3 tabindex="0" class=""><span>Project Stats</span></h3>
+            <span class="source-github-tm" aria-hidden="true">
+              <em class="text-muted" aria-hidden="true">Source:
+                
+                <!-- <a if.bind="infected_files == 0" id="card-search-project-status-link-${repo.id}" href="#" click.trigger="dialogFunctions.openLeavingSiteConfirmation(repo.sourceData.name,repo.sourceData.repositoryUrl,$event.target)"  target="_blank" aria-label="View source code on Github.">Github™</a>
+                <a if.bind="infected_files > 0" id="card-popular-project-status-link-${repo.id}" href="#" click.trigger="dialogFunctions.displayVScanDialog(repo,$event.target)"  target="_blank" aria-label="View source code on Github.">Github™</a> -->
+                <span id="project-source-link-${repo.id}">Github™</span>
+              </em>
+            </span>
+          </div>
+
+          <div class="grid-row github-stats">
+            <div class="grid-col-6">
+              <div class="stat" tabindex="0" aria-label="${repo.sourceData.stars} stars">
+                <span class="octicon octicon-star"></span>
+                  <span id="project-stats-stars" class="num text-muted text-emphasized">${repo.sourceData.stars | num}</span>
+                <span class="stat-label">stars</span>
+              </div>
+              <div class="stat" tabindex="0" aria-label="${repo.sourceData.contributors.length} contributors">
+                <span class="octicon octicon-organization"></span>
+                  <span id="project-stats-contributors" class="num text-muted text-emphasized">${repo.sourceData.contributors.length | num}</span>
+                <span class="stat-label">contributors</span>
+              </div>
+              <div class="stat" tabindex="0" aria-label="${repo.sourceData.watchers} watchers">
+                <span class="octicon octicon-eye"></span>
+                  <span id="project-stats-watchers" class="num text-muted text-emphasized">${repo.sourceData.watchers | num}</span>
+                <span class="stat-label">watchers</span>
+              </div>
+              <div class="stat" tabindex="0" aria-label="${downloads} downloads">
+                <span class="octicon octicon-cloud-download"></span>
+                <span id="project-stats-downloads" class="num text-muted text-emphasized">${downloads | num}</span>
+                <span class="stat-label">downloads</span>
+              </div>
+            </div>
+            <div class="grid-col-6">
+              <div class="stat" tabindex="0" aria-label="${repo.sourceData.commits} commits">
+                <span class="octicon octicon-git-commit"></span>
+                  <span id="project-stats-commits" class="num text-muted text-emphasized">${repo.sourceData.commits | num:1}</span>
+                <span class="stat-label">commits</span>
+              </div>
+              <div class="stat" tabindex="0" aria-label="${releases.length} releases">
+                <span class="octicon octicon-tag"></span>
+                <span id="project-stats-releases" class="num text-muted text-emphasized">${releases.length | num}</span>
+                <span class="stat-label">releases</span>
+              </div>
+              <div class="stat" tabindex="0" aria-label="${repo.sourceData.forksCount | num} forks">
+                <span class="octicon octicon-repo-forked"></span>
+                  <span id="project-stats-forks" class="num text-muted text-emphasized">${repo.sourceData.forksCount | num}</span>
+                <span class="stat-label">forks</span>
+              </div>
+              <div class="stat ${repo.generatedData.vscan.infected_files>0?' stat-vscan':''}" tabindex="0" aria-label="${repo.generatedData.vscan.infected_files} viruses">
+                <span class="octicon ${repo.generatedData.vscan.infected_files>0?'octicon-bug':'octicon-check'}"></span>
+                <span id="project-stats-infected-files" class="num ${repo.generatedData.vscan.infected_files==0?'text-muted text-emphasized':''}">${repo.generatedData.vscan.infected_files}</span>
+                <span class="stat-label">viruses</span>
+              </div>
+            </div>
+          </div>
+
+
+      </div>
+
+
+      <!-- <div class="grid-col-5 col-lg-5 col-github-stats">
           <div class="card-stats lined-header">
             <span class="pull-right">
               <em class="text-muted">Source:
@@ -98,16 +172,27 @@
               </span>
           </div>
         </div>
-      </div>
+      </div> -->
+
+
+      
+
     </div>
 
     <div class="grid-row card-links">
       <ul class="list-inline pull-left">
         <li><a id="card-search-project-open-readme-${repo.id}" href="#" click.trigger="dialogFunctions.openReadmeModal(repo,$event.target)"><i class="material-icons" aria-hidden="true">library_books</i> Show README</a></li>
-      </ul>
-      <ul class="list-inline pull-right">
         <li class="pull-right"><a route-href="route:project-details; params.bind: {id:repo.id}" aria-label="Go to project details">Go to Details<i class="material-icons" aria-hidden="true">chevron_right</i></a></li>
       </ul>
+      <!-- <ul class="list-inline pull-right">
+        
+        <li if.bind="badge_status_image">
+          <a href="#" route-href="route:badges-about" title="Status ${repo.codehubData.badges.status}">
+            <img alt="Badge status image" class="badge-status-img" src.bind="badge_status_image">
+            <span>${repo.codehubData.badges.status.toUpperCase()}</span>
+          </a>
+        </li>
+      </ul> -->
     </div>
 
     <a class="card-link" href="#" route-href="route:project-details; params.bind: {id:repo.id}" aria-label="Go to project details">&nbsp;</a>

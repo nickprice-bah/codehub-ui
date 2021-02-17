@@ -2,90 +2,90 @@
   <require from="../resources/value-converters/num"></require>
   <require from="../resources/value-converters/duration"></require>
 
-  <main class="usa-layout-docs usa-section metrics-page">
+  <main class="usa-layout-docs usa-section repopublishing-page metrics-page" id="main-content">
     <div class="grid-container container-fluid">
-      <div class="grid-row grid-gap text-heavy-page">
-        <aside id="side-nav" class="col-lg-2 col-md-3 desktop:grid-col-3 sidenav">
-            <compose view-model="side-nav" router.bind="router"></compose>
-        </aside>
-        <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12 usa-layout-docs__main desktop:grid-col-9 usa-prose">
+        <div class="grid-row grid-gap text-heavy-page">
+            <aside id="side-nav" class="grid-col-3 sidenav">
+                <compose view-model="side-nav" router.bind="router"></compose>
+            </aside>
+            <div class="grid-col-9 usa-layout-docs__main usa-prose">
           <h2 id="id-metrics-title">Metrics</h2>
-          <p id="id-metrics-description" class="p_full-width">
+          <p id="id-metrics-description" class="">
             Below is the ITS CodeHub metrics dashboard. The metrics dashboard provides statistics on GitHub organizations and their corresponding repositories. Users can review known bugs and vulnerabilities, counts and estimated technical debt, as well as detailed source code health scores.
           </p>
-          <div class="grid-row row ${loading ? 'hidden' : ''}">
-            <div class="grid-col-12 col-lg-12 cards-wrapper metrics-wrapper">
-              <div class="grid-row row">
-                <div class="div grid-col-12 col-lg-12">
+          <div class="${loading ? 'hidden' : ''}">
+            <div class="cards-wrapper metrics-wrapper">
+              <div class="grid-row grid-gap">
+                <!-- <div class="div grid-col-12"> -->
                   <div class="card-metrics-organization">
-                    <h2 tabindex="0" class="text-center">${organizationTitle}:</h2>
+                    <h3 tabindex="0" class="">${organizationTitle}:</h3>
                     <div class="card-metrics-organization-controls">
-                      <select value.bind="selectedOrganization" change.delegate="organizationChanged(selectedOrganization)" name="organization" id="id-organization">
+                      <select value.bind="selectedOrganization" change.delegate="organizationChanged(selectedOrganization)" name="organization" id="id-organization" class="usa-select">
                         <option repeat.for="organization of organizations" model.bind="organization">
                           ${organization.name}
                         </option>
                       </select>
                     </div>
+                  <!-- </div> -->
+                </div>
+              </div>
+              <div class="grid-row row-1 grid-gap">
+                <div class="div grid-col-4">
+                  <div class="card card-metrics">
+                    <h3 tabindex="0" class="">Projects</h3>
+                    <div tabindex="0" id="number-of-projects" class="health-num">${insights.numberOfProjects | num}</div>
+                  </div>
+                </div>
+                <div class="div grid-col-4">
+                  <div class="card card-metrics">
+                    <h3 tabindex="0" class="">Bugs &#38; Vulnerabilities</h3>
+                    <div tabindex="0" id="bugs-vulnerabilities" class="health-num">${insights.bugsVulnerabilities | num:1}</div>
+                  </div>
+                </div>
+                <div class="div grid-col-4">
+                  <div class="card card-metrics">
+                    <h3 tabindex="0" class="">Technical Debt</h3>
+                    <div tabindex="0" id="technical-debt" class="health-num">${insights.technicalDebt | duration}</div>
                   </div>
                 </div>
               </div>
-              <div class="grid-row row">
-                <div class="div col-lg-4">
+              <div class="grid-row grid-gap">
+                <div class="col-lg-6 grid-col-6">
                   <div class="card card-metrics">
-                    <h2 tabindex="0" class="text-center">Projects</h2>
-                    <div tabindex="0" id="number-of-projects" class="text-center health-num">${insights.numberOfProjects | num}</div>
-                  </div>
-                </div>
-                <div class="div col-lg-4">
-                  <div class="card card-metrics">
-                    <h2 tabindex="0" class="text-center">Bugs &#38; Vulnerabilities</h2>
-                    <div tabindex="0" id="bugs-vulnerabilities" class="text-center health-num">${insights.bugsVulnerabilities | num:1}</div>
-                  </div>
-                </div>
-                <div class="div col-lg-4">
-                  <div class="card card-metrics">
-                    <h2 tabindex="0" class="text-center">Technical Debt</h2>
-                    <div tabindex="0" id="technical-debt" class="text-center health-num">${insights.technicalDebt | duration}</div>
-                  </div>
-                </div>
-              </div>
-              <div class="grid-row row">
-                <div class="col-lg-6">
-                  <div class="card card-metrics">
-                    <div class="lined-header">
-                      <h2 tabindex="0" class=""><span>Top Projects by Forks</span></h2>
+                    <div>
+                      <h3 tabindex="0" class=""><span>Top Projects by Forks</span></h3>
                     </div>
-                    <div tabindex="0" id="mfChart" aria-label="Bar chart image of most forked projects" style="width: 100%; height: 320px; border: 0px solid rgb(204, 204, 204); padding: 10px; -webkit-tap-highlight-color: transparent; -webkit-user-select: none; cursor: default; background-color: rgba(0, 0, 0, 0);"></div>
+                    <div tabindex="0" id="mfChart" class="metrics-graph" aria-label="Bar chart image of most forked projects" style="width: 100%; height: 320px; border: 0px solid rgb(204, 204, 204); padding: 10px; -webkit-tap-highlight-color: transparent; -webkit-user-select: none; cursor: default; background-color: rgba(0, 0, 0, 0);"></div>
                   </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-6 grid-col-6">
                   <div class="card card-metrics">
-                    <div class="lined-header">
-                      <h2 tabindex="0" class="" ><span>Projects by Languages</span></h2>
+                    <div>
+                      <h3 tabindex="0" class="" ><span>Projects by Languages</span></h3>
                     </div>
-                    <div tabindex="0" id="main" aria-label="Bar chart image of projects by languages." style="width: 100%; height: 320px; border: 0px solid rgb(204, 204, 204); padding: 10px; -webkit-tap-highlight-color: transparent; -webkit-user-select: none; cursor: default; background-color: rgba(0, 0, 0, 0);"></div>
+                    <div tabindex="0" id="main" class="metrics-graph" aria-label="Bar chart image of projects by languages." style="width: 100%; height: 320px; border: 0px solid rgb(204, 204, 204); padding: 10px; -webkit-tap-highlight-color: transparent; -webkit-user-select: none; cursor: default; background-color: rgba(0, 0, 0, 0);"></div>
 
                   </div>
                 </div>
               </div>
-              <div class="grid-row row">
-                <div class="grid-col-12 col-lg-12">
+              <div class="grid-row grid-gap">
+                <div class="grid-col-12 grid-col-12">
                   <div class="card card-metrics">
-                    <div class="lined-header">
-                      <h2 tabindex="0" class=""><span>Most Used Languages</span></h2>
+                    <div>
+                      <h3 tabindex="0" class=""><span>Most Used Languages</span></h3>
                     </div>
-                    <div tabindex="0" id="chartMostUsedLanguajes" aria-label="Pie chart image of most used languages" style="width: 100%; height: 320px; border: 0px solid rgb(204, 204, 204); padding: 10px; -webkit-tap-highlight-color: transparent; -webkit-user-select: none; cursor: default; background-color: rgba(0, 0, 0, 0);"></div>
+                    <div tabindex="0" id="chartMostUsedLanguajes" class="metrics-graph" aria-label="Pie chart image of most used languages" style="width: 100%; height: 320px; border: 0px solid rgb(204, 204, 204); padding: 10px; -webkit-tap-highlight-color: transparent; -webkit-user-select: none; cursor: default; background-color: rgba(0, 0, 0, 0);"></div>
                   </div>
                 </div>
               </div>
-              <div class="grid-row row">
-                <div class="grid-col-12col-lg-12">
+              <div class="grid-row grid-gap">
+                <div class="grid-col-12">
                   <div class="card card-metrics">
-                    <div class="lined-header">
+                    <div>
                       <span class="pull-right hidden"><em class="text-muted">Source: <a href="#" id="insight-overall-health" click.trigger="dialogFunctions.openLeavingSiteConfirmation('SonarQube™', sonarqube_projects,$event.target)" target="_blank">SonarQube™</a></em></span>
-                      <h2 tabindex="0" class=""><span>Overall Source Code Health</span></h2>
+                      <h3 tabindex="0" class=""><span>Overall Source Code Health</span></h3>
                     </div>
-                    <div tabindex="0" id="main2" aria-label="Collection of radar charts showing reliability, security and maintainability." style="width: 100%;height:337px;"></div>
+                    <div tabindex="0" id="main2" class="metrics-graph" aria-label="Collection of radar charts showing reliability, security and maintainability." style="width: 100%;height:337px;"></div>
                   </div>
                 </div>
               </div>

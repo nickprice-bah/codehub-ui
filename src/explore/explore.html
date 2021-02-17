@@ -9,56 +9,62 @@
 
   
 
-  <main class="usa-layout-docs usa-section explore-page">
-    <div class="grid-container container-fluid title-wrapper">
-      <!-- <div class=""> -->
-        <div class="grid-row">
-          <div class="grid-col-12 explore-filter-wrapper">
-            <div show.bind="searchDone" class="grid-row filter-result-bar">
-              <div class="grid-col-9">
-                <div class="filter-wrapper">
-                  <ch-dropdown id="filterCategories" collection.bind="categoriesFilter" title="Categories" onitemchanged.call="categoriesChanged($event)" />
-                </div>
-                <div class="filter-wrapper">
-                  <ch-dropdown id="filterOrganizations" collection.bind="organizationsFilter" title="Organizations" onitemchanged.call="organizationsChanged($event)" />
-                </div>
-                <div class="filter-wrapper">
-                  <ch-dropdown id="filterLanguages" collection.bind="languagesFilter" title="Languages" onitemchanged.call="languagesChanged($event)" />
-                </div>
-              </div>
-              <div class="grid-col-3">
-                <compose view="../components/sorting.html"></compose>
+  <!-- <main class="usa-layout-docs usa-section explore-page"> -->
+    <div class="grid-container container-fluid loading-wrapper explore-page">
+      <div class="grid-row">
+        <div class="grid-col-3 title-wrapper">
+          <div if.bind="searchDone" class="grid-col-9 col-chips">
+            <div>
+              <span id="explore-projects-count-title"class="project-counter">Projects</span> 
+              <span id="explore-projects-count">(${resultCount})</span></li>
+            </div>
+            <span class="">
+              <compose view="../components/sorting.html"></compose>
+            </span>
+            
+            
+            <!-- <ul class='list-inline filter-category'>
+              <template if.bind="!filterLangEmpty || !filterOrgEmpty || !filterCategoriesEmpty ">
+                <li>ORIGINAL</li>
+                <li if.bind="!filterCategoriesEmpty" repeat.for="pill of filters.selectedCategories">
+                  <span class="stage-chip">${filters.getDataFromPipedString(pill,1)} <small>(${filters.countProjectsInCategory(projects, filters.getDataFromPipedString(pill,0))})</small> <a href="#" click.trigger="filters.removePill('#filterCategories',pill)"><em class="material-icons">close</em></a></span>
+                </li>
+                <li if.bind="!filterLangEmpty" repeat.for="pill of filters.selectedLanguages">
+                <span class="stage-chip">${pill} <small>(${filters.countUniqueValues(projects, 'sourceData.language', pill)})</small> <a href="#" click.trigger="filters.removePill('#filterLanguages',pill)"><em class="material-icons">close</em></a></span>
+                </li>
+                <li if.bind="!filterOrgEmpty" repeat.for="pill of filters.selectedOrganizations">
+                <span class="stage-chip">${pill} <small>(${filters.countUniqueValues(projects, 'sourceData.owner.name', pill)})</small> <a href="#" click.trigger="filters.removePill('#filterOrganizations',pill)"><em class="material-icons">close</em></a></span>
+                </li>
+                
+              </template>
+            </ul> -->
+          </div>
+          <div class="filter-wrapper">
+            <div class="filter-result-bar">
+              <div class="usa-accordion usa-accordion--bordered">
+                  <div class="usa-accordion__heading">
+                    <ch-dropdown id="filterCategories" collection.bind="categoriesFilter" title="Categories" onitemchanged.call="categoriesChanged($event)" 
+                    class="${(searchDone && resultCount > 0)&&(filters && (filters.selectedCategories.length>0)) ? 'show-the-dropdown' : ''}"/>
+                  </div>
+                  <div class="usa-accordion__heading">
+                    <ch-dropdown id="filterOrganizations" collection.bind="organizationsFilter" title="Organizations" onitemchanged.call="organizationsChanged($event)"
+                    class="${(searchDone && resultCount > 0)&&(filters && (filters.selectedOrganizations.length>0)) ? 'show-the-dropdown' : ''}"/>
+                  </div>
+                  <div class="usa-accordion__heading">
+                    <ch-dropdown id="filterLanguages" collection.bind="languagesFilter" title="Languages" onitemchanged.call="languagesChanged($event)"
+                    class="${(searchDone && resultCount > 0)&&(filters && (filters.selectedLanguages.length>0)) ? 'show-the-dropdown' : ''}" />
+                  </div>
+      
               </div>
             </div>
+            
           </div>
         </div>
-      <!-- </div> -->
-    </div>
-    <div class="grid-container container-fluid loading-wrapper">
-      <div class="grid-row">
-        <div if.bind="searchDone" class="grid-col-12 col-chips">
-          <ul class='list-inline'>
-            <li><span class="project-counter">Projects</span> <span id="explore-projects-count">(${resultCount})</span></li>
-            <template if.bind="!filterLangEmpty || !filterOrgEmpty || !filterCategoriesEmpty ">
-              <li if.bind="!filterCategoriesEmpty" repeat.for="pill of filters.selectedCategories">
-                <span class="stage-chip">${filters.getDataFromPipedString(pill,1)} <small>(${filters.countProjectsInCategory(projects, filters.getDataFromPipedString(pill,0))})</small> <a href="#" click.trigger="filters.removePill('#filterCategories',pill)"><em class="material-icons">close</em></a></span>
-              </li>
-              <li if.bind="!filterLangEmpty" repeat.for="pill of filters.selectedLanguages">
-              <span class="stage-chip">${pill} <small>(${filters.countUniqueValues(projects, 'sourceData.language', pill)})</small> <a href="#" click.trigger="filters.removePill('#filterLanguages',pill)"><em class="material-icons">close</em></a></span>
-              </li>
-              <li if.bind="!filterOrgEmpty" repeat.for="pill of filters.selectedOrganizations">
-              <span class="stage-chip">${pill} <small>(${filters.countUniqueValues(projects, 'sourceData.owner.name', pill)})</small> <a href="#" click.trigger="filters.removePill('#filterOrganizations',pill)"><em class="material-icons">close</em></a></span>
-              </li>
-              <li>
-                <a class="clear-btn" href="#" click.delegate="filters.clearAllFilters()">Clear All</a>
-              </li> 
-            </template>
-          </ul>
-        </div>
+        
         <!-- TODO: Reference src/search/results.html for this section so they match. Make a component?-->
-        <div class="grid-col-12 cards-wrapper">
+        <div class="grid-col-9 cards-wrapper">
           <div class="grid-row">
-            <div class="grid-col-6 grid-offset-3">
+            <div class="grid-col-6">
               <div if.bind="searchDone && resultCount < 1" class="card card-search no-results">
                 <div class="lined-header">
                   <h2 class=""><span id="explore-no-results">No Results</span></h2>
@@ -79,13 +85,37 @@
             filterCategory:{ filterArray: filters.selectedCategories}:filters.selectedCategories.length |
             filter: { propertyName: 'sourceData.owner.name', filterArray: filters.selectedOrganizations}:filters.selectedOrganizations.length |
             filter: { propertyName: 'sourceData.language', filterArray: filters.selectedLanguages}:filters.selectedLanguages.length |
-            chunk: 3">
-                <compose view-model="../components/card" if.bind="repo[0]" model.bind="{data:repo[0],showFeatured: true}" class="AAA usa-card usa-card--flag desktop:grid-col-4 grid-col-12"></compose>
-                <compose view-model="../components/card" if.bind="repo[1]" model.bind="{data:repo[1],showFeatured: true}" class="BBB usa-card usa-card--flag desktop:grid-col-4 grid-col-12"></compose>
-                <compose view-model="../components/card" if.bind="repo[2]" model.bind="{data:repo[2],showFeatured: true}" class="CCC usa-card usa-card--flag desktop:grid-col-4 grid-col-12"></compose>
+            chunk: 2">
+                <compose view-model="../components/card" if.bind="repo[0]" model.bind="{data:repo[0],showFeatured: true}" class="AAA usa-card usa-card--flag desktop:grid-col-6 grid-col-12"></compose>
+                <compose view-model="../components/card" if.bind="repo[1]" model.bind="{data:repo[1],showFeatured: true}" class="BBB usa-card usa-card--flag desktop:grid-col-6 grid-col-12"></compose>
+                <!-- <compose view-model="../components/card" if.bind="repo[2]" model.bind="{data:repo[2],showFeatured: true}" class="CCC usa-card usa-card-/-flag desktop:grid-col-4 grid-col-12"></compose> -->
           </div>
         </div>
       </div>
     </div>
-  </main>
+    <div class="grid-col-2 title-wrapper">
+      <!-- <div class=""> -->
+        <!-- <div class="grid-row"> -->
+          <div class="explore-filter-wrapper">
+            <div show.bind="searchDone" class="grid-row filter-result-bar">
+              <div class="grid-col-9">
+                <div class="filter-wrapper">
+                  <ch-dropdown id="filterOrganizations" collection.bind="organizationsFilter" title="Organizations" onitemchanged.call="organizationsChanged($event)" />
+                </div>
+                <div class="filter-wrapper">
+                  <ch-dropdown id="filterLanguages" collection.bind="languagesFilter" title="Languages" onitemchanged.call="languagesChanged($event)" />
+                </div>
+                <div class="filter-wrapper">
+                  <ch-dropdown id="filterCategories" collection.bind="categoriesFilter" title="Categories" onitemchanged.call="categoriesChanged($event)" />
+                </div>
+              </div>
+              
+              
+            </div>
+          </div>
+        <!-- </div> -->
+      <!-- </div> -->
+    </div>
+    
+  <!-- </main> -->
 </template>

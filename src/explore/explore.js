@@ -106,10 +106,10 @@ export class Explore {
     }
     if (val && val.length > 0) {
       this.filters.selectedLanguages =  val.map(x => x.option);
-      this.filterOrgEmpty = false;
+      this.filterLangEmpty = false;
     } else {
       this.filters.selectedLanguages.splice(0, this.filters.selectedLanguages.length);
-      this.filterOrgEmpty = true;
+      this.filterLangEmpty = true;
     }
     this.applyFilters();
   }

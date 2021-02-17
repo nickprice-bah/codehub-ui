@@ -109,7 +109,6 @@ footer {
     .usa-footer__secondary-section {
         #dh-footer_contact-us-email {
             font-weight: bold;
-            font-size: 14px;
             @include at-media-max('mobile-lg') {
                 font-size: larger;
             }
@@ -162,17 +161,36 @@ footer {
             justify-content: space-between;
         } 
 
-        .email-registration-wrapper .content .message-alert {
-            font-weight: normal;
-            color: #920000;
-        }
-        
         .email-registration-wrapper .content .message {
             //font-family: 'Roboto', sans-serif;
             font-size: 15px;
             font-weight: 100;
             color: #000000;
             width: 385px;
+        }
+
+        .email-registration-wrapper .content .message-alert {
+            font-weight: normal;
+            color: #920000;
+        }
+
+        .email-registration-wrapper .content .controls{
+            & .form-control{
+                margin-top: 7px;
+                margin-bottom: 7px;
+            }
+
+            & .valid {
+                background-color: #f2f2f2;
+            }
+
+            & .invalid{
+                background-color: #ffcccc !important;
+            }
+
+            & .invalid::placeholder {
+                color: #2d2d2d;
+            }
         }
     }
 }

@@ -1,21 +1,21 @@
 <template>
   <require from="resources/custom-elements/markdown"></require>
-  <div class="${visible?'':'hide'}" tabindex="-1" role="dialog" id="readme-title" aria-label="Readme dialog for ${repo.sourceData.name}, press escape to exit the dialog at any time.">
+  <div class="${visible?'':'hide'} readme-footer" tabindex="-1" role="dialog" id="readme-title" aria-label="Readme dialog for ${repo.sourceData.name}, press escape to exit the dialog at any time.">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
+          <h4 tabindex="1"  class="modal-title" ><span class="text-uppercase" aria-hidden="true">readme</span> for ${repo.sourceData.name}</h4>
           <button tabindex="2" type="button" click.trigger="controller.cancel()" class="close" aria-label="Close"><span
             aria-hidden="true"><i class="material-icons md-48" aria-hidden="true">close</i></span></button>
-          <h4 tabindex="1"  class="modal-title" ><span class="text-uppercase" aria-hidden="true">readme</span> for ${repo.sourceData.name}</h4>
         </div>
         <div tabindex="3" role="article" class="modal-body markdown-body">
 
           <div id="readme-content" class="${hascontent ? '' : 'no-content'} " markdown.bind="content"></div>
 
         </div>
-        <div class="modal-footer">
-          <button tabindex="4" if.bind="router.currentInstruction.config.name != 'project-details'" type="button" class="btn btn-default btn-icon-right" click.delegate="navigateAndClose()" aria-label="View Project">View Project <i class="material-icons" aria-hidden="true">chevron_right</i></button>
-          <button tabindex="5" type="button" class="btn btn-default" click.trigger="controller.cancel()">Close</button>
+        <div class="modal-footer btn-group">
+          <button tabindex="4" if.bind="router.currentInstruction.config.name != 'project-details'" type="button" class="btn btn-default btn-accent btn-icon-right" click.delegate="navigateAndClose()" aria-label="View Project">View Project <i class="material-icons" aria-hidden="true">chevron_right</i></button>
+          <button tabindex="5" type="button" class="btn btn-default btn-secondary" click.trigger="controller.cancel()">Close</button>
         </div>
       </div>
     </div>

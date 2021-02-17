@@ -2,12 +2,12 @@
     background: linear-gradient(180deg, #004a71 54%, #0a1217 100%);
     position: relative;
 
-    .details{
-        padding-bottom: 40px;
-        .container-fluid h1 {
-            padding-left: 70px;
-        }
-    }
+    // .details{
+    //     padding-bottom: 40px;
+    //     .grid-container h1 {
+    //         padding-left: 70px;
+    //     }
+    // }
     
     .secondary{
         padding: 20px;
@@ -17,19 +17,19 @@
         }
     }
 
-    .hero-jumbotron .container-fluid h1,
+    .hero-jumbotron .grid-container h1,
     .hero-jumbotron .container h1 {
         margin-top: 5px;
         font-size: 3em;
         font-weight: 700;
     }
-    .secondary .container-fluid h1, 
+    .secondary .grid-container h1, 
     .secondary .container h1, 
     .secondary .container p {
         text-align: left;
         color: #ffffff;
     }
-    .secondary .container-fluid h1, 
+    .secondary .grid-container h1, 
     .secondary .container h1 {
         margin-bottom: 0;
     }
@@ -48,7 +48,7 @@
         // }
       
         // .container &,
-        // .container-fluid & {
+        // .grid-container & {
         //   border-radius: @border-radius-large; // Only round corners at higher resolutions if contained in a container
         // }
       
@@ -60,7 +60,7 @@
           padding: 48px 0;
       
         //   .container &,
-        //   .container-fluid & {
+        //   .grid-container & {
         //     padding-left:  (@jumbotron-padding * 2);
         //     padding-right: (@jumbotron-padding * 2);
         //   }
@@ -139,7 +139,7 @@
                 // }
             }
     
-            .container-fluid,
+            .grid-container,
             .container {
                 h1, p {
                     color: #ffffff;

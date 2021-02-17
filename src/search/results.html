@@ -6,54 +6,66 @@
   <require from="../resources/value-converters/unique"></require>
   <require from="../resources/value-converters/filter-category"></require>
 
-  <div class="container-fluid title-wrapper">
-    <div class="container">
-      <div class="row">
-        <div class="grid-col-12 col-lg-12 col-md-12 col-sm-12 filter-wrapper">
-          <div class="row filter-result-bar">
-            <div class="col-lg-6 col-md-6">
-                <span tabindex="0" id="results-result-text">${resultCount} results for <strong>${searchText}</strong></span>
-            </div>
-            <div class="col-lg-6 col-md-6">
-                <div>
-                  <ch-dropdown id="filterCategories" collection.bind="categoriesFilter" title="Categories" onitemchanged.call="categoriesChanged($event)" />
-                </div>
-                <div>
-                  <ch-dropdown id="filterOrganizations" collection.bind="organizationsFilter" title="Organizations" onitemchanged.call="organizationsChanged($event)" />
-                </div>
-                <div>
-                  <ch-dropdown id="filterLanguages" collection.bind="languagesFilter" title="Languages" onitemchanged.call="languagesChanged($event)" />
-                </div>
+  
 
+  <div class="usa-section">
+    <div class="grid-container search-results loading-wrapper">
+      <div class="grid-row results-top-row">
+        <div class="grid-col-3">
+            <div class="fiter-results-header" >       
+              <h3>Refine results</h3>
+              
+              <!-- if.bind="(searchDone && resultCount > 0)&&(filters && (filters.selectedLanguages.length>0 || filters.selectedOrganizations.length>0 || filters.selectedCategories.length>0 ))" -->
+              <a  id="result-clearall-filters" 
+                class="${(searchDone && resultCount > 0)&&(filters && (filters.selectedLanguages.length>0 || filters.selectedOrganizations.length>0 || filters.selectedCategories.length>0 )) ? 'show_result-clearall-filters' : 'hide_result-clearall-filters'} clear-btn" href="#" click.delegate="filters.clearAllFilters()" aria-label="Clear all filters, the current number of results is: ${resultCount}">Clear All Filters</a>
             </div>
-          </div>
-          <div class="row filter-result-bar" if.bind="(searchDone && resultCount > 0)&&(filters && (filters.selectedLanguages.length>0 || filters.selectedOrganizations.length>0 || filters.selectedCategories.length>0 ))">
-            <div class="col-lg-10 col-md-10">
-              <ul class='list-inline'>
-                <li if.bind="(searchDone && resultCount > 0)&&(filters && (filters.selectedLanguages.length>0 || filters.selectedOrganizations.length>0 || filters.selectedCategories.length>0 ))">
-                  <a id="result-clearall-filters" class="clear-btn" href="#" click.delegate="filters.clearAllFilters()" aria-label="Clear all filters, the current number of results is: ${resultCount}">Clear All</a>
-                </li>
-                <li if.bind="filters.selectedCategories.length>0" repeat.for="pill of filters.selectedCategories">
-                  <span class="stage-chip">${filters.getDataFromPipedString(pill,1)} <small>(${filters.countProjectsInCategory(projects, filters.getDataFromPipedString(pill,0))})</small> <a href="#" click.trigger="filters.removePill('#filterCategories',pill)"><em class="material-icons">close</em></a></span>
-                </li>
-                <li if.bind="filters.selectedOrganizations.length>0" repeat.for="pill of filters.selectedOrganizations">
-                  <span class="stage-chip">${pill} <small>(${filters.countUniqueValues(projects, 'sourceData.owner.name', pill)})</small> <a click.delegate="filters.removePill('#filterOrganizations',pill)" href="#" aria-label="Remove organization filter: ${pill}"><i class="material-icons" aria-hidden="true">close</i></a></span>
-                </li>
-                <li if.bind="filters.selectedLanguages.length>0" repeat.for="pill of filters.selectedLanguages">
-                  <span class="stage-chip">${pill} <small>(${filters.countUniqueValues(projects, 'sourceData.language', pill)})</small> <a click.delegate="filters.removePill('#filterLanguages',pill)" href="#" aria-label="Remove language filter: ${pill}"><i class="material-icons" aria-hidden="true">close</i></a></span>
-                </li>
-              </ul>
+            <!-- <div class="filter-result-bar" if.bind="(searchDone && resultCount > 0)&&(filters && (filters.selectedLanguages.length>0 || filters.selectedOrganizations.length>0 || filters.selectedCategories.length>0 ))">
+              <div class="">
+                <ul class='list-inline'>
+                  <li if.bind="(searchDone && resultCount > 0)&&(filters && (filters.selectedLanguages.length>0 || filters.selectedOrganizations.length>0 || filters.selectedCategories.length>0 ))">
+                    <a id="result-clearall-filters" class="clear-btn" href="#" click.delegate="filters.clearAllFilters()" aria-label="Clear all filters, the current number of results is: ${resultCount}">Clear All</a>
+                  </li>
+                  <li if.bind="filters.selectedCategories.length>0" repeat.for="pill of filters.selectedCategories">
+                    <span class="stage-chip">${filters.getDataFromPipedString(pill,1)} <small>(${filters.countProjectsInCategory(projects, filters.getDataFromPipedString(pill,0))})</small> <a href="#" click.trigger="filters.removePill('#filterCategories',pill)"><em class="material-icons">close</em></a></span>
+                  </li>
+                  <li if.bind="filters.selectedOrganizations.length>0" repeat.for="pill of filters.selectedOrganizations">
+                    <span class="stage-chip">${pill} <small>(${filters.countUniqueValues(projects, 'sourceData.owner.name', pill)})</small> <a click.delegate="filters.removePill('#filterOrganizations',pill)" href="#" aria-label="Remove organization filter: ${pill}"><i class="material-icons" aria-hidden="true">close</i></a></span>
+                  </li>
+                  <li if.bind="filters.selectedLanguages.length>0" repeat.for="pill of filters.selectedLanguages">
+                    <span class="stage-chip">${pill} <small>(${filters.countUniqueValues(projects, 'sourceData.language', pill)})</small> <a click.delegate="filters.removePill('#filterLanguages',pill)" href="#" aria-label="Remove language filter: ${pill}"><i class="material-icons" aria-hidden="true">close</i></a></span>
+                  </li>
+                </ul>
+              </div>
+            </div> -->
+        </div>
+        <div class="grid-col-9">
+          <h2 tabindex="0" id="results-result-text">${resultCount} results for: <span id="num-of-results">${searchText}</span></h2>
+        </div>  
+      </div>
+      <div class="grid-row">
+        <div class="grid-col-3 title-wrapper">
+          <div class="filter-wrapper">
+            <div class="filter-result-bar">
+              <div class="usa-accordion usa-accordion--bordered">
+                  <div class="usa-accordion__heading">
+                    <ch-dropdown id="filterCategories" collection.bind="categoriesFilter" title="Categories" onitemchanged.call="categoriesChanged($event)" 
+                    class="${(searchDone && resultCount > 0)&&(filters && (filters.selectedCategories.length>0)) ? 'show-the-dropdown' : ''}"/>
+                  </div>
+                  <div class="usa-accordion__heading">
+                    <ch-dropdown id="filterOrganizations" collection.bind="organizationsFilter" title="Organizations" onitemchanged.call="organizationsChanged($event)"
+                    class="${(searchDone && resultCount > 0)&&(filters && (filters.selectedOrganizations.length>0)) ? 'show-the-dropdown' : ''}"/>
+                  </div>
+                  <div class="usa-accordion__heading">
+                    <ch-dropdown id="filterLanguages" collection.bind="languagesFilter" title="Languages" onitemchanged.call="languagesChanged($event)"
+                    class="${(searchDone && resultCount > 0)&&(filters && (filters.selectedLanguages.length>0)) ? 'show-the-dropdown' : ''}" />
+                  </div>
+      
+              </div>
             </div>
+            
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="container search-results loading-wrapper">
-    <div class="grid-row row flex-row">
-      <div class="grid-col-12 col-lg-12 cards-wrapper">
-        <div class="grid-row row">
+        <div class="grid-col-9 cards-wrapper">
           <div class="col-lg-6 col-lg-offset-3">
             <div if.bind="searchDone && resultCount < 1" class="card card-search no-results">
               <div class="lined-header">
@@ -68,16 +80,16 @@
               <img src="/img/loading.svg" width="100px" alt="Loading...">
             </div>
           </div>
+          <span if.bind="searchDone && resultCount > 0" id="results-main-panel" tabindex="0" aria-label="Results panel, ${ariaLabel}"></span>
+          <div if.bind="searchDone && resultCount > 0" class="grid-row"
+              repeat.for="repo of projects |
+              sort: { propertyName: selectedSort, direction: sortDirection} |
+              filterCategory:{ filterArray: filters.selectedCategories}:filters.selectedCategories.length |
+              filter: { propertyName: 'sourceData.owner.name', filterArray: filters.selectedOrganizations}:filters.selectedOrganizations.length |
+              filter: { propertyName: 'sourceData.language', filterArray: filters.selectedLanguages}:filters.selectedLanguages.length">
+              <compose view-model="../components/card-search" model.bind="repo" class="usa-card usa-card--flag grid-col-12"></compose>
+            </div>
         </div>
-        <span if.bind="searchDone && resultCount > 0" id="results-main-panel" tabindex="0" aria-label="Results panel, ${ariaLabel}"></span>
-        <div if.bind="searchDone && resultCount > 0" class="grid-row row"
-            repeat.for="repo of projects |
-            sort: { propertyName: selectedSort, direction: sortDirection} |
-            filterCategory:{ filterArray: filters.selectedCategories}:filters.selectedCategories.length |
-            filter: { propertyName: 'sourceData.owner.name', filterArray: filters.selectedOrganizations}:filters.selectedOrganizations.length |
-            filter: { propertyName: 'sourceData.language', filterArray: filters.selectedLanguages}:filters.selectedLanguages.length">
-            <compose view-model="../components/card-search" model.bind="repo" class="usa-card usa-card--flag grid-col-12"></compose>
-          </div>
       </div>
     </div>
   </div>

@@ -7,66 +7,33 @@
 		box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
 		position: relative;
 
-        .card-stats {
-            &.project-stats-header {
-                padding-top: 10px;
-                font-size: smaller;
-
-                &.card-footer {
-                    padding-right: 0px;
-                    padding-bottom: 5px;
-                    padding-left: 0px;
-                    background-color: transparent;
-                }
-            }
-        }
+        
+        //specific to carousel
         .card-header {
             //margin-bottom: 10px;
             padding: 0px 0px 10px 0px;
             background-color: transparent;
-            border-bottom-width: 2px;
-
-			.lang-logo {
-				position: absolute;
-				height: 60px;
-				width: 60px;
-				border-radius: 100%;
-				overflow: hidden;
-				text-align: center;
-
-				img {
-					width: 60px;
-					height: 60px;
-				}
-			}
-
-			.card-title {
-                padding: 15px 34px 0 80px;
-                margin-bottom: 0px;
-				font-size: $font-size-large;
-				font-weight: $theme-font-weight-bold;
-				line-height: $line-height-computed; // ~20px
-				overflow-wrap: break-word;
-				white-space: nowrap;
-				overflow: hidden;
-				text-overflow: ellipsis;
-
-                a {
-                    color: $stage-body;
-                }
-            }
-            
             
 
+			
+            
+            
+            
+            
 			.org-name {
-				font-size: $font-size-small;
-				font-weight: $theme-font-weight-bold;
-				margin-top:8px;
 				padding-left: 80px;
-				color: $text-muted;
-			}
+            }
+            //need for both, now there are 2 different css classes
+            .org-language,
+            .org-name{
+                font-size: $font-size-small;
+				font-weight: $theme-font-weight-bold;
+                margin-top:8px;
+                color: $text-muted;
+            }
 		}
 
+        //need for both
         .card-links {
             padding-top: 10px;
             border-top: 1px solid #d0d0d0;
@@ -99,7 +66,7 @@
             .list-inline > li a {
                 font-weight: bold;
                 transition: all 0.2s linear;
-                color: #404040;
+                //color: #404040;
                 padding: 4px 10px;
                 .material-icons {
                     vertical-align: -7px;
@@ -119,6 +86,7 @@
             }
         }
 
+        //need for both?
         .card-link {
             position: absolute;
             top: 0;
@@ -128,20 +96,8 @@
             display: block;
         }
 
-        .github-stats {
-            .grid-custom_left{
-                width: 21%;
-            }
-            .grid-custom_middle-left{
-                width: 26%;
-            }
-            .grid-custom_middle-right{
-                width: 29%;
-            }
-            .grid-custom_right{
-                width: 24%;
-            }
-        }
+        
+
 
         .last-updated {
             line-height: 21px;
@@ -149,97 +105,191 @@
             margin-top: 10px;
             padding-bottom: 10px;
         }
+    }
+    
+    .carousel_cards {
+        .card.card-default {  
+            //specific to carousel
+            .card-stats {
+                &.project-stats-header {
+                    padding-top: 10px;
+                    font-size: smaller;
 
-        .col-github-stats, 
-        .github-stats .stat {
-            display: block;
-            padding: 8px 0;
-            color: #4a4a4a;
-            font-size: 12px;
+                    &.card-footer {
+                        padding-right: 0px;
+                        padding-bottom: 5px;
+                        padding-left: 0px;
+                        background-color: transparent;
+                    }
+                }
+            }
+            //specific to carousel
+            .github-stats {
+                justify-content: space-around;
+                .grid-custom_left{
+                    width: 21%;
+                }
+                .grid-custom_middle-left{
+                    width: 26%;
+                }
+                .grid-custom_middle-right{
+                    width: 29%;
+                }
+                .grid-custom_right{
+                    width: 24%;
+                    width: 16%;
+                }
+            }
+            .card-header{
+                border-bottom-width: 2px;
+                //specific to carousel
+                .card-title {
+                    padding: 15px 34px 0 80px;
+                    margin-bottom: 0px;
+                    font-size: $font-size-large;
+                    font-weight: $theme-font-weight-bold;
+                    line-height: $line-height-computed; // ~20px
+                    overflow-wrap: break-word;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+
+                    a {
+                        color: $stage-body;
+                    }
+                }
+            }
+
+            
+
+            .col-github-stats, 
+            .github-stats .stat {
+                display: block;
+                padding: 8px 0;
+                color: #4a4a4a;
+                font-size: 12px;
+                font-size: 14px;
+                .stat-label{
+                    display: block;
+                }//TEMPORARY REMOVE IF NOT DOING ALTERNATE LAYOUT
+            }
+            .col-github-stats {
+                .source-github-tm {
+                  margin-left: 3px;
+                  font-size: small;
+                }
+              }
+    
+            .last-updated a, 
+            .card-btns a, 
+            .card-stats a {
+                position: relative;
+                z-index: 2;
+            }
+    
+            .proj-desc {
+                padding-top: 10px;
+                overflow-wrap: break-word;
+                display: block; /* Fallback for non-webkit */
+                display: -webkit-box;
+                min-height: 78px;
+                max-height: 78px;
+                margin: 0 auto;
+                line-height: $line-height-base;
+                -webkit-line-clamp: $lines-to-show;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .no-desc {
+                font-size: $font-size-medium;
+                color: $lightgray; //previously $light-gray
+                font-weight: $theme-font-weight-bold;
+                font-style: italic;
+            }
+    
+            .project-stats-header{
+                font-weight: $theme-font-weight-bold;
+            }
+    
+            .ribbon-wrapper {
+                width: 77px;
+                height: 77px;
+                overflow: hidden;
+                position: absolute;
+                top: -5px;
+                right: -5px;
+                z-index: 0;
+                pointer-events: none;
+    
+                .ribbon {
+                    font-size: $font-size-smaller;
+                    //font-family: Roboto-Condensed, sans-serif;
+                    font-weight: bold;
+                    letter-spacing: -0.25px;
+                    text-transform: uppercase;
+                    color: $black;
+                    text-align: center;
+                    -webkit-transform: rotate(45deg);
+                    -moz-transform:    rotate(45deg);
+                    -ms-transform:     rotate(45deg);
+                    -o-transform:      rotate(45deg);
+                    position: relative;
+                    height: 28px;
+                    line-height: floor(($line-height-computed * 1.4)); // ~29px
+                    right: 6px;
+                    top: 14px;
+                    width: 110px;
+                    background-color: $yellow;
+                    box-shadow: 0px 4px 0 rgba(0,0,0,0.05);
+    
+                    &:before,
+                    &:after {
+                        content: "";
+                        border-top:   4px solid darken($yellow, 20%);
+                        border-left:  4px solid transparent;
+                        border-right: 4px solid transparent;
+                        position:absolute;
+                        bottom: -4px;
+                    }
+    
+                    &:before {
+                        left: 0;
+                    }
+    
+                    &:after {
+                        right: 0;
+                    }
+                }
+            }
+        &#fake-card{
+            .card-links{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding-top: 7px;
+                padding-bottom: 8px;
+    
+                .card-fake-bottom{
+                    .button-lead-card{
+                        font-weight: bold;
+                        margin-right: 3px;
+                    }
+    
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    .btn{
+                        padding: 5px 15px;
+                        margin-left: 5px;
+                    }
+                }
+            }
+    
         }
-
-        .last-updated a, 
-        .card-btns a, 
-        .card-stats a {
-            position: relative;
-            z-index: 2;
-        }
-
-        .proj-desc {
-			padding-top: 10px;
-			overflow-wrap: break-word;
-			display: block; /* Fallback for non-webkit */
-			display: -webkit-box;
-			min-height: 65px;
-			margin: 0 auto;
-			line-height: $line-height-base;
-			-webkit-line-clamp: $lines-to-show;
-			-webkit-box-orient: vertical;
-			overflow: hidden;
-			text-overflow: ellipsis;
-        }
-        .no-desc {
-			font-size: $font-size-medium;
-			color: $light-gray;
-			font-weight: $theme-font-weight-bold;
-			font-style: italic;
-		}
-
-        .project-stats-header{
-            font-weight: $theme-font-weight-bold;
-        }
-
-        .ribbon-wrapper {
-			width: 77px;
-			height: 77px;
-			overflow: hidden;
-			position: absolute;
-			top: -5px;
-			right: -5px;
-			z-index: 0;
-			pointer-events: none;
-
-			.ribbon {
-				font-size: $font-size-smaller;
-				//font-family: Roboto-Condensed, sans-serif;
-				font-weight: bold;
-				letter-spacing: -0.25px;
-				text-transform: uppercase;
-				color: $black;
-				text-align: center;
-				-webkit-transform: rotate(45deg);
-				-moz-transform:    rotate(45deg);
-				-ms-transform:     rotate(45deg);
-				-o-transform:      rotate(45deg);
-				position: relative;
-				height: 28px;
-				line-height: floor(($line-height-computed * 1.4)); // ~29px
-				right: 6px;
-				top: 14px;
-				width: 110px;
-				background-color: $yellow;
-				box-shadow: 0px 4px 0 rgba(0,0,0,0.05);
-
-				&:before,
-				&:after {
-					content: "";
-					border-top:   4px solid darken($yellow, 20%);
-					border-left:  4px solid transparent;
-					border-right: 4px solid transparent;
-					position:absolute;
-					bottom: -4px;
-				}
-
-				&:before {
-					left: 0;
-				}
-
-				&:after {
-					right: 0;
-				}
-			}
-		}
-    }//~~~~______ end .card
+        }//~~~~______ end .card
+    }
+    
     
     .hover-card {
         transition: all 0.2s linear;
@@ -282,11 +332,160 @@
         }
     }
 
-    .proj-desc, .last-updated {
+    /* .proj-desc, .last-updated {
         padding-left: 80px;
-    }
+    } */
 
     .last-updated {
         border-bottom: none;
     }
-} 
+
+    .proj-content {
+        .project-details_card {
+          display: flex;
+          flex-wrap: wrap;
+    
+          .left_column {
+            flex-basis: 60%;
+            padding-right: units(3);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+    
+            #project-description {
+              margin-top: -18px;
+            }
+    
+            .status {
+              display: flex;
+              justify-content: space-between;
+            }
+    
+            .card-links-project-details {
+              a {
+                display: flex;
+                align-items: center;
+    
+                .badge_image {
+                  width: auto;
+                  height: 25px;
+                  margin-right: units(0.5);
+                }
+              }
+            }
+          }
+    
+          .right_column {
+            flex: 1 1 30%;
+            padding-left: units(3);
+            padding-top: units(2);
+    
+            .header {
+              display: flex;
+              justify-content: space-between;
+              align-items: baseline;
+            }
+          }
+        }
+    
+        .line_border-right{
+          border-right: 1px solid lightgray;
+        }
+    
+        // .col-github-stats {
+        //   .source-github-tm {
+        //     margin-left: 3px;
+        //     font-size: small;
+        //   }
+        // }
+      }
+}
+//___________________________definitely using code below here
+
+//all cards on 3 pages so far
+.proj-details-wrapper .project-details_card, 
+.proj-details-wrapper .health-statistics_card,
+.card-search {
+    background-color: white;
+    padding: 1rem;
+}
+
+
+//only cards that don't have a header row
+.proj-details-wrapper .proj-content .project-details_card,
+.card-search {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+//card that moves when you hover over it and is a link
+.hover-card {
+    border-radius: 0.3rem;
+    box-shadow: 0px 4px 8px rgb(0 0 0 / 10%);
+}
+
+//all github stats sections
+.project-details_card .stat, 
+.health-statistics_card .stat,
+.card-search .stat {
+    margin-bottom: 0.25rem;
+}
+
+
+//search page specific cards
+.lang-logo {
+    position: absolute;
+    height: 60px;
+    width: 60px;
+    border-radius: 100%;
+    overflow: hidden;
+    text-align: center;
+
+    img {
+        width: 60px;
+        height: 60px;
+    }
+}
+.card.card-search {
+    h2, h3{
+        margin-top: units(1);
+    }
+    h3{
+        margin-bottom: units(1.5);
+    }
+
+    .right_column.col-github-stats {
+        flex: 1 1 30%;
+        padding-left: units(3);
+        padding-top: units(2);
+
+        .header {
+          display: flex;
+          justify-content: space-between;
+          align-items: baseline;
+        }
+    }
+    .card-header{
+        border-bottom: none;
+    }
+}
+
+.search-highlight {
+    background-color: #ffe15b;
+    padding: 5px;
+}
+
+.explore-page .hover-card .proj-desc {
+    padding-top: 10px;
+    overflow-wrap: break-word;
+    display: block;
+    display: -webkit-box;
+    max-height: 80px;
+    min-height: 80px;
+    margin: 0 auto;
+    line-height: 1.42857143;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

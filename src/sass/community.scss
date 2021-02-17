@@ -123,8 +123,8 @@
         color: white;
         h3 {
             color: inherit;
-            text-transform: none;
-            font-size: 18px;
+            //text-transform: none;
+            font-size: 20px;
         }
         p {
             margin-bottom: 34px;
@@ -191,7 +191,7 @@
     a.internal-link {
         padding: units(1) units(3);
         font-size: 18px;
-        color: $teal;
+        //color: $teal;
         font-weight: bold;
         background-color: #ffffff;
         max-width: 275px;

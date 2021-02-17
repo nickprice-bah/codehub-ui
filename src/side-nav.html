@@ -5,7 +5,7 @@
       <template repeat.for="row of router.navigation">
         <li if.bind="row.settings.child && row.settings.headerLabel=='Source Code Guidelines'" class="${row.isActive ? 'active-child' : 'stage-child'} sidenav-li">
           <a href.bind="row.href" class="${row.isActive ? 'active-child' : 'stage-child'} dropdown-item sidnav-a" href="#">${row.settings.menuitemLabel}</a>
-          <ul class="${isVisible('source-code-guidelines')? 'active': ''} cdh_usa-sidenav__sublist" id="ul-guidelines-toc">
+          <ul class="${isVisible('source-code-guidelines')? 'active': ''} cdh_usa-sidenav__sublist" id="ul-guidelines-toc_top">
             <li class="usa-sidenav__item sidenav-li">
               <a href="#" click.trigger="moveToTag($event,'background-and-purpose')" class="table-of-contents">Background & Purpose</a>
             </li>
@@ -46,7 +46,7 @@
         </li>
       </template>
     </ul>
-    <ul id="titleBarNav" class="nav navbar-nav main-nav sidenav-ul" >
+    <ul id="ul-guidelines-toc_bottom" class="nav navbar-nav main-nav sidenav-ul" >
       <template repeat.for="row of router.navigation">
         <li if.bind="row.settings.child && row.settings.firstchild  && row.settings.displayheader" class="parent-item sidenav-li">${row.settings.headerLabel}</li>
       </template>

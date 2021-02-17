@@ -5,6 +5,7 @@ import * as echarts from 'echarts';
 import { DataContext } from '../services/datacontext';
 import { StageConfig } from '../stageConf';
 import { Filters } from '../components/filters';
+import { SourceMapGenerator } from '../../../../../../Library/Caches/typescript/4.1/node_modules/source-map/source-map';
 @inject(DataContext, Router, DialogFunctions, StageConfig, Filters)
 export class Metrics {
   constructor(dataContext, router, dialogFunctions, stageConfig, filters) {
@@ -25,7 +26,13 @@ export class Metrics {
     this.filters = filters;
     this.organizations = [];
     this.selectedOrganization = null;
-    this.organizationTitle='Organizations';
+    this.organizationTitle = 'Organizations';
+    this.chartIconColor = '#007bff'; //reference USWDS link color
+    this.chartIconColorHover = '#0056b3'; //reference USWDS link hover color
+    this.chartButtonColorBackground = '#007c85'; //reference variables-colors.scss $primary-color
+    this.chartButtonColorText = '#ffffff'; //reference variables-colors.scss $primary-color-inverse
+    this.chartTitleColor = '#1b1b1b';
+    this.chartSubtextColor = '#333333';
   }
 
   activate() {
@@ -185,9 +192,11 @@ export class Metrics {
           },
           dataView: {
             show: true,
-            title: 'Data',
+            title: 'View Data',
             readOnly: true,
-            lang: ['Data View', 'Close', 'Refresh'],
+            lang: [' ', 'Close', 'Refresh'],
+            buttonColor: [this.chartButtonColorBackground],
+            buttonTextColor: [this.chartButtonColorText],
           },
           restore: {
             show: true,
@@ -198,6 +207,14 @@ export class Metrics {
             title: 'Save',
             type: 'png',
             name: 'codehub_most_used_languages',
+          },
+        },
+        iconStyle: {
+          borderColor: [this.chartIconColor],
+        },
+        emphasis: {
+          iconStyle: {
+            borderColor: [this.chartIconColorHover],
           },
         },
       },
@@ -214,7 +231,8 @@ export class Metrics {
               normal: {
                   position: 'outside',
                   formatter: '{b}\r\n{d}%',
-                  color: 'rgba(0,0,0,1)'
+                  color: [this.chartSubtextColor],
+                  fontSize: 16,
               }
             },
             itemStyle: {
@@ -315,7 +333,7 @@ export class Metrics {
             },
           },
           dataZoom: {
-            show: true,
+            show: false,
             title: {
               zoom: 'Zoom',
               back: 'Back',
@@ -323,9 +341,11 @@ export class Metrics {
           },
           dataView: {
             show: true,
-            title: 'Data',
+            title: 'View Data',
             readOnly: true,
-            lang: ['Data View', 'Close', 'Refresh'],
+            lang: [' ', 'Close', 'Refresh'],
+            buttonColor: [this.chartButtonColorBackground],
+            buttonTextColor: [this.chartButtonColorText],
           },
           magicType: {
             show: true,
@@ -344,6 +364,14 @@ export class Metrics {
             title: 'Save',
             type: 'png',
             name: 'stage_projects_by_language',
+          },
+        },
+        iconStyle: {
+          borderColor: [this.chartIconColor],
+        },
+        emphasis: {
+          iconStyle: {
+            borderColor: [this.chartIconColorHover],
           },
         },
       },
@@ -389,7 +417,8 @@ export class Metrics {
       }
     });
   }
-
+//LINE ~396 is color of bars
+//LINE ~417 UNICORN close button color?
   getChartOptionForks(data) {
     return {
       color: ['#334aff'],
@@ -419,7 +448,7 @@ export class Metrics {
             },
           },
           dataZoom: {
-            show: true,
+            show: false,
             title: {
               zoom: 'Zoom',
               back: 'Back',
@@ -427,9 +456,11 @@ export class Metrics {
           },
           dataView: {
             show: true,
-            title: 'Data',
+            title: 'View Data',
             readOnly: true,
-            lang: ['Data View', 'Close', 'Refresh'],
+            lang: [' ', 'Close', 'Refresh'],
+            buttonColor: [this.chartButtonColorBackground],
+            buttonTextColor: [this.chartButtonColorText],
           },
           magicType: {
             show: true,
@@ -450,6 +481,14 @@ export class Metrics {
             name: 'stage_most_forked_projects',
           },
         },
+        iconStyle: {
+          borderColor: [this.chartIconColor],
+        },
+        emphasis: {
+          iconStyle: {
+            borderColor: [this.chartIconColorHover],
+          },
+        },
       },
       calculable: true,
       xAxis: [
@@ -468,7 +507,7 @@ export class Metrics {
         {
           name: 'Forks',
           type: 'bar',
-          data: data.forkAmount,
+          data: data.forkAmount
         },
       ],
     };
@@ -511,24 +550,51 @@ export class Metrics {
       title: [{
         text: 'Reliability',
         subtext: 'All Projects By Reliability Grade',
-        x: '25%',
+        x: '20%',
         textAlign: 'center',
+        textStyle: {
+          color: [this.chartTitleColor],
+        },
+        subtextStyle: {
+          color: [this.chartSubtextColor],
+          fontSize: 15,
+        },
       }, {
         text: 'Security',
         subtext: 'All Projects By Security Grade',
         x: '50%',
         textAlign: 'center',
+        textStyle: {
+          color: [this.chartTitleColor],
+        },
+        subtextStyle: {
+          color: [this.chartSubtextColor],
+          fontSize: 15,
+        },
       }, {
         text: 'Maintainability',
         subtext: 'All Projects By Maintainability Grade',
-        x: '75%',
+        x: '80%',
         textAlign: 'center',
+        textStyle: {
+          color: [this.chartTitleColor],
+        },
+        subtextStyle: {
+          color: [this.chartSubtextColor],
+          fontSize: 15,
+        },
       }],
       tooltip: {
         trigger: 'axis',
       },
       radar: [
         {
+          name: {
+            textStyle: {
+              color: [this.chartSubtextColor],
+              fontSize: 14,
+            },
+          },
           indicator: [
             { text: 'A', max: data.maxReliability },
             { text: 'B', max: data.maxReliability },
@@ -536,10 +602,16 @@ export class Metrics {
             { text: 'D', max: data.maxReliability },
             { text: 'E', max: data.maxReliability },
           ],
-          center: ['25%', '55%'],
-          radius: 100,
+          center: ['20%', '57%'],
+          radius: 90,
         },
         {
+          name: {
+            textStyle: {
+              color: [this.chartSubtextColor],
+              fontSize: 14,
+            },
+          },
           indicator: [
             { text: 'A', max: data.maxSecurity },
             { text: 'B', max: data.maxSecurity },
@@ -547,10 +619,16 @@ export class Metrics {
             { text: 'D', max: data.maxSecurity },
             { text: 'E', max: data.maxSecurity },
           ],
-          radius: 80,
-          center: ['50%', '55%'],
+          radius: 90,
+          center: ['50%', '57%'],
         },
         {
+          name: {
+            textStyle: {
+              color: [this.chartSubtextColor],
+              fontSize: 14,
+            },
+          },
           indicator: [
             { text: 'A', max: data.maxMaintainability },
             { text: 'B', max: data.maxMaintainability },
@@ -558,8 +636,8 @@ export class Metrics {
             { text: 'D', max: data.maxMaintainability },
             { text: 'E', max: data.maxMaintainability },
           ],
-          center: ['75%', '55%'],
-          radius: 80,
+          center: ['80%', '57%'],
+          radius: 90,
         },
       ],
       series: [
